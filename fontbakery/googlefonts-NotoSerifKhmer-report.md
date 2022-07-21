@@ -5,158 +5,11 @@ Fontbakery version: 0.8.9
 <details><summary><b>[1] Family checks</b></summary><div><details><summary>🔥 <b>FAIL:</b> Checking all files are in the same directory. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/single_directory">com.google.fonts/check/family/single_directory</a>)</summary><div>
 
 
-* 🔥 **FAIL** Not all fonts passed in the command line are in the same directory. This may lead to bad results as the tool will interpret all font files as belonging to a single font family. The detected directories are: ['fonts/NotoSerifKhmer/googlefonts/slim-variable-ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf', 'fonts/NotoSerifKhmer/googlefonts/variable-ttf'] [code: single-directory]
-</div></details><br></div></details><details><summary><b>[16] NotoSerifKhmer[wght].ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Checking file is named canonically. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/canonical_filename">com.google.fonts/check/canonical_filename</a>)</summary><div>
+* 🔥 **FAIL** Not all fonts passed in the command line are in the same directory. This may lead to bad results as the tool will interpret all font files as belonging to a single font family. The detected directories are: ['fonts/NotoSerifKhmer/googlefonts/ttf', 'fonts/NotoSerifKhmer/googlefonts/variable-ttf'] [code: single-directory]
+</div></details><br></div></details><details><summary><b>[14] NotoSerifKhmer-Black.ttf</b></summary><div><details><summary>💔 <b>ERROR:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
 
 
-* 🔥 **FAIL** The file 'NotoSerifKhmer[wght].ttf' must be renamed to 'NotoSerifKhmer[wdth,wght].ttf' according to the Google Fonts naming policy for variable fonts. [code: bad-varfont-filename]
-</div></details><details><summary>🔥 <b>FAIL:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
-
-
-* 🔥 **FAIL** Missing required codepoints:
-
-	- 0x00AF (MACRON)
- [code: missing-codepoints]
-</div></details><details><summary>🔥 <b>FAIL:</b> Check copyright namerecords match license file. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/name/license">com.google.fonts/check/name/license</a>)</summary><div>
-
-
-* 🔥 **FAIL** License file OFL.txt exists but NameID 13 (LICENSE DESCRIPTION) value on platform 3 (WINDOWS) is not specified for that. Value was: "This Font Software is licensed under the SIL Open Font License, Version 1.1. This Font Software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software." Must be changed to "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL" [code: wrong]
-</div></details><details><summary>🔥 <b>FAIL:</b> Is the Grid-fitting and Scan-conversion Procedure ('gasp') table set to optimize rendering? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/gasp">com.google.fonts/check/gasp</a>)</summary><div>
-
-
-* 🔥 **FAIL** Font is missing the 'gasp' table. Try exporting the font with autohinting enabled.
-If you are dealing with an unhinted font, it can be fixed by running the fonts through the command 'gftools fix-nonhinting'
-GFTools is available at https://pypi.org/project/gftools/ [code: lacks-gasp]
-</div></details><details><summary>🔥 <b>FAIL:</b> Copyright notices match canonical pattern in fonts (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/font_copyright">com.google.fonts/check/font_copyright</a>)</summary><div>
-
-
-* 🔥 **FAIL** Name Table entry: Copyright notices should match a pattern similar to: "Copyright 2019 The Familyname Project Authors (git url)"
-But instead we have got:
-"Copyright 2016-2022 Google Inc. All Rights Reserved." [code: bad-notice-format]
-</div></details><details><summary>🔥 <b>FAIL:</b> Font enables smart dropout control in "prep" table instructions? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/smart_dropout">com.google.fonts/check/smart_dropout</a>)</summary><div>
-
-
-* 🔥 **FAIL** The 'prep' table does not contain TrueType instructions enabling smart dropout control. To fix, export the font with autohinting enabled, or run ttfautohint on the font, or run the `gftools fix-nonhinting` script. [code: lacks-smart-dropout]
-</div></details><details><summary>🔥 <b>FAIL:</b> OS/2.fsSelection bit 7 (USE_TYPO_METRICS) is set in all fonts. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/os2/use_typo_metrics">com.google.fonts/check/os2/use_typo_metrics</a>)</summary><div>
-
-
-* 🔥 **FAIL** OS/2.fsSelection bit 7 (USE_TYPO_METRICS) wasNOT set in the following fonts: ['fonts/NotoSerifKhmer/googlefonts/slim-variable-ttf/NotoSerifKhmer[wght].ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Black.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Bold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraLight.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Light.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Medium.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Regular.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-SemiBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Thin.ttf', 'fonts/NotoSerifKhmer/googlefonts/variable-ttf/NotoSerifKhmer[wdth,wght].ttf']. [code: missing-os2-fsselection-bit7]
-</div></details><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
-
-
-* 🔥 **FAIL** OS/2.usWinAscent value should be equal or greater than 1294, but got 1069 instead [code: ascent]
-* 🔥 **FAIL** OS/2.usWinDescent value should be equal or greater than 839, but got 293 instead. [code: descent]
-</div></details><details><summary>🔥 <b>FAIL:</b> Validates that when an instance record is included for the default instance, its subfamilyNameID value is set to either 2 or 17, and its postScriptNameID value is set to 6. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/valid_default_instance_nameids">com.adobe.fonts/check/varfont/valid_default_instance_nameids</a>)</summary><div>
-
-
-* 🔥 **FAIL** 'Regular' instance has the same coordinates as the default instance; its subfamilyNameID should be either 2 or 17, instead of 261. [code: invalid-default-instance-subfamily-nameid:261]
-* 🔥 **FAIL** 'Regular' instance has the same coordinates as the default instance; its postScriptNameID should be 6, instead of 270. [code: invalid-default-instance-postscript-nameid:270]
-</div></details><details><summary>⚠ <b>WARN:</b> Are there caret positions declared for every ligature? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/ligature_carets">com.google.fonts/check/ligature_carets</a>)</summary><div>
-
-
-* ⚠ **WARN** This font lacks caret position values for ligature glyphs on its GDEF table. [code: lacks-caret-pos]
-</div></details><details><summary>⚠ <b>WARN:</b> Is there kerning info for non-ligated sequences? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/kerning_for_non_ligated_sequences">com.google.fonts/check/kerning_for_non_ligated_sequences</a>)</summary><div>
-
-
-* ⚠ **WARN** GPOS table lacks kerning info for the following non-ligated sequences:
-
-	- uni1780 + uni17B6
-
-	- uni17B6 + uni17C5.right
-
-	- uni1781 + uni17B6
-
-	- uni1782 + uni17B6
-
-	- uni1783 + uni17B6
-
-	- uni1784 + uni17B6
-
-	- uni1785 + uni17B6
-
-	- uni1786 + uni17B6
-
-	- uni1787 + uni17B6
-
-	- uni1788 + uni17B6 
-
-	- And 42 more.
-
-Use -F or --full-lists to disable shortening of long lists. [code: lacks-kern-info]
-</div></details><details><summary>⚠ <b>WARN:</b> Ensure fonts have ScriptLangTags declared on the 'meta' table. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/meta/script_lang_tags">com.google.fonts/check/meta/script_lang_tags</a>)</summary><div>
-
-
-* ⚠ **WARN** This font file does not have a 'meta' table. [code: lacks-meta-table]
-</div></details><details><summary>⚠ <b>WARN:</b> Check font contains no unreachable glyphs (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/unreachable_glyphs">com.google.fonts/check/unreachable_glyphs</a>)</summary><div>
-
-
-* ⚠ **WARN** The following glyphs could not be reached by codepoint or substitution rules:
-
-	- guillemotleft.1 
-
-	- And guillemotright.1
- [code: unreachable-glyphs]
-</div></details><details><summary>⚠ <b>WARN:</b> Check mark characters are in GDEF mark glyph class. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/gdef.html#com.google.fonts/check/gdef_mark_chars">com.google.fonts/check/gdef_mark_chars</a>)</summary><div>
-
-
-* ⚠ **WARN** The following mark characters could be in the GDEF mark glyph class:
-	 acutecomb (U+0301), gravecomb (U+0300), tildecomb (U+0303), uni0302 (U+0302), uni0304 (U+0304), uni0306 (U+0306), uni0307 (U+0307), uni0308 (U+0308), uni030A (U+030A), uni030B (U+030B) and 5 more.
-
-Use -F or --full-lists to disable shortening of long lists. [code: mark-chars]
-</div></details><details><summary>⚠ <b>WARN:</b> Check GDEF mark glyph class doesn't have characters that are not marks. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/gdef.html#com.google.fonts/check/gdef_non_mark_chars">com.google.fonts/check/gdef_non_mark_chars</a>)</summary><div>
-
-
-* ⚠ **WARN** The following non-mark characters should not be in the GDEF mark glyph class:
-	 U+17BE [code: non-mark-chars]
-</div></details><details><summary>⚠ <b>WARN:</b> Are there any misaligned on-curve points? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_alignment_miss">com.google.fonts/check/outline_alignment_miss</a>)</summary><div>
-
-
-* ⚠ **WARN** The following glyphs have on-curve points which have potentially incorrect y coordinates:
-
-	* parenleft (U+0028): X=314.0,Y=715.0 (should be at cap-height 714?)
-
-	* parenright (U+0029): X=32.0,Y=715.0 (should be at cap-height 714?)
-
-	* comma (U+002C): X=114.0,Y=1.0 (should be at baseline 0?)
-
-	* three (U+0033): X=334.5,Y=1.0 (should be at baseline 0?)
-
-	* five (U+0035): X=328.0,Y=0.5 (should be at baseline 0?)
-
-	* nine (U+0039): X=139.0,Y=2.0 (should be at baseline 0?)
-
-	* semicolon (U+003B): X=132.0,Y=1.0 (should be at baseline 0?)
-
-	* C (U+0043): X=457.5,Y=0.5 (should be at baseline 0?)
-
-	* G (U+0047): X=519.0,Y=1.5 (should be at baseline 0?)
-
-	* bracketleft (U+005B): X=239.0,Y=713.0 (should be at cap-height 714?) 
-
-	* And 84 more.
-
-Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]
-</div></details><br></div></details><details><summary><b>[17] NotoSerifKhmer-Black.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
-
-
-* 🔥 **FAIL** Missing required codepoints:
-
-	- 0x00AF (MACRON)
- [code: missing-codepoints]
-</div></details><details><summary>🔥 <b>FAIL:</b> Check copyright namerecords match license file. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/name/license">com.google.fonts/check/name/license</a>)</summary><div>
-
-
-* 🔥 **FAIL** License file OFL.txt exists but NameID 13 (LICENSE DESCRIPTION) value on platform 3 (WINDOWS) is not specified for that. Value was: "This Font Software is licensed under the SIL Open Font License, Version 1.1. This Font Software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software." Must be changed to "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL" [code: wrong]
-</div></details><details><summary>🔥 <b>FAIL:</b> Copyright notices match canonical pattern in fonts (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/font_copyright">com.google.fonts/check/font_copyright</a>)</summary><div>
-
-
-* 🔥 **FAIL** Name Table entry: Copyright notices should match a pattern similar to: "Copyright 2019 The Familyname Project Authors (git url)"
-But instead we have got:
-"Copyright 2016-2022 Google Inc. All Rights Reserved." [code: bad-notice-format]
-</div></details><details><summary>🔥 <b>FAIL:</b> OS/2.fsSelection bit 7 (USE_TYPO_METRICS) is set in all fonts. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/os2/use_typo_metrics">com.google.fonts/check/os2/use_typo_metrics</a>)</summary><div>
-
-
-* 🔥 **FAIL** OS/2.fsSelection bit 7 (USE_TYPO_METRICS) wasNOT set in the following fonts: ['fonts/NotoSerifKhmer/googlefonts/slim-variable-ttf/NotoSerifKhmer[wght].ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Black.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Bold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraLight.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Light.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Medium.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Regular.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-SemiBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Thin.ttf', 'fonts/NotoSerifKhmer/googlefonts/variable-ttf/NotoSerifKhmer[wdth,wght].ttf']. [code: missing-os2-fsselection-bit7]
+* 💔 **ERROR** Failed with IndexError: list index out of range
 </div></details><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 
@@ -166,16 +19,16 @@ But instead we have got:
 
 
 * ⚠ **WARN** Following glyphs differ greatly from Google Fonts version:
-	* uni17D2179E.low
-	* uni179317C5
-	* uni19F5
-	* uni17BF.right3
-	* uni178317B6
-	* uni179B17C5
-	* uni179F
-	* uni17C0.right1
+	* uni179417B6
+	* uni17C0.right3
+	* uni179217B6
+	* uni179517C5
+	* uni178F
 	* uni179D
-	* uni17D2178817C5.low and 154 more.
+	* uni17A217B6
+	* uni1789.a
+	* uni1786
+	* uni179F and 154 more.
 
 Use -F or --full-lists to disable shortening of long lists.
 </div></details><details><summary>⚠ <b>WARN:</b> Are there caret positions declared for every ligature? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/ligature_carets">com.google.fonts/check/ligature_carets</a>)</summary><div>
@@ -318,27 +171,10 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 * ⚠ **WARN** The following glyphs have semi-vertical/semi-horizontal lines:
 
 	* sterling (U+00A3): L<<454.0,335.0>--<295.0,336.0>> [code: found-semi-vertical]
-</div></details><br></div></details><details><summary><b>[14] NotoSerifKhmer-Bold.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[11] NotoSerifKhmer-Bold.ttf</b></summary><div><details><summary>💔 <b>ERROR:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
 
 
-* 🔥 **FAIL** Missing required codepoints:
-
-	- 0x00AF (MACRON)
- [code: missing-codepoints]
-</div></details><details><summary>🔥 <b>FAIL:</b> Check copyright namerecords match license file. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/name/license">com.google.fonts/check/name/license</a>)</summary><div>
-
-
-* 🔥 **FAIL** License file OFL.txt exists but NameID 13 (LICENSE DESCRIPTION) value on platform 3 (WINDOWS) is not specified for that. Value was: "This Font Software is licensed under the SIL Open Font License, Version 1.1. This Font Software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software." Must be changed to "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL" [code: wrong]
-</div></details><details><summary>🔥 <b>FAIL:</b> Copyright notices match canonical pattern in fonts (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/font_copyright">com.google.fonts/check/font_copyright</a>)</summary><div>
-
-
-* 🔥 **FAIL** Name Table entry: Copyright notices should match a pattern similar to: "Copyright 2019 The Familyname Project Authors (git url)"
-But instead we have got:
-"Copyright 2016-2022 Google Inc. All Rights Reserved." [code: bad-notice-format]
-</div></details><details><summary>🔥 <b>FAIL:</b> OS/2.fsSelection bit 7 (USE_TYPO_METRICS) is set in all fonts. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/os2/use_typo_metrics">com.google.fonts/check/os2/use_typo_metrics</a>)</summary><div>
-
-
-* 🔥 **FAIL** OS/2.fsSelection bit 7 (USE_TYPO_METRICS) wasNOT set in the following fonts: ['fonts/NotoSerifKhmer/googlefonts/slim-variable-ttf/NotoSerifKhmer[wght].ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Black.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Bold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraLight.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Light.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Medium.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Regular.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-SemiBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Thin.ttf', 'fonts/NotoSerifKhmer/googlefonts/variable-ttf/NotoSerifKhmer[wdth,wght].ttf']. [code: missing-os2-fsselection-bit7]
+* 💔 **ERROR** Failed with IndexError: list index out of range
 </div></details><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 
@@ -348,16 +184,16 @@ But instead we have got:
 
 
 * ⚠ **WARN** Following glyphs differ greatly from Google Fonts version:
-	* uni17D2179E.low
-	* uni179317C5
-	* uni19F5
-	* uni178317B6
-	* uni179B17C5
-	* uni179F
-	* uni17C0.right1
+	* uni179417B6
+	* uni179217B6
+	* uni179517C5
+	* uni178F
 	* uni179D
-	* uni17D2179E17C5.low
-	* uni1789.a and 136 more.
+	* uni17A217B6
+	* uni1789.a
+	* uni1786
+	* uni179F
+	* uni17A3 and 136 more.
 
 Use -F or --full-lists to disable shortening of long lists.
 </div></details><details><summary>⚠ <b>WARN:</b> Are there caret positions declared for every ligature? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/ligature_carets">com.google.fonts/check/ligature_carets</a>)</summary><div>
@@ -469,27 +305,10 @@ Use -F or --full-lists to disable shortening of long lists. [code: mark-chars]
 	* And 42 more.
 
 Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]
-</div></details><br></div></details><details><summary><b>[17] NotoSerifKhmer-ExtraBold.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[14] NotoSerifKhmer-ExtraBold.ttf</b></summary><div><details><summary>💔 <b>ERROR:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
 
 
-* 🔥 **FAIL** Missing required codepoints:
-
-	- 0x00AF (MACRON)
- [code: missing-codepoints]
-</div></details><details><summary>🔥 <b>FAIL:</b> Check copyright namerecords match license file. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/name/license">com.google.fonts/check/name/license</a>)</summary><div>
-
-
-* 🔥 **FAIL** License file OFL.txt exists but NameID 13 (LICENSE DESCRIPTION) value on platform 3 (WINDOWS) is not specified for that. Value was: "This Font Software is licensed under the SIL Open Font License, Version 1.1. This Font Software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software." Must be changed to "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL" [code: wrong]
-</div></details><details><summary>🔥 <b>FAIL:</b> Copyright notices match canonical pattern in fonts (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/font_copyright">com.google.fonts/check/font_copyright</a>)</summary><div>
-
-
-* 🔥 **FAIL** Name Table entry: Copyright notices should match a pattern similar to: "Copyright 2019 The Familyname Project Authors (git url)"
-But instead we have got:
-"Copyright 2016-2022 Google Inc. All Rights Reserved." [code: bad-notice-format]
-</div></details><details><summary>🔥 <b>FAIL:</b> OS/2.fsSelection bit 7 (USE_TYPO_METRICS) is set in all fonts. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/os2/use_typo_metrics">com.google.fonts/check/os2/use_typo_metrics</a>)</summary><div>
-
-
-* 🔥 **FAIL** OS/2.fsSelection bit 7 (USE_TYPO_METRICS) wasNOT set in the following fonts: ['fonts/NotoSerifKhmer/googlefonts/slim-variable-ttf/NotoSerifKhmer[wght].ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Black.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Bold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraLight.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Light.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Medium.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Regular.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-SemiBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Thin.ttf', 'fonts/NotoSerifKhmer/googlefonts/variable-ttf/NotoSerifKhmer[wdth,wght].ttf']. [code: missing-os2-fsselection-bit7]
+* 💔 **ERROR** Failed with IndexError: list index out of range
 </div></details><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 
@@ -499,16 +318,16 @@ But instead we have got:
 
 
 * ⚠ **WARN** Following glyphs differ greatly from Google Fonts version:
-	* uni17D2179E.low
-	* uni179317C5
-	* uni19F5
-	* uni17BF.right3
-	* uni178317B6
-	* uni179B17C5
-	* uni179F
-	* uni17C0.right1
+	* uni179417B6
+	* uni17C0.right3
+	* uni179217B6
+	* uni179517C5
+	* uni178F
 	* uni179D
-	* uni17C0.right2 and 147 more.
+	* uni17A217B6
+	* uni1789.a
+	* uni1786
+	* uni179F and 147 more.
 
 Use -F or --full-lists to disable shortening of long lists.
 </div></details><details><summary>⚠ <b>WARN:</b> Are there caret positions declared for every ligature? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/ligature_carets">com.google.fonts/check/ligature_carets</a>)</summary><div>
@@ -647,27 +466,10 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 * ⚠ **WARN** The following glyphs have semi-vertical/semi-horizontal lines:
 
 	* sterling (U+00A3): L<<444.0,335.0>--<285.0,336.0>> [code: found-semi-vertical]
-</div></details><br></div></details><details><summary><b>[16] NotoSerifKhmer-ExtraLight.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[13] NotoSerifKhmer-ExtraLight.ttf</b></summary><div><details><summary>💔 <b>ERROR:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
 
 
-* 🔥 **FAIL** Missing required codepoints:
-
-	- 0x00AF (MACRON)
- [code: missing-codepoints]
-</div></details><details><summary>🔥 <b>FAIL:</b> Check copyright namerecords match license file. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/name/license">com.google.fonts/check/name/license</a>)</summary><div>
-
-
-* 🔥 **FAIL** License file OFL.txt exists but NameID 13 (LICENSE DESCRIPTION) value on platform 3 (WINDOWS) is not specified for that. Value was: "This Font Software is licensed under the SIL Open Font License, Version 1.1. This Font Software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software." Must be changed to "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL" [code: wrong]
-</div></details><details><summary>🔥 <b>FAIL:</b> Copyright notices match canonical pattern in fonts (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/font_copyright">com.google.fonts/check/font_copyright</a>)</summary><div>
-
-
-* 🔥 **FAIL** Name Table entry: Copyright notices should match a pattern similar to: "Copyright 2019 The Familyname Project Authors (git url)"
-But instead we have got:
-"Copyright 2016-2022 Google Inc. All Rights Reserved." [code: bad-notice-format]
-</div></details><details><summary>🔥 <b>FAIL:</b> OS/2.fsSelection bit 7 (USE_TYPO_METRICS) is set in all fonts. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/os2/use_typo_metrics">com.google.fonts/check/os2/use_typo_metrics</a>)</summary><div>
-
-
-* 🔥 **FAIL** OS/2.fsSelection bit 7 (USE_TYPO_METRICS) wasNOT set in the following fonts: ['fonts/NotoSerifKhmer/googlefonts/slim-variable-ttf/NotoSerifKhmer[wght].ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Black.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Bold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraLight.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Light.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Medium.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Regular.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-SemiBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Thin.ttf', 'fonts/NotoSerifKhmer/googlefonts/variable-ttf/NotoSerifKhmer[wdth,wght].ttf']. [code: missing-os2-fsselection-bit7]
+* 💔 **ERROR** Failed with IndexError: list index out of range
 </div></details><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 
@@ -677,16 +479,16 @@ But instead we have got:
 
 
 * ⚠ **WARN** Following glyphs differ greatly from Google Fonts version:
+	* uni17A217B6
 	* uni1789.a
-	* uni178917B6.a
-	* uni178917B6
+	* uni17A3
 	* uni178917C5
 	* uni17A4
+	* uni178917B6.a
+	* uni17A2
 	* uni178917C5.a
-	* uni1789
-	* uni17A217B6
-	* uni17A3
-	* uni17A2 and uni17A217C5
+	* uni17A217C5
+	* uni178917B6 and uni1789
 </div></details><details><summary>⚠ <b>WARN:</b> Are there caret positions declared for every ligature? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/ligature_carets">com.google.fonts/check/ligature_carets</a>)</summary><div>
 
 
@@ -809,27 +611,10 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 * ⚠ **WARN** The following glyphs have jaggy segments:
 
 	* eth (U+00F0): B<<356.5,474.5>-<399.0,456.0>-<423.0,417.0>>/B<<423.0,417.0>-<401.0,487.0>-<370.5,540.5>> = 14.160313822966648 [code: found-jaggy-segments]
-</div></details><br></div></details><details><summary><b>[16] NotoSerifKhmer-Light.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[13] NotoSerifKhmer-Light.ttf</b></summary><div><details><summary>💔 <b>ERROR:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
 
 
-* 🔥 **FAIL** Missing required codepoints:
-
-	- 0x00AF (MACRON)
- [code: missing-codepoints]
-</div></details><details><summary>🔥 <b>FAIL:</b> Check copyright namerecords match license file. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/name/license">com.google.fonts/check/name/license</a>)</summary><div>
-
-
-* 🔥 **FAIL** License file OFL.txt exists but NameID 13 (LICENSE DESCRIPTION) value on platform 3 (WINDOWS) is not specified for that. Value was: "This Font Software is licensed under the SIL Open Font License, Version 1.1. This Font Software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software." Must be changed to "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL" [code: wrong]
-</div></details><details><summary>🔥 <b>FAIL:</b> Copyright notices match canonical pattern in fonts (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/font_copyright">com.google.fonts/check/font_copyright</a>)</summary><div>
-
-
-* 🔥 **FAIL** Name Table entry: Copyright notices should match a pattern similar to: "Copyright 2019 The Familyname Project Authors (git url)"
-But instead we have got:
-"Copyright 2016-2022 Google Inc. All Rights Reserved." [code: bad-notice-format]
-</div></details><details><summary>🔥 <b>FAIL:</b> OS/2.fsSelection bit 7 (USE_TYPO_METRICS) is set in all fonts. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/os2/use_typo_metrics">com.google.fonts/check/os2/use_typo_metrics</a>)</summary><div>
-
-
-* 🔥 **FAIL** OS/2.fsSelection bit 7 (USE_TYPO_METRICS) wasNOT set in the following fonts: ['fonts/NotoSerifKhmer/googlefonts/slim-variable-ttf/NotoSerifKhmer[wght].ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Black.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Bold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraLight.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Light.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Medium.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Regular.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-SemiBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Thin.ttf', 'fonts/NotoSerifKhmer/googlefonts/variable-ttf/NotoSerifKhmer[wdth,wght].ttf']. [code: missing-os2-fsselection-bit7]
+* 💔 **ERROR** Failed with IndexError: list index out of range
 </div></details><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 
@@ -839,16 +624,16 @@ But instead we have got:
 
 
 * ⚠ **WARN** Following glyphs differ greatly from Google Fonts version:
-	* uni178317B6
+	* uni17A217B6
 	* uni1789.a
-	* uni178B17B6
+	* uni17A3
+	* uni178917C5
+	* uni179F17C5
+	* uni17A4
 	* uni178917B6.a
-	* uni17C5
 	* uni17C0
-	* uni17BE
-	* uni178B17C5
-	* uni17BF
-	* uni1783 and 13 more.
+	* uni17A2
+	* uni178317C5 and 13 more.
 
 Use -F or --full-lists to disable shortening of long lists.
 </div></details><details><summary>⚠ <b>WARN:</b> Are there caret positions declared for every ligature? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/ligature_carets">com.google.fonts/check/ligature_carets</a>)</summary><div>
@@ -975,27 +760,10 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 	* question (U+003F): L<<200.0,201.0>--<199.0,346.0>> 
 
 	* And questiondown (U+00BF): L<<203.0,215.0>--<204.0,333.0>> [code: found-semi-vertical]
-</div></details><br></div></details><details><summary><b>[15] NotoSerifKhmer-Medium.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[12] NotoSerifKhmer-Medium.ttf</b></summary><div><details><summary>💔 <b>ERROR:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
 
 
-* 🔥 **FAIL** Missing required codepoints:
-
-	- 0x00AF (MACRON)
- [code: missing-codepoints]
-</div></details><details><summary>🔥 <b>FAIL:</b> Check copyright namerecords match license file. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/name/license">com.google.fonts/check/name/license</a>)</summary><div>
-
-
-* 🔥 **FAIL** License file OFL.txt exists but NameID 13 (LICENSE DESCRIPTION) value on platform 3 (WINDOWS) is not specified for that. Value was: "This Font Software is licensed under the SIL Open Font License, Version 1.1. This Font Software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software." Must be changed to "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL" [code: wrong]
-</div></details><details><summary>🔥 <b>FAIL:</b> Copyright notices match canonical pattern in fonts (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/font_copyright">com.google.fonts/check/font_copyright</a>)</summary><div>
-
-
-* 🔥 **FAIL** Name Table entry: Copyright notices should match a pattern similar to: "Copyright 2019 The Familyname Project Authors (git url)"
-But instead we have got:
-"Copyright 2016-2022 Google Inc. All Rights Reserved." [code: bad-notice-format]
-</div></details><details><summary>🔥 <b>FAIL:</b> OS/2.fsSelection bit 7 (USE_TYPO_METRICS) is set in all fonts. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/os2/use_typo_metrics">com.google.fonts/check/os2/use_typo_metrics</a>)</summary><div>
-
-
-* 🔥 **FAIL** OS/2.fsSelection bit 7 (USE_TYPO_METRICS) wasNOT set in the following fonts: ['fonts/NotoSerifKhmer/googlefonts/slim-variable-ttf/NotoSerifKhmer[wght].ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Black.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Bold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraLight.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Light.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Medium.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Regular.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-SemiBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Thin.ttf', 'fonts/NotoSerifKhmer/googlefonts/variable-ttf/NotoSerifKhmer[wdth,wght].ttf']. [code: missing-os2-fsselection-bit7]
+* 💔 **ERROR** Failed with IndexError: list index out of range
 </div></details><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 
@@ -1005,16 +773,16 @@ But instead we have got:
 
 
 * ⚠ **WARN** Following glyphs differ greatly from Google Fonts version:
-	* uni17D2179E.low
-	* uni178317B6
-	* uni179F
-	* uni17C0.right1
+	* uni179417B6
+	* uni179217B6
+	* uni179517C5
 	* uni179D
-	* uni17D2179E17C5.low
+	* uni17A217B6
 	* uni1789.a
-	* uni17D2179E17B6.low
-	* uni178C17C5
-	* uni17C2 and 81 more.
+	* uni179F
+	* uni17A3
+	* uni178917C5
+	* uni17BF.right1 and 81 more.
 
 Use -F or --full-lists to disable shortening of long lists.
 </div></details><details><summary>⚠ <b>WARN:</b> Are there caret positions declared for every ligature? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/ligature_carets">com.google.fonts/check/ligature_carets</a>)</summary><div>
@@ -1111,27 +879,10 @@ Use -F or --full-lists to disable shortening of long lists. [code: mark-chars]
 * ⚠ **WARN** The following glyphs have colinear vectors:
 
 	* uni17B0 (U+17B0): L<<583.0,-68.0>--<583.0,-68.0>> -> L<<583.0,-68.0>--<583.0,-68.0>> [code: found-colinear-vectors]
-</div></details><br></div></details><details><summary><b>[15] NotoSerifKhmer-Regular.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[12] NotoSerifKhmer-Regular.ttf</b></summary><div><details><summary>💔 <b>ERROR:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
 
 
-* 🔥 **FAIL** Missing required codepoints:
-
-	- 0x00AF (MACRON)
- [code: missing-codepoints]
-</div></details><details><summary>🔥 <b>FAIL:</b> Check copyright namerecords match license file. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/name/license">com.google.fonts/check/name/license</a>)</summary><div>
-
-
-* 🔥 **FAIL** License file OFL.txt exists but NameID 13 (LICENSE DESCRIPTION) value on platform 3 (WINDOWS) is not specified for that. Value was: "This Font Software is licensed under the SIL Open Font License, Version 1.1. This Font Software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software." Must be changed to "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL" [code: wrong]
-</div></details><details><summary>🔥 <b>FAIL:</b> Copyright notices match canonical pattern in fonts (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/font_copyright">com.google.fonts/check/font_copyright</a>)</summary><div>
-
-
-* 🔥 **FAIL** Name Table entry: Copyright notices should match a pattern similar to: "Copyright 2019 The Familyname Project Authors (git url)"
-But instead we have got:
-"Copyright 2016-2022 Google Inc. All Rights Reserved." [code: bad-notice-format]
-</div></details><details><summary>🔥 <b>FAIL:</b> OS/2.fsSelection bit 7 (USE_TYPO_METRICS) is set in all fonts. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/os2/use_typo_metrics">com.google.fonts/check/os2/use_typo_metrics</a>)</summary><div>
-
-
-* 🔥 **FAIL** OS/2.fsSelection bit 7 (USE_TYPO_METRICS) wasNOT set in the following fonts: ['fonts/NotoSerifKhmer/googlefonts/slim-variable-ttf/NotoSerifKhmer[wght].ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Black.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Bold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraLight.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Light.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Medium.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Regular.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-SemiBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Thin.ttf', 'fonts/NotoSerifKhmer/googlefonts/variable-ttf/NotoSerifKhmer[wdth,wght].ttf']. [code: missing-os2-fsselection-bit7]
+* 💔 **ERROR** Failed with IndexError: list index out of range
 </div></details><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 
@@ -1208,24 +959,24 @@ Got: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 94
 
 
 Got: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4450 2362" transform="matrix(1 0 0 -1 0 0)">
-<path d=""  transform="translate(0, 793)"/>
-<path d=""  transform="translate(346, 793)"/>
-<path d=""  transform="translate(1111, 793)"/>
-<path d=""  transform="translate(1794, 793)"/>
-<path d=""  transform="translate(2104, 793)"/>
-<path d=""  transform="translate(2787, 793)"/>
-<path d=""  transform="translate(3133, 793)"/>
-<path d=""  transform="translate(3692, 793)"/>
+<path d="M314.0,-128.0Q222.0,-91.0 165.5,-33.5Q109.0,24.0 83.0,110.5Q57.0,197.0 57.0,317.0Q57.0,437.0 83.0,522.5Q109.0,608.0 165.5,666.0Q222.0,724.0 314.0,760.0L314.0,715.0Q245.0,674.0 212.5,611.0Q180.0,548.0 170.5,472.5Q161.0,397.0 161.0,317.0Q161.0,238.0 170.5,162.0Q180.0,86.0 212.5,23.0Q245.0,-40.0 314.0,-82.0L314.0,-128.0Z"  transform="translate(0, 793)"/>
+<path d="M545.0,682.0Q556.0,682.0 575.5,670.5Q595.0,659.0 615.5,639.0Q636.0,619.0 650.5,592.5Q665.0,566.0 665.0,536.0L665.0,195.0Q665.0,140.0 634.5,95.5Q604.0,51.0 544.0,25.5Q484.0,0.0 396.0,0.0L372.0,0.0Q284.0,0.0 224.0,25.5Q164.0,51.0 133.5,95.5Q103.0,140.0 103.0,195.0L103.0,618.0Q103.0,637.0 95.0,657.0Q87.0,677.0 71.0,691.0Q55.0,705.0 30.0,705.0Q30.0,737.0 52.0,758.5Q74.0,780.0 105.0,780.0Q147.0,780.0 171.0,740.0Q195.0,700.0 195.0,638.0L195.0,195.0Q195.0,133.0 240.5,100.0Q286.0,67.0 372.0,67.0L396.0,67.0Q482.0,67.0 527.5,100.0Q573.0,133.0 573.0,195.0L573.0,536.0Q573.0,558.0 565.0,575.5Q557.0,593.0 544.0,593.0Q526.0,593.0 470.0,537.0Q441.0,566.0 425.0,579.5Q409.0,593.0 398.0,593.0Q384.0,593.0 375.0,573.0Q366.0,553.0 366.0,536.0L366.0,447.0Q422.0,447.0 449.5,420.0Q477.0,393.0 477.0,352.0Q477.0,336.0 469.5,317.0Q462.0,298.0 438.5,274.5Q415.0,251.0 366.0,221.0L274.0,221.0L274.0,536.0Q274.0,566.0 288.5,592.5Q303.0,619.0 323.0,639.0Q343.0,659.0 363.0,670.5Q383.0,682.0 393.0,682.0Q405.0,682.0 426.5,665.5Q448.0,649.0 470.0,617.0Q493.0,649.0 513.0,665.5Q533.0,682.0 545.0,682.0ZM406.0,353.0Q406.0,368.0 394.5,375.0Q383.0,382.0 366.0,382.0L366.0,310.0Q386.0,322.0 396.0,331.0Q406.0,340.0 406.0,353.0Z"  transform="translate(346, 793)"/>
+<path d="M583.0,389.0Q583.0,248.0 544.0,162.5Q505.0,77.0 429.0,38.5Q353.0,0.0 241.0,0.0L192.0,0.0L192.0,67.0L241.0,67.0Q335.0,67.0 389.5,97.0Q444.0,127.0 467.5,197.5Q491.0,268.0 491.0,389.0Q491.0,478.0 468.5,527.0Q446.0,576.0 408.0,595.5Q370.0,615.0 322.0,615.0Q243.0,615.0 202.5,572.0Q162.0,529.0 162.0,456.0Q162.0,402.0 183.0,366.5Q204.0,331.0 248.0,331.0Q292.0,331.0 305.0,365.0Q286.0,368.0 275.5,382.5Q265.0,397.0 265.0,416.0Q265.0,442.0 282.5,458.5Q300.0,475.0 328.0,475.0Q387.0,475.0 387.0,402.0Q387.0,365.0 371.5,333.5Q356.0,302.0 323.5,283.0Q291.0,264.0 241.0,264.0Q165.0,264.0 117.5,313.5Q70.0,363.0 70.0,447.0Q70.0,509.0 99.5,562.5Q129.0,616.0 185.5,649.0Q242.0,682.0 321.0,682.0Q400.0,682.0 458.5,651.5Q517.0,621.0 550.0,556.5Q583.0,492.0 583.0,389.0Z"  transform="translate(1111, 793)"/>
+<path d="M25.0,235.0L25.0,310.0L285.0,310.0L285.0,235.0L25.0,235.0Z"  transform="translate(1794, 793)"/>
+<path d="M583.0,389.0Q583.0,248.0 544.0,162.5Q505.0,77.0 429.0,38.5Q353.0,0.0 241.0,0.0L192.0,0.0L192.0,67.0L241.0,67.0Q335.0,67.0 389.5,97.0Q444.0,127.0 467.5,197.5Q491.0,268.0 491.0,389.0Q491.0,478.0 468.5,527.0Q446.0,576.0 408.0,595.5Q370.0,615.0 322.0,615.0Q243.0,615.0 202.5,572.0Q162.0,529.0 162.0,456.0Q162.0,402.0 183.0,366.5Q204.0,331.0 248.0,331.0Q292.0,331.0 305.0,365.0Q286.0,368.0 275.5,382.5Q265.0,397.0 265.0,416.0Q265.0,442.0 282.5,458.5Q300.0,475.0 328.0,475.0Q387.0,475.0 387.0,402.0Q387.0,365.0 371.5,333.5Q356.0,302.0 323.5,283.0Q291.0,264.0 241.0,264.0Q165.0,264.0 117.5,313.5Q70.0,363.0 70.0,447.0Q70.0,509.0 99.5,562.5Q129.0,616.0 185.5,649.0Q242.0,682.0 321.0,682.0Q400.0,682.0 458.5,651.5Q517.0,621.0 550.0,556.5Q583.0,492.0 583.0,389.0Z"  transform="translate(2104, 793)"/>
+<path d="M32.0,-128.0L32.0,-82.0Q101.0,-40.0 133.5,23.0Q166.0,86.0 175.5,162.0Q185.0,238.0 185.0,317.0Q185.0,397.0 175.5,472.5Q166.0,548.0 133.5,611.0Q101.0,674.0 32.0,715.0L32.0,760.0Q124.0,724.0 180.5,666.0Q237.0,608.0 263.0,522.5Q289.0,437.0 289.0,317.0Q289.0,197.0 263.0,110.5Q237.0,24.0 180.5,-33.5Q124.0,-91.0 32.0,-128.0Z"  transform="translate(2787, 793)"/>
+<path d="M249.0,143.0L249.0,328.0L65.0,328.0L65.0,387.0L249.0,387.0L249.0,572.0L309.0,572.0L309.0,387.0L494.0,387.0L494.0,328.0L309.0,328.0L309.0,143.0L249.0,143.0Z"  transform="translate(3133, 793)"/>
+<path d="M110.0,146.0L110.0,379.0Q110.0,462.0 155.0,517.0Q200.0,572.0 288.0,600.0L426.0,645.0Q531.0,680.0 531.0,722.0Q531.0,738.0 519.5,745.5Q508.0,753.0 482.0,753.0Q482.0,780.0 499.5,800.0Q517.0,820.0 551.0,820.0Q586.0,820.0 604.5,796.5Q623.0,773.0 623.0,735.0Q623.0,682.0 581.0,645.5Q539.0,609.0 456.0,583.0L307.0,536.0Q255.0,520.0 228.5,479.5Q202.0,439.0 202.0,379.0L202.0,146.0Q202.0,127.0 219.5,109.0Q237.0,91.0 266.5,79.0Q296.0,67.0 330.0,67.0L531.0,67.0Q494.0,123.0 476.0,162.0Q458.0,201.0 458.0,220.0L458.0,397.0Q458.0,438.0 483.0,463.0Q508.0,488.0 553.0,488.0Q608.0,488.0 633.0,453.5Q658.0,419.0 658.0,371.0Q658.0,333.0 642.0,308.5Q626.0,284.0 601.0,272.5Q576.0,261.0 550.0,261.0L550.0,220.0Q550.0,170.0 586.0,116.0L623.0,61.0L623.0,0.0L330.0,0.0Q265.0,0.0 215.0,23.0Q165.0,46.0 137.5,80.0Q110.0,114.0 110.0,146.0ZM550.0,322.0Q577.0,322.0 588.5,341.0Q600.0,360.0 600.0,377.0Q600.0,392.0 589.5,411.0Q579.0,430.0 550.0,436.0L550.0,322.0Z"  transform="translate(3692, 793)"/>
 </svg>
  Expected: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4525 2362" transform="matrix(1 0 0 -1 0 0)">
-<path d=""  transform="translate(0, 793)"/>
-<path d=""  transform="translate(346, 793)"/>
-<path d=""  transform="translate(1111, 793)"/>
-<path d=""  transform="translate(1794, 793)"/>
-<path d=""  transform="translate(2104, 793)"/>
-<path d=""  transform="translate(2787, 793)"/>
-<path d=""  transform="translate(3133, 793)"/>
-<path d=""  transform="translate(3767, 793)"/>
+<path d="M314.0,-128.0Q222.0,-91.0 165.5,-33.5Q109.0,24.0 83.0,110.5Q57.0,197.0 57.0,317.0Q57.0,437.0 83.0,522.5Q109.0,608.0 165.5,666.0Q222.0,724.0 314.0,760.0L314.0,715.0Q245.0,674.0 212.5,611.0Q180.0,548.0 170.5,472.5Q161.0,397.0 161.0,317.0Q161.0,238.0 170.5,162.0Q180.0,86.0 212.5,23.0Q245.0,-40.0 314.0,-82.0L314.0,-128.0Z"  transform="translate(0, 793)"/>
+<path d="M545.0,682.0Q556.0,682.0 575.5,670.5Q595.0,659.0 615.5,639.0Q636.0,619.0 650.5,592.5Q665.0,566.0 665.0,536.0L665.0,195.0Q665.0,140.0 634.5,95.5Q604.0,51.0 544.0,25.5Q484.0,0.0 396.0,0.0L372.0,0.0Q284.0,0.0 224.0,25.5Q164.0,51.0 133.5,95.5Q103.0,140.0 103.0,195.0L103.0,618.0Q103.0,637.0 95.0,657.0Q87.0,677.0 71.0,691.0Q55.0,705.0 30.0,705.0Q30.0,737.0 52.0,758.5Q74.0,780.0 105.0,780.0Q147.0,780.0 171.0,740.0Q195.0,700.0 195.0,638.0L195.0,195.0Q195.0,133.0 240.5,100.0Q286.0,67.0 372.0,67.0L396.0,67.0Q482.0,67.0 527.5,100.0Q573.0,133.0 573.0,195.0L573.0,536.0Q573.0,558.0 565.0,575.5Q557.0,593.0 544.0,593.0Q526.0,593.0 470.0,537.0Q441.0,566.0 425.0,579.5Q409.0,593.0 398.0,593.0Q384.0,593.0 375.0,573.0Q366.0,553.0 366.0,536.0L366.0,447.0Q422.0,447.0 449.5,420.0Q477.0,393.0 477.0,352.0Q477.0,336.0 469.5,317.0Q462.0,298.0 438.5,274.5Q415.0,251.0 366.0,221.0L274.0,221.0L274.0,536.0Q274.0,566.0 288.5,592.5Q303.0,619.0 323.0,639.0Q343.0,659.0 363.0,670.5Q383.0,682.0 393.0,682.0Q405.0,682.0 426.5,665.5Q448.0,649.0 470.0,617.0Q493.0,649.0 513.0,665.5Q533.0,682.0 545.0,682.0ZM406.0,353.0Q406.0,368.0 394.5,375.0Q383.0,382.0 366.0,382.0L366.0,310.0Q386.0,322.0 396.0,331.0Q406.0,340.0 406.0,353.0Z"  transform="translate(346, 793)"/>
+<path d="M583.0,389.0Q583.0,248.0 544.0,162.5Q505.0,77.0 429.0,38.5Q353.0,0.0 241.0,0.0L192.0,0.0L192.0,67.0L241.0,67.0Q335.0,67.0 389.5,97.0Q444.0,127.0 467.5,197.5Q491.0,268.0 491.0,389.0Q491.0,478.0 468.5,527.0Q446.0,576.0 408.0,595.5Q370.0,615.0 322.0,615.0Q243.0,615.0 202.5,572.0Q162.0,529.0 162.0,456.0Q162.0,402.0 183.0,366.5Q204.0,331.0 248.0,331.0Q292.0,331.0 305.0,365.0Q286.0,368.0 275.5,382.5Q265.0,397.0 265.0,416.0Q265.0,442.0 282.5,458.5Q300.0,475.0 328.0,475.0Q387.0,475.0 387.0,402.0Q387.0,365.0 371.5,333.5Q356.0,302.0 323.5,283.0Q291.0,264.0 241.0,264.0Q165.0,264.0 117.5,313.5Q70.0,363.0 70.0,447.0Q70.0,509.0 99.5,562.5Q129.0,616.0 185.5,649.0Q242.0,682.0 321.0,682.0Q400.0,682.0 458.5,651.5Q517.0,621.0 550.0,556.5Q583.0,492.0 583.0,389.0Z"  transform="translate(1111, 793)"/>
+<path d="M25.0,235.0L25.0,310.0L285.0,310.0L285.0,235.0L25.0,235.0Z"  transform="translate(1794, 793)"/>
+<path d="M583.0,389.0Q583.0,248.0 544.0,162.5Q505.0,77.0 429.0,38.5Q353.0,0.0 241.0,0.0L192.0,0.0L192.0,67.0L241.0,67.0Q335.0,67.0 389.5,97.0Q444.0,127.0 467.5,197.5Q491.0,268.0 491.0,389.0Q491.0,478.0 468.5,527.0Q446.0,576.0 408.0,595.5Q370.0,615.0 322.0,615.0Q243.0,615.0 202.5,572.0Q162.0,529.0 162.0,456.0Q162.0,402.0 183.0,366.5Q204.0,331.0 248.0,331.0Q292.0,331.0 305.0,365.0Q286.0,368.0 275.5,382.5Q265.0,397.0 265.0,416.0Q265.0,442.0 282.5,458.5Q300.0,475.0 328.0,475.0Q387.0,475.0 387.0,402.0Q387.0,365.0 371.5,333.5Q356.0,302.0 323.5,283.0Q291.0,264.0 241.0,264.0Q165.0,264.0 117.5,313.5Q70.0,363.0 70.0,447.0Q70.0,509.0 99.5,562.5Q129.0,616.0 185.5,649.0Q242.0,682.0 321.0,682.0Q400.0,682.0 458.5,651.5Q517.0,621.0 550.0,556.5Q583.0,492.0 583.0,389.0Z"  transform="translate(2104, 793)"/>
+<path d="M32.0,-128.0L32.0,-82.0Q101.0,-40.0 133.5,23.0Q166.0,86.0 175.5,162.0Q185.0,238.0 185.0,317.0Q185.0,397.0 175.5,472.5Q166.0,548.0 133.5,611.0Q101.0,674.0 32.0,715.0L32.0,760.0Q124.0,724.0 180.5,666.0Q237.0,608.0 263.0,522.5Q289.0,437.0 289.0,317.0Q289.0,197.0 263.0,110.5Q237.0,24.0 180.5,-33.5Q124.0,-91.0 32.0,-128.0Z"  transform="translate(2787, 793)"/>
+<path d="M96.0,0.0L96.0,714.0L538.0,714.0L538.0,0.0L96.0,0.0ZM188.0,67.0L446.0,67.0L446.0,647.0L188.0,647.0L188.0,67.0Z"  transform="translate(3133, 793)"/>
+<path d="M110.0,146.0L110.0,379.0Q110.0,462.0 155.0,517.0Q200.0,572.0 288.0,600.0L426.0,645.0Q531.0,680.0 531.0,722.0Q531.0,738.0 519.5,745.5Q508.0,753.0 482.0,753.0Q482.0,780.0 499.5,800.0Q517.0,820.0 551.0,820.0Q586.0,820.0 604.5,796.5Q623.0,773.0 623.0,735.0Q623.0,682.0 581.0,645.5Q539.0,609.0 456.0,583.0L307.0,536.0Q255.0,520.0 228.5,479.5Q202.0,439.0 202.0,379.0L202.0,146.0Q202.0,127.0 219.5,109.0Q237.0,91.0 266.5,79.0Q296.0,67.0 330.0,67.0L531.0,67.0Q494.0,123.0 476.0,162.0Q458.0,201.0 458.0,220.0L458.0,397.0Q458.0,438.0 483.0,463.0Q508.0,488.0 553.0,488.0Q608.0,488.0 633.0,453.5Q658.0,419.0 658.0,371.0Q658.0,333.0 642.0,308.5Q626.0,284.0 601.0,272.5Q576.0,261.0 550.0,261.0L550.0,220.0Q550.0,170.0 586.0,116.0L623.0,61.0L623.0,0.0L330.0,0.0Q265.0,0.0 215.0,23.0Q165.0,46.0 137.5,80.0Q110.0,114.0 110.0,146.0ZM550.0,322.0Q577.0,322.0 588.5,341.0Q600.0,360.0 600.0,377.0Q600.0,392.0 589.5,411.0Q579.0,430.0 550.0,436.0L550.0,322.0Z"  transform="translate(3767, 793)"/>
 </svg>
 
 
@@ -1243,10 +994,10 @@ Got: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44
 
 
 Got: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 559 2362" transform="matrix(1 0 0 -1 0 0)">
-<path d=""  transform="translate(0, 793)"/>
+<path d="M65.0,426.0L65.0,485.0L494.0,485.0L494.0,426.0L65.0,426.0ZM65.0,229.0L65.0,288.0L494.0,288.0L494.0,229.0L65.0,229.0Z"  transform="translate(0, 793)"/>
 </svg>
  Expected: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 634 2362" transform="matrix(1 0 0 -1 0 0)">
-<path d=""  transform="translate(0, 793)"/>
+<path d="M96.0,0.0L96.0,714.0L538.0,714.0L538.0,0.0L96.0,0.0ZM188.0,67.0L446.0,67.0L446.0,647.0L188.0,647.0L188.0,67.0Z"  transform="translate(0, 793)"/>
 </svg>
 
 
@@ -1264,20 +1015,20 @@ Got: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55
 
 
 Got: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3251 2362" transform="matrix(1 0 0 -1 0 0)">
-<path d=""  transform="translate(0, 793)"/>
-<path d=""  transform="translate(714, 793)"/>
-<path d=""  transform="translate(1291, 793)"/>
-<path d=""  transform="translate(1868, 793)"/>
-<path d=""  transform="translate(2406, 793)"/>
-<path d=""  transform="translate(2716, 793)"/>
+<path d="M401.0,-10.0Q285.0,-10.0 208.5,36.0Q132.0,82.0 94.5,164.5Q57.0,247.0 57.0,358.0Q57.0,466.0 96.5,548.5Q136.0,631.0 214.0,677.5Q292.0,724.0 407.0,724.0Q518.0,724.0 573.0,692.0Q628.0,660.0 628.0,612.0Q628.0,580.0 601.0,561.0Q574.0,542.0 535.0,542.0Q535.0,573.0 522.5,602.5Q510.0,632.0 481.0,651.5Q452.0,671.0 403.0,671.0Q276.0,671.0 222.0,589.5Q168.0,508.0 168.0,358.0Q168.0,208.0 224.5,127.5Q281.0,47.0 417.0,47.0Q446.0,47.0 473.0,50.0Q500.0,53.0 521.0,59.0L521.0,220.0Q521.0,264.0 496.5,276.0Q472.0,288.0 439.0,288.0L435.0,288.0L435.0,330.0L695.0,330.0L695.0,288.0L691.0,288.0Q663.0,288.0 642.5,275.5Q622.0,263.0 622.0,216.0L622.0,36.0Q572.0,13.0 519.0,1.5Q466.0,-10.0 401.0,-10.0Z"  transform="translate(0, 793)"/>
+<path d="M287.0,-10.0Q179.0,-10.0 117.0,59.0Q55.0,128.0 55.0,269.0Q55.0,409.0 114.5,477.5Q174.0,546.0 290.0,546.0Q398.0,546.0 460.0,477.5Q522.0,409.0 522.0,269.0Q522.0,128.0 462.5,59.0Q403.0,-10.0 287.0,-10.0ZM289.0,42.0Q364.0,42.0 394.5,99.5Q425.0,157.0 425.0,269.0Q425.0,381.0 394.0,437.0Q363.0,493.0 288.0,493.0Q213.0,493.0 182.5,437.0Q152.0,381.0 152.0,269.0Q152.0,157.0 183.0,99.5Q214.0,42.0 289.0,42.0Z"  transform="translate(714, 793)"/>
+<path d="M287.0,-10.0Q179.0,-10.0 117.0,59.0Q55.0,128.0 55.0,269.0Q55.0,409.0 114.5,477.5Q174.0,546.0 290.0,546.0Q398.0,546.0 460.0,477.5Q522.0,409.0 522.0,269.0Q522.0,128.0 462.5,59.0Q403.0,-10.0 287.0,-10.0ZM289.0,42.0Q364.0,42.0 394.5,99.5Q425.0,157.0 425.0,269.0Q425.0,381.0 394.0,437.0Q363.0,493.0 288.0,493.0Q213.0,493.0 182.5,437.0Q152.0,381.0 152.0,269.0Q152.0,157.0 183.0,99.5Q214.0,42.0 289.0,42.0Z"  transform="translate(1291, 793)"/>
+<path d="M231.0,-240.0Q127.0,-240.0 75.0,-201.5Q23.0,-163.0 23.0,-94.0Q23.0,-35.0 61.0,-5.0Q99.0,25.0 148.0,34.0Q128.0,43.0 110.5,63.5Q93.0,84.0 93.0,116.0Q93.0,146.0 108.5,168.0Q124.0,190.0 158.0,210.0Q115.0,228.0 91.5,269.5Q68.0,311.0 68.0,361.0Q68.0,447.0 115.0,496.5Q162.0,546.0 256.0,546.0Q292.0,546.0 324.0,536.0Q356.0,526.0 370.0,513.0Q384.0,529.0 409.0,548.0Q434.0,567.0 467.0,567.0Q497.0,567.0 511.5,551.5Q526.0,536.0 526.0,515.0Q526.0,494.0 513.5,478.5Q501.0,463.0 473.0,463.0Q473.0,474.0 466.5,485.5Q460.0,497.0 440.0,497.0Q417.0,497.0 397.0,485.0Q414.0,464.0 425.0,435.5Q436.0,407.0 436.0,364.0Q436.0,290.0 391.5,241.0Q347.0,192.0 256.0,192.0Q244.0,192.0 228.5,193.5Q213.0,195.0 203.0,197.0Q184.0,187.0 170.0,172.0Q156.0,157.0 156.0,134.0Q156.0,116.0 167.5,106.0Q179.0,96.0 218.0,96.0L331.0,96.0Q420.0,96.0 458.0,54.0Q496.0,12.0 496.0,-53.0Q496.0,-139.0 431.5,-189.5Q367.0,-240.0 231.0,-240.0ZM253.0,240.0Q302.0,240.0 322.0,270.0Q342.0,300.0 342.0,365.0Q342.0,433.0 321.5,465.0Q301.0,497.0 252.0,497.0Q204.0,497.0 183.0,464.0Q162.0,431.0 162.0,364.0Q162.0,300.0 183.5,270.0Q205.0,240.0 253.0,240.0ZM233.0,-191.0Q305.0,-191.0 344.0,-175.5Q383.0,-160.0 398.5,-132.5Q414.0,-105.0 414.0,-70.0Q414.0,-24.0 388.0,-8.5Q362.0,7.0 312.0,7.0L214.0,7.0Q186.0,7.0 161.0,-0.5Q136.0,-8.0 120.0,-28.0Q104.0,-48.0 104.0,-88.0Q104.0,-117.0 115.0,-140.5Q126.0,-164.0 154.0,-177.5Q182.0,-191.0 233.0,-191.0Z"  transform="translate(1868, 793)"/>
+<path d="M13.0,0.0L13.0,42.0L26.0,42.0Q60.0,42.0 84.0,54.5Q108.0,67.0 108.0,114.0L108.0,650.0Q108.0,694.0 83.5,706.0Q59.0,718.0 26.0,718.0L13.0,718.0L13.0,760.0L202.0,760.0L202.0,114.0Q202.0,67.0 226.0,54.5Q250.0,42.0 284.0,42.0L297.0,42.0L297.0,0.0L13.0,0.0Z"  transform="translate(2406, 793)"/>
+<path d="M287.0,-10.0Q178.0,-10.0 116.5,62.0Q55.0,134.0 55.0,264.0Q55.0,404.0 113.0,475.0Q171.0,546.0 277.0,546.0Q374.0,546.0 429.5,486.0Q485.0,426.0 485.0,307.0L485.0,261.0L152.0,261.0Q154.0,152.0 191.5,102.5Q229.0,53.0 301.0,53.0Q353.0,53.0 389.5,74.5Q426.0,96.0 444.0,123.0Q451.0,120.0 457.0,111.0Q463.0,102.0 463.0,89.0Q463.0,69.0 444.0,46.0Q425.0,23.0 386.0,6.5Q347.0,-10.0 287.0,-10.0ZM384.0,315.0Q384.0,395.0 359.5,443.5Q335.0,492.0 275.0,492.0Q220.0,492.0 189.5,446.5Q159.0,401.0 154.0,315.0L384.0,315.0Z"  transform="translate(2716, 793)"/>
 </svg>
  Expected: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3804 2362" transform="matrix(1 0 0 -1 0 0)">
-<path d=""  transform="translate(0, 793)"/>
-<path d=""  transform="translate(634, 793)"/>
-<path d=""  transform="translate(1268, 793)"/>
-<path d=""  transform="translate(1902, 793)"/>
-<path d=""  transform="translate(2536, 793)"/>
-<path d=""  transform="translate(3170, 793)"/>
+<path d="M96.0,0.0L96.0,714.0L538.0,714.0L538.0,0.0L96.0,0.0ZM188.0,67.0L446.0,67.0L446.0,647.0L188.0,647.0L188.0,67.0Z"  transform="translate(0, 793)"/>
+<path d="M96.0,0.0L96.0,714.0L538.0,714.0L538.0,0.0L96.0,0.0ZM188.0,67.0L446.0,67.0L446.0,647.0L188.0,647.0L188.0,67.0Z"  transform="translate(634, 793)"/>
+<path d="M96.0,0.0L96.0,714.0L538.0,714.0L538.0,0.0L96.0,0.0ZM188.0,67.0L446.0,67.0L446.0,647.0L188.0,647.0L188.0,67.0Z"  transform="translate(1268, 793)"/>
+<path d="M96.0,0.0L96.0,714.0L538.0,714.0L538.0,0.0L96.0,0.0ZM188.0,67.0L446.0,67.0L446.0,647.0L188.0,647.0L188.0,67.0Z"  transform="translate(1902, 793)"/>
+<path d="M96.0,0.0L96.0,714.0L538.0,714.0L538.0,0.0L96.0,0.0ZM188.0,67.0L446.0,67.0L446.0,647.0L188.0,647.0L188.0,67.0Z"  transform="translate(2536, 793)"/>
+<path d="M96.0,0.0L96.0,714.0L538.0,714.0L538.0,0.0L96.0,0.0ZM188.0,67.0L446.0,67.0L446.0,647.0L188.0,647.0L188.0,67.0Z"  transform="translate(3170, 793)"/>
 </svg>
 
 
@@ -1295,10 +1046,10 @@ Got: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32
 
 
 Got: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 705 2362" transform="matrix(1 0 0 -1 0 0)">
-<path d=""  transform="translate(0, 793)"/>
+<path d="M0.0,0.0L0.0,42.0L19.0,42.0Q48.0,42.0 62.5,57.0Q77.0,72.0 95.0,120.0L317.0,714.0L395.0,714.0L621.0,95.0Q632.0,64.0 647.5,53.0Q663.0,42.0 692.0,42.0L705.0,42.0L705.0,0.0L430.0,0.0L430.0,42.0L453.0,42.0Q513.0,42.0 513.0,90.0Q513.0,98.0 511.0,107.0Q509.0,116.0 505.0,127.0L465.0,239.0L202.0,239.0L164.0,134.0Q155.0,110.0 155.0,91.0Q155.0,42.0 221.0,42.0L244.0,42.0L244.0,0.0L0.0,0.0ZM221.0,289.0L447.0,289.0L385.0,464.0Q369.0,508.0 356.0,547.0Q343.0,586.0 335.0,622.0Q328.0,586.0 317.0,553.0Q306.0,520.0 289.0,473.0L221.0,289.0Z"  transform="translate(0, 793)"/>
 </svg>
  Expected: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 634 2362" transform="matrix(1 0 0 -1 0 0)">
-<path d=""  transform="translate(0, 793)"/>
+<path d="M96.0,0.0L96.0,714.0L538.0,714.0L538.0,0.0L96.0,0.0ZM188.0,67.0L446.0,67.0L446.0,647.0L188.0,647.0L188.0,67.0Z"  transform="translate(0, 793)"/>
 </svg>
 
 
@@ -1316,18 +1067,18 @@ Got: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70
 
 
 Got: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1793 2362" transform="matrix(1 0 0 -1 0 0)">
-<path d=""  transform="translate(0, 793)"/>
-<path d=""  transform="translate(346, 793)"/>
-<path d=""  transform="translate(713, 793)"/>
-<path d=""  transform="translate(1080, 793)"/>
-<path d=""  transform="translate(1447, 793)"/>
+<path d="M314.0,-128.0Q222.0,-91.0 165.5,-33.5Q109.0,24.0 83.0,110.5Q57.0,197.0 57.0,317.0Q57.0,437.0 83.0,522.5Q109.0,608.0 165.5,666.0Q222.0,724.0 314.0,760.0L314.0,715.0Q245.0,674.0 212.5,611.0Q180.0,548.0 170.5,472.5Q161.0,397.0 161.0,317.0Q161.0,238.0 170.5,162.0Q180.0,86.0 212.5,23.0Q245.0,-40.0 314.0,-82.0L314.0,-128.0Z"  transform="translate(0, 793)"/>
+<path d="M38.0,0.0L38.0,42.0L51.0,42.0Q85.0,42.0 109.0,54.5Q133.0,67.0 133.0,114.0L133.0,600.0Q133.0,647.0 109.0,659.5Q85.0,672.0 51.0,672.0L38.0,672.0L38.0,714.0L329.0,714.0L329.0,672.0L316.0,672.0Q282.0,672.0 258.0,659.5Q234.0,647.0 234.0,600.0L234.0,114.0Q234.0,67.0 258.0,54.5Q282.0,42.0 316.0,42.0L329.0,42.0L329.0,0.0L38.0,0.0Z"  transform="translate(346, 793)"/>
+<path d="M38.0,0.0L38.0,42.0L51.0,42.0Q85.0,42.0 109.0,54.5Q133.0,67.0 133.0,114.0L133.0,600.0Q133.0,647.0 109.0,659.5Q85.0,672.0 51.0,672.0L38.0,672.0L38.0,714.0L329.0,714.0L329.0,672.0L316.0,672.0Q282.0,672.0 258.0,659.5Q234.0,647.0 234.0,600.0L234.0,114.0Q234.0,67.0 258.0,54.5Q282.0,42.0 316.0,42.0L329.0,42.0L329.0,0.0L38.0,0.0Z"  transform="translate(713, 793)"/>
+<path d="M38.0,0.0L38.0,42.0L51.0,42.0Q85.0,42.0 109.0,54.5Q133.0,67.0 133.0,114.0L133.0,600.0Q133.0,647.0 109.0,659.5Q85.0,672.0 51.0,672.0L38.0,672.0L38.0,714.0L329.0,714.0L329.0,672.0L316.0,672.0Q282.0,672.0 258.0,659.5Q234.0,647.0 234.0,600.0L234.0,114.0Q234.0,67.0 258.0,54.5Q282.0,42.0 316.0,42.0L329.0,42.0L329.0,0.0L38.0,0.0Z"  transform="translate(1080, 793)"/>
+<path d="M32.0,-128.0L32.0,-82.0Q101.0,-40.0 133.5,23.0Q166.0,86.0 175.5,162.0Q185.0,238.0 185.0,317.0Q185.0,397.0 175.5,472.5Q166.0,548.0 133.5,611.0Q101.0,674.0 32.0,715.0L32.0,760.0Q124.0,724.0 180.5,666.0Q237.0,608.0 263.0,522.5Q289.0,437.0 289.0,317.0Q289.0,197.0 263.0,110.5Q237.0,24.0 180.5,-33.5Q124.0,-91.0 32.0,-128.0Z"  transform="translate(1447, 793)"/>
 </svg>
  Expected: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2594 2362" transform="matrix(1 0 0 -1 0 0)">
-<path d=""  transform="translate(0, 793)"/>
-<path d=""  transform="translate(346, 793)"/>
-<path d=""  transform="translate(980, 793)"/>
-<path d=""  transform="translate(1614, 793)"/>
-<path d=""  transform="translate(2248, 793)"/>
+<path d="M314.0,-128.0Q222.0,-91.0 165.5,-33.5Q109.0,24.0 83.0,110.5Q57.0,197.0 57.0,317.0Q57.0,437.0 83.0,522.5Q109.0,608.0 165.5,666.0Q222.0,724.0 314.0,760.0L314.0,715.0Q245.0,674.0 212.5,611.0Q180.0,548.0 170.5,472.5Q161.0,397.0 161.0,317.0Q161.0,238.0 170.5,162.0Q180.0,86.0 212.5,23.0Q245.0,-40.0 314.0,-82.0L314.0,-128.0Z"  transform="translate(0, 793)"/>
+<path d="M96.0,0.0L96.0,714.0L538.0,714.0L538.0,0.0L96.0,0.0ZM188.0,67.0L446.0,67.0L446.0,647.0L188.0,647.0L188.0,67.0Z"  transform="translate(346, 793)"/>
+<path d="M96.0,0.0L96.0,714.0L538.0,714.0L538.0,0.0L96.0,0.0ZM188.0,67.0L446.0,67.0L446.0,647.0L188.0,647.0L188.0,67.0Z"  transform="translate(980, 793)"/>
+<path d="M96.0,0.0L96.0,714.0L538.0,714.0L538.0,0.0L96.0,0.0ZM188.0,67.0L446.0,67.0L446.0,647.0L188.0,647.0L188.0,67.0Z"  transform="translate(1614, 793)"/>
+<path d="M32.0,-128.0L32.0,-82.0Q101.0,-40.0 133.5,23.0Q166.0,86.0 175.5,162.0Q185.0,238.0 185.0,317.0Q185.0,397.0 175.5,472.5Q166.0,548.0 133.5,611.0Q101.0,674.0 32.0,715.0L32.0,760.0Q124.0,724.0 180.5,666.0Q237.0,608.0 263.0,522.5Q289.0,437.0 289.0,317.0Q289.0,197.0 263.0,110.5Q237.0,24.0 180.5,-33.5Q124.0,-91.0 32.0,-128.0Z"  transform="translate(2248, 793)"/>
 </svg>
 
 
@@ -1336,16 +1087,16 @@ Got: <svg class="shaping-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17
 
 
 * ⚠ **WARN** Following glyphs differ greatly from Google Fonts version:
-	* uni17D2179E.low
-	* uni178317B6
-	* uni179F
-	* uni17C0.right1
-	* uni17D2179E17C5.low
+	* uni179417B6
+	* uni179217B6
+	* uni179517C5
+	* uni17A217B6
 	* uni1789.a
-	* uni17D2179E17B6.low
-	* uni17C2
-	* uni17DB
-	* uni178B17B6 and 63 more.
+	* uni179F
+	* uni17A3
+	* uni178917C5
+	* uni179F17C5
+	* uni179017C5 and 63 more.
 
 Use -F or --full-lists to disable shortening of long lists.
 </div></details><details><summary>⚠ <b>WARN:</b> Are there caret positions declared for every ligature? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/ligature_carets">com.google.fonts/check/ligature_carets</a>)</summary><div>
@@ -1457,27 +1208,10 @@ Use -F or --full-lists to disable shortening of long lists. [code: mark-chars]
 	* And 47 more.
 
 Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]
-</div></details><br></div></details><details><summary><b>[16] NotoSerifKhmer-SemiBold.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[13] NotoSerifKhmer-SemiBold.ttf</b></summary><div><details><summary>💔 <b>ERROR:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
 
 
-* 🔥 **FAIL** Missing required codepoints:
-
-	- 0x00AF (MACRON)
- [code: missing-codepoints]
-</div></details><details><summary>🔥 <b>FAIL:</b> Check copyright namerecords match license file. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/name/license">com.google.fonts/check/name/license</a>)</summary><div>
-
-
-* 🔥 **FAIL** License file OFL.txt exists but NameID 13 (LICENSE DESCRIPTION) value on platform 3 (WINDOWS) is not specified for that. Value was: "This Font Software is licensed under the SIL Open Font License, Version 1.1. This Font Software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software." Must be changed to "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL" [code: wrong]
-</div></details><details><summary>🔥 <b>FAIL:</b> Copyright notices match canonical pattern in fonts (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/font_copyright">com.google.fonts/check/font_copyright</a>)</summary><div>
-
-
-* 🔥 **FAIL** Name Table entry: Copyright notices should match a pattern similar to: "Copyright 2019 The Familyname Project Authors (git url)"
-But instead we have got:
-"Copyright 2016-2022 Google Inc. All Rights Reserved." [code: bad-notice-format]
-</div></details><details><summary>🔥 <b>FAIL:</b> OS/2.fsSelection bit 7 (USE_TYPO_METRICS) is set in all fonts. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/os2/use_typo_metrics">com.google.fonts/check/os2/use_typo_metrics</a>)</summary><div>
-
-
-* 🔥 **FAIL** OS/2.fsSelection bit 7 (USE_TYPO_METRICS) wasNOT set in the following fonts: ['fonts/NotoSerifKhmer/googlefonts/slim-variable-ttf/NotoSerifKhmer[wght].ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Black.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Bold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraLight.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Light.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Medium.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Regular.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-SemiBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Thin.ttf', 'fonts/NotoSerifKhmer/googlefonts/variable-ttf/NotoSerifKhmer[wdth,wght].ttf']. [code: missing-os2-fsselection-bit7]
+* 💔 **ERROR** Failed with IndexError: list index out of range
 </div></details><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 
@@ -1487,16 +1221,16 @@ But instead we have got:
 
 
 * ⚠ **WARN** Following glyphs differ greatly from Google Fonts version:
-	* uni17D2179E.low
-	* uni179317C5
-	* uni178317B6
-	* uni179F
-	* uni17C0.right1
+	* uni179417B6
+	* uni179217B6
+	* uni179517C5
 	* uni179D
-	* uni17D2179E17C5.low
+	* uni17A217B6
 	* uni1789.a
-	* uni17D2179E17B6.low
-	* uni178C17C5 and 109 more.
+	* uni179F
+	* uni17A3
+	* uni178917C5
+	* uni17A1 and 109 more.
 
 Use -F or --full-lists to disable shortening of long lists.
 </div></details><details><summary>⚠ <b>WARN:</b> Are there caret positions declared for every ligature? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/ligature_carets">com.google.fonts/check/ligature_carets</a>)</summary><div>
@@ -1621,27 +1355,10 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 * ⚠ **WARN** The following glyphs have semi-vertical/semi-horizontal lines:
 
 	* sterling (U+00A3): L<<419.0,336.0>--<262.0,337.0>> [code: found-semi-vertical]
-</div></details><br></div></details><details><summary><b>[17] NotoSerifKhmer-Thin.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[14] NotoSerifKhmer-Thin.ttf</b></summary><div><details><summary>💔 <b>ERROR:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
 
 
-* 🔥 **FAIL** Missing required codepoints:
-
-	- 0x00AF (MACRON)
- [code: missing-codepoints]
-</div></details><details><summary>🔥 <b>FAIL:</b> Check copyright namerecords match license file. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/name/license">com.google.fonts/check/name/license</a>)</summary><div>
-
-
-* 🔥 **FAIL** License file OFL.txt exists but NameID 13 (LICENSE DESCRIPTION) value on platform 3 (WINDOWS) is not specified for that. Value was: "This Font Software is licensed under the SIL Open Font License, Version 1.1. This Font Software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software." Must be changed to "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL" [code: wrong]
-</div></details><details><summary>🔥 <b>FAIL:</b> Copyright notices match canonical pattern in fonts (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/font_copyright">com.google.fonts/check/font_copyright</a>)</summary><div>
-
-
-* 🔥 **FAIL** Name Table entry: Copyright notices should match a pattern similar to: "Copyright 2019 The Familyname Project Authors (git url)"
-But instead we have got:
-"Copyright 2016-2022 Google Inc. All Rights Reserved." [code: bad-notice-format]
-</div></details><details><summary>🔥 <b>FAIL:</b> OS/2.fsSelection bit 7 (USE_TYPO_METRICS) is set in all fonts. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/os2/use_typo_metrics">com.google.fonts/check/os2/use_typo_metrics</a>)</summary><div>
-
-
-* 🔥 **FAIL** OS/2.fsSelection bit 7 (USE_TYPO_METRICS) wasNOT set in the following fonts: ['fonts/NotoSerifKhmer/googlefonts/slim-variable-ttf/NotoSerifKhmer[wght].ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Black.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Bold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraLight.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Light.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Medium.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Regular.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-SemiBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Thin.ttf', 'fonts/NotoSerifKhmer/googlefonts/variable-ttf/NotoSerifKhmer[wdth,wght].ttf']. [code: missing-os2-fsselection-bit7]
+* 💔 **ERROR** Failed with IndexError: list index out of range
 </div></details><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 
@@ -1652,10 +1369,10 @@ But instead we have got:
 
 * ⚠ **WARN** Following glyphs differ greatly from Google Fonts version:
 	* uni1789.a
-	* uni178917B6.a
-	* uni178917B6
 	* uni178917C5
-	* uni178917C5.a and uni1789
+	* uni178917B6.a
+	* uni178917C5.a
+	* uni178917B6 and uni1789
 </div></details><details><summary>⚠ <b>WARN:</b> Are there caret positions declared for every ligature? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/ligature_carets">com.google.fonts/check/ligature_carets</a>)</summary><div>
 
 
@@ -1788,27 +1505,10 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 	* exclam (U+0021): L<<149.0,714.0>--<146.0,167.0>> 
 
 	* And exclamdown (U+00A1): L<<123.0,-177.0>--<126.0,370.0>> [code: found-semi-vertical]
-</div></details><br></div></details><details><summary><b>[13] NotoSerifKhmer[wdth,wght].ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[10] NotoSerifKhmer[wdth,wght].ttf</b></summary><div><details><summary>💔 <b>ERROR:</b> Check Google Fonts glyph coverage. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/glyph_coverage">com.google.fonts/check/glyph_coverage</a>)</summary><div>
 
 
-* 🔥 **FAIL** Missing required codepoints:
-
-	- 0x00AF (MACRON)
- [code: missing-codepoints]
-</div></details><details><summary>🔥 <b>FAIL:</b> Check copyright namerecords match license file. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/name/license">com.google.fonts/check/name/license</a>)</summary><div>
-
-
-* 🔥 **FAIL** License file OFL.txt exists but NameID 13 (LICENSE DESCRIPTION) value on platform 3 (WINDOWS) is not specified for that. Value was: "This Font Software is licensed under the SIL Open Font License, Version 1.1. This Font Software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software." Must be changed to "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL" [code: wrong]
-</div></details><details><summary>🔥 <b>FAIL:</b> Copyright notices match canonical pattern in fonts (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/font_copyright">com.google.fonts/check/font_copyright</a>)</summary><div>
-
-
-* 🔥 **FAIL** Name Table entry: Copyright notices should match a pattern similar to: "Copyright 2019 The Familyname Project Authors (git url)"
-But instead we have got:
-"Copyright 2016-2022 Google Inc. All Rights Reserved." [code: bad-notice-format]
-</div></details><details><summary>🔥 <b>FAIL:</b> OS/2.fsSelection bit 7 (USE_TYPO_METRICS) is set in all fonts. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/os2/use_typo_metrics">com.google.fonts/check/os2/use_typo_metrics</a>)</summary><div>
-
-
-* 🔥 **FAIL** OS/2.fsSelection bit 7 (USE_TYPO_METRICS) wasNOT set in the following fonts: ['fonts/NotoSerifKhmer/googlefonts/slim-variable-ttf/NotoSerifKhmer[wght].ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Black.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Bold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-ExtraLight.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Light.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Medium.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Regular.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-SemiBold.ttf', 'fonts/NotoSerifKhmer/googlefonts/ttf/NotoSerifKhmer-Thin.ttf', 'fonts/NotoSerifKhmer/googlefonts/variable-ttf/NotoSerifKhmer[wdth,wght].ttf']. [code: missing-os2-fsselection-bit7]
+* 💔 **ERROR** Failed with IndexError: list index out of range
 </div></details><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 
@@ -1908,8 +1608,8 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 62 | 111 | 1219 | 77 | 966 | 0 |
-| 0% | 3% | 5% | 50% | 3% | 40% | 0% |
+| 10 | 13 | 104 | 1099 | 62 | 927 | 0 |
+| 0% | 1% | 5% | 50% | 3% | 42% | 0% |
 
 **Note:** The following loglevels were omitted in this report:
 * **SKIP**
