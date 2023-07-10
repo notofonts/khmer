@@ -1,5 +1,5 @@
 {
-.appVersion = "3109";
+.appVersion = "3205";
 classes = (
 {
 code = "uni1784 uni1789 uni1793 uni1794 uni1798 uni1799 uni179A uni179B uni179C uni179D uni17D21784 uni17D21789 uni17D21793 uni17D21794 uni17D21798 uni17D21799 uni17D2179A uni17D2179B uni17D2179C uni17D2179D uni200C uni200D";
@@ -22,11 +22,11 @@ code = "uni17D21780 uni17D21781 uni17D21782 uni17D21784 uni17D21785 uni17D21786 
 name = class22;
 },
 {
-code = "uni1780 uni1781 uni1782 uni1784 uni1785 uni1786 uni1787 uni178A uni178B uni178C uni178F uni1790 uni1791 uni1792 uni1793 uni1794 uni1795 uni1796 uni1797 uni1798 uni17A2";
+code = "uni1780 uni1781 uni1782 uni1784 uni1785 uni1786 uni1787 uni178A uni178B uni178C uni178F uni1790 uni1791 uni1792 uni1793 uni1794 uni1795 uni1796 uni1797 uni1798 uni179A uni179C uni179D uni179E uni17A2 uni17A3\012# I'm not convinced that independent vowels need this treatment...\012#uni17A5 uni17A6 uni17A7 uni17A8\012";
 name = class24;
 },
 {
-code = "uni17D21780 uni17D21781 uni17D21782 uni17D21783 uni17D21784 uni17D21785 uni17D21786 uni17D21787 uni17D21788 uni17D21789 uni17D21789.a uni17D2178A uni17D2178B uni17D2178C uni17D2178D uni17D2178E uni17D2178F uni17D21790 uni17D21791 uni17D21792 uni17D21793 uni17D21795 uni17D21796 uni17D21797 uni17D21798 uni17D2179B uni17D2179C uni17D217A0 uni17D217A2";
+code = "uni17D21780 uni17D21781 uni17D21782 uni17D21783 uni17D21784 uni17D21785 uni17D21786 uni17D21787 uni17D21788 uni17D21789 uni17D21789.a uni17D2178A uni17D2178B uni17D2178C uni17D2178D uni17D2178E uni17D2178F uni17D21790 uni17D21791 uni17D21792 uni17D21793 uni17D21795 uni17D21796 uni17D21797 uni17D21798 uni17D2179B uni17D2179C uni17D217A0 uni17D217A2 ";
 name = class25;
 },
 {
@@ -520,6 +520,10 @@ uni25CC
 );
 },
 {
+name = "Use Typo Metrics";
+value = 1;
+},
+{
 name = licenseURL;
 value = "https://scripts.sil.org/OFL";
 },
@@ -544,8 +548,17 @@ name = versionString;
 value = "Version 2.003";
 },
 {
-name = "Use Typo Metrics";
-value = 1;
+name = Axes;
+value = (
+{
+Name = Weight;
+Tag = wght;
+},
+{
+Name = Width;
+Tag = wdth;
+}
+);
 }
 );
 date = "2016-03-05 14:15:55 +0000";
@@ -556,100 +569,36 @@ disablesNiceNames = 1;
 familyName = "Noto Sans Khmer";
 featurePrefixes = (
 {
-code = "lookup LigatureSubstitution1 {\012    lookupflag 0;\012    ;\012    sub uni17D2 uni179A by uni17D2179A;\012} LigatureSubstitution1;\012";
+code = "";
 name = LigatureSubstitution1;
-},
-{
-code = "lookup LigatureSubstitution2 {\012    lookupflag 0;\012    ;\012    # Original source: 1 \012    sub uni17D2 uni1780 by uni17D21780;\012    sub uni17D2 uni1781 by uni17D21781;\012    sub uni17D2 uni1782 by uni17D21782;\012    sub uni17D2 uni1784 by uni17D21784;\012    sub uni17D2 uni1785 by uni17D21785;\012    sub uni17D2 uni1786 by uni17D21786;\012    sub uni17D2 uni1787 by uni17D21787;\012    sub uni17D2 uni1789 by uni17D21789;\012    sub uni17D2 uni178A by uni17D2178A;\012    sub uni17D2 uni178B by uni17D2178B;\012    sub uni17D2 uni178C by uni17D2178C;\012    sub uni17D2 uni178E by uni17D2178E;\012    sub uni17D2 uni178F by uni17D2178F;\012    sub uni17D2 uni1790 by uni17D21790;\012    sub uni17D2 uni1791 by uni17D21791;\012    sub uni17D2 uni1792 by uni17D21792;\012    sub uni17D2 uni1793 by uni17D21793;\012    sub uni17D2 uni1795 by uni17D21795;\012    sub uni17D2 uni1796 by uni17D21796;\012    sub uni17D2 uni1797 by uni17D21797;\012    sub uni17D2 uni1798 by uni17D21798;\012    sub uni17D2 uni179B by uni17D2179B;\012    sub uni17D2 uni179C by uni17D2179C;\012    sub uni17D2 uni179D by uni17D2179D;\012    sub uni17D2 uni179E by uni17D2179E;\012    sub uni17D2 uni17A0 by uni17D217A0;\012    sub uni17D2 uni17A1 by uni17D217A1;\012    sub uni17D2 uni17A2 by uni17D217A2;\012    sub uni17D2 uni17A7 by uni17D217A7;\012    sub uni17D2 uni17AB by uni17D217AB;\012    sub uni17D2 uni17AC by uni17D217AC;\012    sub uni17D2 uni17AF by uni17D217AF;\012} LigatureSubstitution2;\012";
-name = LigatureSubstitution2;
 },
 {
 code = "lookup SingleSubstitution28 {\012    lookupflag 0;\012    ;\012    # Original source: 27 \012    sub uni1789 by uni1789.a;\012    sub uni17BB by uni17BB.b;\012    sub uni17BC by uni17BC.b;\012    sub uni17BD by uni17BD.b;\012    sub uni17C9 by uni17BB;\012    sub uni17C9.r by uni17BB;\012    sub uni17CA by uni17BB;\012    sub uni17D21789 by uni17D21789.a;\012    sub uni17D2178A by uni17D2178A.r;\012    sub uni17D2178E by uni17D2178E.alt;\012    sub uni17D2178F by uni17D2178F.r;\012    sub uni17D21797 by uni17D21797.r;\012    sub uni17D21798 by uni17D21798.r;\012    sub uni17D2179A by uni17D2179A.low;\012} SingleSubstitution28;\012";
 name = SingleSubstitution28;
 },
 {
-code = "lookup ChainedContextualGSUB3 {\012    lookupflag 0;\012    ;\012    # Original source: 2 \012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 @class2;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 @class4 @class2;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 @class4 @class4 @class2;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 uni17BE;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 uni17C6;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 uni17D0;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 uni17B6 uni17C6;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 @class4 uni17B6 uni17C6;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 @class4 @class4 uni17B6 uni17C6;\012} ChainedContextualGSUB3;\012";
-name = ChainedContextualGSUB3;
-},
-{
-code = "lookup ChainedContextualGSUB4 {\012    lookupflag 0;\012    ;\012    # Original source: 3 \012    sub @class19 uni17CA' lookup SingleSubstitution28 @class2;\012    sub @class19 uni17CA' lookup SingleSubstitution28 @class22 @class2;\012    sub uni17CA' lookup SingleSubstitution28 uni17B6 uni17C6;\012} ChainedContextualGSUB4;\012";
-name = ChainedContextualGSUB4;
-},
-{
-code = "lookup ChainedContextualGSUB5 {\012    lookupflag 0;\012    ;\012    # Original source: 4 \012    sub [uni179A uni179C] [uni17D2178A uni17D2178F uni17D21797 uni17D21798]' lookup SingleSubstitution28;\012} ChainedContextualGSUB5;\012";
-name = ChainedContextualGSUB5;
-},
-{
-code = "lookup LigatureSubstitution6 {\012    lookupflag 0;\012    ;\012    # Original source: 5 \012    sub uni200D uni17C9 by uni17C9;\012    sub uni200D uni17CA by uni17CA;\012} LigatureSubstitution6;\012";
-name = LigatureSubstitution6;
-},
-{
-code = "lookup SingleSubstitution7 {\012    lookupflag 0;\012    ;\012    # Original source: 6 \012    sub uni17BE by uni17B8;\012} SingleSubstitution7;\012";
-name = SingleSubstitution7;
-},
-{
-code = "lookup LigatureSubstitution8 {\012    lookupflag 0;\012    ;\012    # Original source: 7 \012    sub uni17D2 uni1783 by uni17D21783;\012    sub uni17D2 uni1788 by uni17D21788;\012    sub uni17D2 uni178D by uni17D2178D;\012    sub uni17D2 uni1794 by uni17D21794;\012    sub uni17D2 uni1799 by uni17D21799;\012    sub uni17D2 uni179F by uni17D2179F;\012} LigatureSubstitution8;\012";
+code = "";
 name = LigatureSubstitution8;
 },
 {
-code = "lookup ChainedContextualGSUB9 {\012    lookupflag 0;\012    ;\012    # Original source: 8 \012    sub uni17D2179A' lookup SingleSubstitution28 @class24 @class25;\012} ChainedContextualGSUB9;\012";
+code = "";
 name = ChainedContextualGSUB9;
-},
-{
-code = "lookup ChainedContextualGSUB10 {\012    lookupflag 0;\012    ;\012    # Original source: 9 \012    sub uni1789' lookup SingleSubstitution28 @class22;\012    sub uni1789' lookup SingleSubstitution28 @class27;\012} ChainedContextualGSUB10;\012";
-name = ChainedContextualGSUB10;
-},
-{
-code = "lookup ChainedContextualGSUB11 {\012    lookupflag 0;\012    ;\012    # Original source: 10 \012    sub uni1789.a uni17D21789' lookup SingleSubstitution28;\012} ChainedContextualGSUB11;\012";
-name = ChainedContextualGSUB11;
-},
-{
-code = "lookup ChainedContextualGSUB12 {\012    lookupflag 0;\012    ;\012    # Original source: 11 \012    sub uni17D2179A @class28 [uni17BB uni17BC uni17BD]' lookup SingleSubstitution28;\012    sub uni17D2179A @class28 [uni17C9 uni17CA] [uni17BB uni17BC uni17BD]' lookup SingleSubstitution28;\012    sub uni17D2179A.low @class28 uni17D2178E' lookup SingleSubstitution28;\012} ChainedContextualGSUB12;\012";
-name = ChainedContextualGSUB12;
 },
 {
 code = "lookup ChainedContextualGSUB13 {\012    lookupflag 0;\012    ;\012    # Original source: 12 \012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 [uni17B7 uni17B8 uni17B9 uni17BA uni17D0];\012    sub [uni17C9 uni17C9.r]' lookup SingleSubstitution28 @class1 [uni17B7 uni17B8 uni17B9 uni17BA uni17D0];\012} ChainedContextualGSUB13;\012";
 name = ChainedContextualGSUB13;
 },
 {
-code = "lookup ChainedContextualGSUB14 {\012    lookupflag 0;\012    ;\012    # Original source: 13 \012    sub [uni179A uni179C] @class33 [uni17D2178A uni17D2178F uni17D21797 uni17D21798]' lookup SingleSubstitution28;\012} ChainedContextualGSUB14;\012";
-name = ChainedContextualGSUB14;
-},
-{
-code = "lookup LigatureSubstitution15 {\012    lookupflag 0;\012    ;\012    # Original source: 14 \012    sub uni17B7 uni17CD by uni17B717CD;\012} LigatureSubstitution15;\012";
-name = LigatureSubstitution15;
-},
-{
 code = "lookup SingleSubstitution29 {\012    lookupflag 0;\012    ;\012    # Original source: 28 \012    sub uni17B7 by uni17B7.r;\012    sub uni17B717CD by uni17B717CD.r;\012    sub uni17B8 by uni17B8.r;\012    sub uni17B9 by uni17B9.r;\012    sub uni17BA by uni17BA.r;\012    sub uni17C6 by uni17C6.r;\012    sub uni17C9 by uni17C9.r;\012    sub uni17CA by uni17CA.r;\012    sub uni17CB by uni17CB.r;\012    sub uni17CC by uni17CC.r;\012    sub uni17CD by uni17CD.r;\012    sub uni17CE by uni17CE.r;\012    sub uni17CF by uni17CF.r;\012    sub uni17D1 by uni17D1.r;\012    sub uni17D3 by uni17D3.r;\012    sub uni17DD by uni17DD.r;\012} SingleSubstitution29;\012";
 name = SingleSubstitution29;
-},
-{
-code = "lookup ChainedContextualGSUB16 {\012    lookupflag 0;\012    ;\012    # Original source: 15 \012    sub [uni179A uni179C] @class34' lookup SingleSubstitution29;\012    sub [uni179A uni179C] uni200C @class34' lookup SingleSubstitution29;\012    sub [uni179A uni179C] [uni17B6 uni17C5.right] @class34' lookup SingleSubstitution29;\012    sub [uni179A uni179C] uni200C [uni17B6 uni17C5.right] @class34' lookup SingleSubstitution29;\012    sub [uni179A uni179C] uni17BB @class34' lookup SingleSubstitution29;\012    sub [uni17C9.r uni17CA.r] uni200C @class34' lookup SingleSubstitution29;\012    sub [uni17C9.r uni17CA.r] [uni17B6 uni17C5.right] @class34' lookup SingleSubstitution29;\012    sub [uni17C9.r uni17CA.r] uni200C [uni17B6 uni17C5.right] @class34' lookup SingleSubstitution29;\012    sub uni17D2178A.r @class42' lookup SingleSubstitution29;\012    sub uni17D21797.r @class42' lookup SingleSubstitution29;\012    sub uni17D21798.r @class42' lookup SingleSubstitution29;\012} ChainedContextualGSUB16;\012";
-name = ChainedContextualGSUB16;
 },
 {
 code = "lookup SingleSubstitution30 {\012    lookupflag 0;\012    ;\012    # Original source: 29 \012    sub uni17BF.right1 by uni17BF.right2;\012    sub uni17C0.right1 by uni17C0.right2;\012    sub uni17C9 by uni17C9.a;\012    sub uni17CA by uni17CA.r;\012} SingleSubstitution30;\012";
 name = SingleSubstitution30;
 },
 {
-code = "lookup ChainedContextualGSUB17 {\012    lookupflag 0;\012    ;\012    # Original source: 16 \012    sub uni179A uni17C9' lookup SingleSubstitution29 uni17B6;\012    sub @class45 uni17C9' lookup SingleSubstitution30 uni17B6;\012    sub @class45 uni17C9' lookup SingleSubstitution30 uni17C4;\012} ChainedContextualGSUB17;\012";
-name = ChainedContextualGSUB17;
-},
-{
-code = "lookup ChainedContextualGSUB18 {\012    lookupflag 0;\012    ;\012    # Original source: 17 \012    sub uni17CA' lookup SingleSubstitution30 uni17C5;\012} ChainedContextualGSUB18;\012";
-name = ChainedContextualGSUB18;
-},
-{
-code = "lookup SingleSubstitution19 {\012    lookupflag 0;\012    ;\012    # Original source: 18 \012    sub uni17BF by uni17BF.right1;\012    sub uni17C0 by uni17C0.right1;\012    sub uni17C4 by uni17B6;\012    sub uni17C5 by uni17C5.right;\012} SingleSubstitution19;\012";
-name = SingleSubstitution19;
-},
-{
 code = "lookup SingleSubstitution31 {\012    lookupflag 0;\012    ;\012    # Original source: 30 \012    sub uni17BF.right1 by uni17BF.right3;\012    sub uni17C0.right1 by uni17C0.right3;\012} SingleSubstitution31;\012";
 name = SingleSubstitution31;
-},
-{
-code = "lookup ChainedContextualGSUB20 {\012    lookupflag 0;\012    ;\012    # Original source: 19 \012    sub @class47 @class48 [uni17BF.right1 uni17C0.right1]' lookup SingleSubstitution30;\012    sub @class47 @class48 @class48 [uni17BF.right1 uni17C0.right1]' lookup SingleSubstitution31;\012} ChainedContextualGSUB20;\012";
-name = ChainedContextualGSUB20;
 },
 {
 code = "lookup SingleSubstitution33 {\012    lookupflag 0;\012    ;\012    # Original source: 32 \012    sub uni17C0.right1 by uni17C0.right3;\012} SingleSubstitution33;\012";
@@ -660,28 +609,12 @@ code = "lookup SingleSubstitution32 {\012    lookupflag 0;\012    ;\012    # Ori
 name = SingleSubstitution32;
 },
 {
-code = "lookup ChainedContextualGSUB21 {\012    lookupflag 0;\012    ;\012    # Original source: 20 \012    sub @class53 @class52' lookup SingleSubstitution32;\012    sub @class54 [uni17BF.right1 uni17C0.right1]' lookup SingleSubstitution32;\012    sub @class27 [uni17BF.right1 uni17C0.right1]' lookup SingleSubstitution32;\012    sub @class56 uni17C0.right1' lookup SingleSubstitution33;\012} ChainedContextualGSUB21;\012";
-name = ChainedContextualGSUB21;
-},
-{
 code = "lookup SingleSubstitution34 {\012    lookupflag 0;\012    ;\012    # Original source: 33 \012    sub uni17BF.right1 by uni17BF.right2;\012    sub uni17C0.right1 by uni17C0.right2;\012    sub uni17D21783 by uni17D21783.low;\012    sub uni17D21788 by uni17D21788.low;\012    sub uni17D2178D by uni17D2178D.low;\012    sub uni17D21794 by uni17D21794.low;\012    sub uni17D21799 by uni17D21799.low;\012    sub uni17D2179E by uni17D2179E.low;\012    sub uni17D2179F by uni17D2179F.low;\012} SingleSubstitution34;\012";
 name = SingleSubstitution34;
 },
 {
-code = "lookup ChainedContextualGSUB22 {\012    lookupflag 0;\012    ;\012    # Original source: 21 \012    sub @class53 @class52' lookup SingleSubstitution34;\012} ChainedContextualGSUB22;\012";
-name = ChainedContextualGSUB22;
-},
-{
 code = "lookup SingleSubstitution35 {\012    lookupflag 0;\012    ;\012    # Original source: 34 \012    sub uni1794 by uni1794.a2;\012    sub uni17C0.right1 by uni17C0.right1.high;\012} SingleSubstitution35;\012";
 name = SingleSubstitution35;
-},
-{
-code = "lookup ChainedContextualGSUB23 {\012    lookupflag 0;\012    ;\012    # Original source: 22 \012    sub uni17CA uni17C0.right1' lookup SingleSubstitution35;\012} ChainedContextualGSUB23;\012";
-name = ChainedContextualGSUB23;
-},
-{
-code = "lookup ChainedContextualGSUB24 {\012    lookupflag 0;\012    ;\012    # Original source: 23 \012    sub uni1794' lookup SingleSubstitution35 uni17B6 @class22;\012    sub uni1794' lookup SingleSubstitution35 @class22 [uni17C9 uni17C9.r] [uni17B6 uni17C4 uni17C5];\012    sub uni1794' lookup SingleSubstitution35 @class22 [uni17B6 uni17C4 uni17C5];\012    sub uni1794' lookup SingleSubstitution35 [uni17C9 uni17C9.r] [uni17B6 uni17C4 uni17C5] @class22;\012    sub uni1794' lookup SingleSubstitution35 [uni17C9 uni17C9.r] @class22 [uni17B6 uni17C4 uni17C5];\012} ChainedContextualGSUB24;\012";
-name = ChainedContextualGSUB24;
 },
 {
 code = "lookup SingleSubstitution37 {\012    lookupflag 0;\012    ;\012    # Original source: 36 \012    sub uni1794 by uni1794.a2;\012} SingleSubstitution37;\012";
@@ -690,18 +623,6 @@ name = SingleSubstitution37;
 {
 code = "lookup SingleSubstitution36 {\012    lookupflag 0;\012    ;\012    # Original source: 35 \012    sub uni1794 by uni1794.a;\012} SingleSubstitution36;\012";
 name = SingleSubstitution36;
-},
-{
-code = "lookup ChainedContextualGSUB25 {\012    lookupflag 0;\012    ;\012    # Original source: 24 \012    sub uni1794' lookup SingleSubstitution36 [uni17B6 uni17C4 uni17C5 uni17C5.right];\012    sub uni1794' lookup SingleSubstitution36 [uni17BB uni17C9 uni17C9.r uni17CA] [uni17B6 uni17C4 uni17C5 uni17C5.right];\012    sub uni1794' lookup SingleSubstitution37 @class22 uni17C4;\012    sub uni1794' lookup SingleSubstitution37 @class22 uni17C5;\012} ChainedContextualGSUB25;\012";
-name = ChainedContextualGSUB25;
-},
-{
-code = "lookup LigatureSubstitution26 {\012    lookupflag IgnoreMarks;\012    ;\012    # Original source: 25 \012    sub uni1780 uni17B6 by uni178017B6;\012    sub uni1780 uni17C5.right by uni178017C5;\012    sub uni1781 uni17B6 by uni178117B6;\012    sub uni1781 uni17C5.right by uni178117C5;\012    sub uni1782 uni17B6 by uni178217B6;\012    sub uni1782 uni17C5.right by uni178217C5;\012    sub uni1783 uni17B6 by uni178317B6;\012    sub uni1783 uni17C5.right by uni178317C5;\012    sub uni1784 uni17B6 by uni178417B6;\012    sub uni1784 uni17C5.right by uni178417C5;\012    sub uni1785 uni17B6 by uni178517B6;\012    sub uni1785 uni17C5.right by uni178517C5;\012    sub uni1786 uni17B6 by uni178617B6;\012    sub uni1786 uni17C5.right by uni178617C5;\012    sub uni1787 uni17B6 by uni178717B6;\012    sub uni1787 uni17C5.right by uni178717C5;\012    sub uni1788 uni17B6 by uni178817B6;\012    sub uni1788 uni17C5.right by uni178817C5;\012    sub uni1789 uni17B6 by uni178917B6;\012    sub uni1789 uni17C5.right by uni178917C5;\012    sub uni1789.a uni17B6 by uni178917B6.a;\012    sub uni1789.a uni17C5.right by uni178917C5.a;\012    sub uni178A uni17B6 by uni178A17B6;\012    sub uni178A uni17C5.right by uni178A17C5;\012    sub uni178B uni17B6 by uni178B17B6;\012    sub uni178B uni17C5.right by uni178B17C5;\012    sub uni178C uni17B6 by uni178C17B6;\012    sub uni178C uni17C5.right by uni178C17C5;\012    sub uni178D uni17B6 by uni178D17B6;\012    sub uni178D uni17C5.right by uni178D17C5;\012    sub uni178E uni17B6 by uni178E17B6;\012    sub uni178E uni17C5.right by uni178E17C5;\012    sub uni178F uni17B6 by uni178F17B6;\012    sub uni178F uni17C5.right by uni178F17C5;\012    sub uni1790 uni17B6 by uni179017B6;\012    sub uni1790 uni17C5.right by uni179017C5;\012    sub uni1791 uni17B6 by uni179117B6;\012    sub uni1791 uni17C5.right by uni179117C5;\012    sub uni1792 uni17B6 by uni179217B6;\012    sub uni1792 uni17C5.right by uni179217C5;\012    sub uni1793 uni17B6 by uni179317B6;\012    sub uni1793 uni17C5.right by uni179317C5;\012    sub uni1794.a uni17B6 by uni179417B6;\012    sub uni1794.a uni17C5.right by uni179417C5;\012    sub uni1794.a2 uni17B6 by uni179417B6.high;\012    sub uni1794.a2 uni17C5.right by uni179417C5.high;\012    sub uni1795 uni17B6 by uni179517B6;\012    sub uni1795 uni17C5.right by uni179517C5;\012    sub uni1796 uni17B6 by uni179617B6;\012    sub uni1796 uni17C5.right by uni179617C5;\012    sub uni1797 uni17B6 by uni179717B6;\012    sub uni1797 uni17C5.right by uni179717C5;\012    sub uni1798 uni17B6 by uni179817B6;\012    sub uni1798 uni17C5.right by uni179817C5;\012    sub uni1799 uni17B6 by uni179917B6;\012    sub uni1799 uni17C5.right by uni179917C5;\012    sub uni179A uni17B6 by uni179A17B6;\012    sub uni179A uni17C5.right by uni179A17C5;\012    sub uni179B uni17B6 by uni179B17B6;\012    sub uni179B uni17C5.right by uni179B17C5;\012    sub uni179C uni17B6 by uni179C17B6;\012    sub uni179C uni17C5.right by uni179C17C5;\012    sub uni179D uni17B6 by uni179D17B6;\012    sub uni179D uni17C5.right by uni179D17C5;\012    sub uni179E uni17B6 by uni179E17B6;\012    sub uni179E uni17C5.right by uni179E17C5;\012    sub uni179F uni17B6 by uni179F17B6;\012    sub uni179F uni17C5.right by uni179F17C5;\012    sub uni17A0 uni17B6 by uni17A017B6;\012    sub uni17A0 uni17C5.right by uni17A017C5;\012    sub uni17A1 uni17B6 by uni17A117B6;\012    sub uni17A1 uni17C5.right by uni17A117C5;\012    sub uni17A2 uni17B6 by uni17A217B6;\012    sub uni17A2 uni17C5.right by uni17A217C5;\012    sub uni17D21783 uni17B6 by uni17D2178317B6;\012    sub uni17D21783 uni17C5.right by uni17D2178317C5;\012    sub uni17D21783.low uni17B6 by uni17D2178317B6.low;\012    sub uni17D21783.low uni17C5.right by uni17D2178317C5.low;\012    sub uni17D21788 uni17B6 by uni17D2178817B6;\012    sub uni17D21788 uni17C5.right by uni17D2178817C5;\012    sub uni17D21788.low uni17B6 by uni17D2178817B6.low;\012    sub uni17D21788.low uni17C5.right by uni17D2178817C5.low;\012    sub uni17D2178D uni17B6 by uni17D2178D17B6;\012    sub uni17D2178D uni17C5.right by uni17D2178D17C5;\012    sub uni17D2178D.low uni17B6 by uni17D2178D17B6.low;\012    sub uni17D2178D.low uni17C5.right by uni17D2178D17C5.low;\012    sub uni17D21794 uni17B6 by uni17D2179417B6;\012    sub uni17D21794 uni17C5.right by uni17D2179417C5;\012    sub uni17D21794.low uni17B6 by uni17D2179417B6.low;\012    sub uni17D21794.low uni17C5.right by uni17D2179417C5.low;\012    sub uni17D21799 uni17B6 by uni17D2179917B6;\012    sub uni17D21799 uni17C5.right by uni17D2179917C5;\012    sub uni17D21799.low uni17B6 by uni17D2179917B6.low;\012    sub uni17D21799.low uni17C5.right by uni17D2179917C5.low;\012    sub uni17D2179E uni17B6 by uni17D2179E17B6;\012    sub uni17D2179E uni17C5.right by uni17D2179E17C5;\012    sub uni17D2179E.low uni17B6 by uni17D2179E17B6.low;\012    sub uni17D2179E.low uni17C5.right by uni17D2179E17C5.low;\012    sub uni17D2179F uni17B6 by uni17D2179F17B6;\012    sub uni17D2179F uni17C5.right by uni17D2179F17C5;\012    sub uni17D2179F.low uni17B6 by uni17D2179F17B6.low;\012    sub uni17D2179F.low uni17C5.right by uni17D2179F17C5.low;\012} LigatureSubstitution26;\012";
-name = LigatureSubstitution26;
-},
-{
-code = "lookup LigatureSubstitution27 {\012    lookupflag IgnoreMarks;\012    ;\012    # Original source: 26 \012    sub uni1780 uni17B6 by uni178017B6;\012    sub uni1780 uni17C5.right by uni178017C5;\012    sub uni1781 uni17B6 by uni178117B6;\012    sub uni1781 uni17C5.right by uni178117C5;\012    sub uni1782 uni17B6 by uni178217B6;\012    sub uni1782 uni17C5.right by uni178217C5;\012    sub uni1783 uni17B6 by uni178317B6;\012    sub uni1783 uni17C5.right by uni178317C5;\012    sub uni1784 uni17B6 by uni178417B6;\012    sub uni1784 uni17C5.right by uni178417C5;\012    sub uni1785 uni17B6 by uni178517B6;\012    sub uni1785 uni17C5.right by uni178517C5;\012    sub uni1786 uni17B6 by uni178617B6;\012    sub uni1786 uni17C5.right by uni178617C5;\012    sub uni1787 uni17B6 by uni178717B6;\012    sub uni1787 uni17C5.right by uni178717C5;\012    sub uni1788 uni17B6 by uni178817B6;\012    sub uni1788 uni17C5.right by uni178817C5;\012    sub uni1789 uni17B6 by uni178917B6;\012    sub uni1789 uni17C5.right by uni178917C5;\012    sub uni1789.a uni17B6 by uni178917B6.a;\012    sub uni1789.a uni17C5.right by uni178917C5.a;\012    sub uni178A uni17B6 by uni178A17B6;\012    sub uni178A uni17C5.right by uni178A17C5;\012    sub uni178B uni17B6 by uni178B17B6;\012    sub uni178B uni17C5.right by uni178B17C5;\012    sub uni178C uni17B6 by uni178C17B6;\012    sub uni178C uni17C5.right by uni178C17C5;\012    sub uni178D uni17B6 by uni178D17B6;\012    sub uni178D uni17C5.right by uni178D17C5;\012    sub uni178E uni17B6 by uni178E17B6;\012    sub uni178E uni17C5.right by uni178E17C5;\012    sub uni178F uni17B6 by uni178F17B6;\012    sub uni178F uni17C5.right by uni178F17C5;\012    sub uni1790 uni17B6 by uni179017B6;\012    sub uni1790 uni17C5.right by uni179017C5;\012    sub uni1791 uni17B6 by uni179117B6;\012    sub uni1791 uni17C5.right by uni179117C5;\012    sub uni1792 uni17B6 by uni179217B6;\012    sub uni1792 uni17C5.right by uni179217C5;\012    sub uni1793 uni17B6 by uni179317B6;\012    sub uni1793 uni17C5.right by uni179317C5;\012    sub uni1794.a uni17B6 by uni179417B6;\012    sub uni1794.a uni17C5.right by uni179417C5;\012    sub uni1794.a2 uni17B6 by uni179417B6.high;\012    sub uni1794.a2 uni17C5.right by uni179417C5.high;\012    sub uni1795 uni17B6 by uni179517B6;\012    sub uni1795 uni17C5.right by uni179517C5;\012    sub uni1796 uni17B6 by uni179617B6;\012    sub uni1796 uni17C5.right by uni179617C5;\012    sub uni1797 uni17B6 by uni179717B6;\012    sub uni1797 uni17C5.right by uni179717C5;\012    sub uni1798 uni17B6 by uni179817B6;\012    sub uni1798 uni17C5.right by uni179817C5;\012    sub uni1799 uni17B6 by uni179917B6;\012    sub uni1799 uni17C5.right by uni179917C5;\012    sub uni179A uni17B6 by uni179A17B6;\012    sub uni179A uni17C5.right by uni179A17C5;\012    sub uni179B uni17B6 by uni179B17B6;\012    sub uni179B uni17C5.right by uni179B17C5;\012    sub uni179C uni17B6 by uni179C17B6;\012    sub uni179C uni17C5.right by uni179C17C5;\012    sub uni179D uni17B6 by uni179D17B6;\012    sub uni179D uni17C5.right by uni179D17C5;\012    sub uni179E uni17B6 by uni179E17B6;\012    sub uni179E uni17C5.right by uni179E17C5;\012    sub uni179F uni17B6 by uni179F17B6;\012    sub uni179F uni17C5.right by uni179F17C5;\012    sub uni17A0 uni17B6 by uni17A017B6;\012    sub uni17A0 uni17C5.right by uni17A017C5;\012    sub uni17A1 uni17B6 by uni17A117B6;\012    sub uni17A1 uni17C5.right by uni17A117C5;\012    sub uni17A2 uni17B6 by uni17A217B6;\012    sub uni17A2 uni17C5.right by uni17A217C5;\012    sub uni17D21783 uni17B6 by uni17D2178317B6;\012    sub uni17D21783 uni17C5.right by uni17D2178317C5;\012    sub uni17D21783.low uni17B6 by uni17D2178317B6.low;\012    sub uni17D21783.low uni17C5.right by uni17D2178317C5.low;\012    sub uni17D21788 uni17B6 by uni17D2178817B6;\012    sub uni17D21788 uni17C5.right by uni17D2178817C5;\012    sub uni17D21788.low uni17B6 by uni17D2178817B6.low;\012    sub uni17D21788.low uni17C5.right by uni17D2178817C5.low;\012    sub uni17D2178D uni17B6 by uni17D2178D17B6;\012    sub uni17D2178D uni17C5.right by uni17D2178D17C5;\012    sub uni17D2178D.low uni17B6 by uni17D2178D17B6.low;\012    sub uni17D2178D.low uni17C5.right by uni17D2178D17C5.low;\012    sub uni17D21794 uni17B6 by uni17D2179417B6;\012    sub uni17D21794 uni17C5.right by uni17D2179417C5;\012    sub uni17D21794.low uni17B6 by uni17D2179417B6.low;\012    sub uni17D21794.low uni17C5.right by uni17D2179417C5.low;\012    sub uni17D21799 uni17B6 by uni17D2179917B6;\012    sub uni17D21799 uni17C5.right by uni17D2179917C5;\012    sub uni17D21799.low uni17B6 by uni17D2179917B6.low;\012    sub uni17D21799.low uni17C5.right by uni17D2179917C5.low;\012    sub uni17D2179E uni17B6 by uni17D2179E17B6;\012    sub uni17D2179E uni17C5.right by uni17D2179E17C5;\012    sub uni17D2179E.low uni17B6 by uni17D2179E17B6.low;\012    sub uni17D2179E.low uni17C5.right by uni17D2179E17C5.low;\012    sub uni17D2179F uni17B6 by uni17D2179F17B6;\012    sub uni17D2179F uni17C5.right by uni17D2179F17C5;\012    sub uni17D2179F.low uni17B6 by uni17D2179F17B6.low;\012    sub uni17D2179F.low uni17C5.right by uni17D2179F17C5.low;\012} LigatureSubstitution27;\012";
-name = LigatureSubstitution27;
 },
 {
 code = "lookup SinglePositioning1 {\012    lookupflag 0;\012    ;\012    pos uni17C2 <72 0 72 0>;\012} SinglePositioning1;\012";
@@ -796,50 +717,50 @@ code = "lookup ChainedContextualGPOS42 {\012    lookupflag 0;\012    ;\012    # 
 name = ChainedContextualGPOS42;
 },
 {
-code = "languagesystem khmr dflt;\012";
+code = "languagesystem DFLT dflt; languagesystem khmr dflt;\012";
 name = Languagesystems;
 }
 );
 features = (
 {
-code = "# [('khmr', 'dflt')]\012    lookup SingleSubstitution7;\012";
-name = abvf;
-},
-{
-code = "# [('khmr', 'dflt')]\012    lookup LigatureSubstitution15;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB16;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB17;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB18;\012";
-name = abvs;
-},
-{
-code = "# [('khmr', 'dflt')]\012    lookup LigatureSubstitution2;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB3;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB4;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB5;\012\012# [('khmr', 'dflt')]\012    lookup LigatureSubstitution6;\012";
-name = blwf;
-},
-{
-code = "# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB10;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB11;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB12;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB14;\012";
-name = blws;
-},
-{
-code = "# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB24;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB25;\012\012# [('khmr', 'dflt')]\012    lookup LigatureSubstitution26;\012";
-name = clig;
-},
-{
-code = "# [('khmr', 'dflt')]\012    lookup LigatureSubstitution27;\012";
-name = liga;
-},
-{
-code = "# [('khmr', 'dflt')]\012    lookup LigatureSubstitution1;\012";
+code = "lookup LigatureSubstitution1 {\012    lookupflag 0;\012    ;\012    sub uni17D2 uni179A by uni17D2179A;\012} LigatureSubstitution1;\012";
 name = pref;
 },
 {
-code = "# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB9;\012";
-name = pres;
+code = "sub uni17BE by uni17B8;\012";
+name = abvf;
 },
 {
-code = "# [('khmr', 'dflt')]\012    lookup LigatureSubstitution8;\012";
+code = "lookup LigatureSubstitution2 {\012    sub uni17D2 uni1780 by uni17D21780;\012    sub uni17D2 uni1781 by uni17D21781;\012    sub uni17D2 uni1782 by uni17D21782;\012    sub uni17D2 uni1784 by uni17D21784;\012    sub uni17D2 uni1785 by uni17D21785;\012    sub uni17D2 uni1786 by uni17D21786;\012    sub uni17D2 uni1787 by uni17D21787;\012    sub uni17D2 uni1789 by uni17D21789;\012    sub uni17D2 uni178A by uni17D2178A;\012    sub uni17D2 uni178B by uni17D2178B;\012    sub uni17D2 uni178C by uni17D2178C;\012    sub uni17D2 uni178E by uni17D2178E;\012    sub uni17D2 uni178F by uni17D2178F;\012    sub uni17D2 uni1790 by uni17D21790;\012    sub uni17D2 uni1791 by uni17D21791;\012    sub uni17D2 uni1792 by uni17D21792;\012    sub uni17D2 uni1793 by uni17D21793;\012    sub uni17D2 uni1795 by uni17D21795;\012    sub uni17D2 uni1796 by uni17D21796;\012    sub uni17D2 uni1797 by uni17D21797;\012    sub uni17D2 uni1798 by uni17D21798;\012    sub uni17D2 uni179B by uni17D2179B;\012    sub uni17D2 uni179C by uni17D2179C;\012    sub uni17D2 uni179D by uni17D2179D;\012    sub uni17D2 uni179E by uni17D2179E;\012    sub uni17D2 uni17A0 by uni17D217A0;\012    sub uni17D2 uni17A1 by uni17D217A1;\012    sub uni17D2 uni17A2 by uni17D217A2;\012    sub uni17D2 uni17A7 by uni17D217A7;\012    sub uni17D2 uni17AB by uni17D217AB;\012    sub uni17D2 uni17AC by uni17D217AC;\012    sub uni17D2 uni17AF by uni17D217AF;\012} LigatureSubstitution2;\012\012lookup ChainedContextualGSUB3 {\012    lookupflag 0;\012    ;\012    # Original source: 2 \012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 @class2;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 @class4 @class2;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 @class4 @class4 @class2;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 uni17BE;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 uni17C6;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 uni17D0;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 uni17B6 uni17C6;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 @class4 uni17B6 uni17C6;\012    sub @class1 [uni17C9 uni17C9.r]' lookup SingleSubstitution28 @class4 @class4 uni17B6 uni17C6;\012} ChainedContextualGSUB3;\012\012lookup ChainedContextualGSUB4 {\012    # Original source: 3 \012    sub @class19 uni17CA' lookup SingleSubstitution28 @class2;\012    sub @class19 uni17CA' lookup SingleSubstitution28 @class22 @class2;\012    sub uni17CA' lookup SingleSubstitution28 uni17B6 uni17C6;\012} ChainedContextualGSUB4;\012\012sub [uni179A uni179C] [uni17D2178A uni17D2178F uni17D21797 uni17D21798]' lookup SingleSubstitution28;\012\012lookup LigatureSubstitution6 {\012    lookupflag 0;\012    ;\012    # Original source: 5 \012    sub uni200D uni17C9 by uni17C9;\012    sub uni200D uni17CA by uni17CA;\012} LigatureSubstitution6;\012\012";
+name = blwf;
+},
+{
+code = "    sub uni17D2 uni1783 by uni17D21783;\012    sub uni17D2 uni1788 by uni17D21788;\012    sub uni17D2 uni178D by uni17D2178D;\012    sub uni17D2 uni1794 by uni17D21794;\012    sub uni17D2 uni1799 by uni17D21799;\012    sub uni17D2 uni179F by uni17D2179F;";
 name = pstf;
 },
 {
-code = "# [('khmr', 'dflt')]\012    lookup SingleSubstitution19;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB20;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB21;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB22;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGSUB23;\012";
+code = "   sub uni17D2179A' lookup SingleSubstitution28 @class24 @class25;\012";
+name = pres;
+},
+{
+code = "\012lookup ChainedContextualGSUB10 {\012    sub uni1789' lookup SingleSubstitution28 @class22;\012    sub uni1789' lookup SingleSubstitution28 @class27;\012} ChainedContextualGSUB10;\012    \012\012lookup ChainedContextualGSUB11 {\012    sub uni1789.a uni17D21789' lookup SingleSubstitution28;\012} ChainedContextualGSUB11;\012    \012\012lookup ChainedContextualGSUB12 {\012    sub uni17D2179A @class28 [uni17BB uni17BC uni17BD]' lookup SingleSubstitution28;\012    sub uni17D2179A @class28 [uni17C9 uni17CA] [uni17BB uni17BC uni17BD]' lookup SingleSubstitution28;\012    sub uni17D2179A.low @class28 uni17D2178E' lookup SingleSubstitution28;\012    } ChainedContextualGSUB12;\012    \012\012lookup ChainedContextualGSUB14 {\012    sub [uni179A uni179C] @class33 [uni17D2178A uni17D2178F uni17D21797 uni17D21798]' lookup SingleSubstitution28;\012    } ChainedContextualGSUB14;\012   ";
+name = blws;
+},
+{
+code = "sub uni17B7 uni17CD by uni17B717CD;\012\012lookup ChainedContextualGSUB16 {\012    sub [uni179A uni179C] @class34' lookup SingleSubstitution29;\012    sub [uni179A uni179C] uni200C @class34' lookup SingleSubstitution29;\012    sub [uni179A uni179C] [uni17B6 uni17C5.right] @class34' lookup SingleSubstitution29;\012    sub [uni179A uni179C] uni200C [uni17B6 uni17C5.right] @class34' lookup SingleSubstitution29;\012    sub [uni179A uni179C] uni17BB @class34' lookup SingleSubstitution29;\012    sub [uni17C9.r uni17CA.r] uni200C @class34' lookup SingleSubstitution29;\012    sub [uni17C9.r uni17CA.r] [uni17B6 uni17C5.right] @class34' lookup SingleSubstitution29;\012    sub [uni17C9.r uni17CA.r] uni200C [uni17B6 uni17C5.right] @class34' lookup SingleSubstitution29;\012    sub uni17D2178A.r @class42' lookup SingleSubstitution29;\012    sub uni17D21797.r @class42' lookup SingleSubstitution29;\012    sub uni17D21798.r @class42' lookup SingleSubstitution29;\012} ChainedContextualGSUB16;\012\012lookup ChainedContextualGSUB17 {\012    sub uni179A uni17C9' lookup SingleSubstitution29 uni17B6;\012    sub @class45 uni17C9' lookup SingleSubstitution30 uni17B6;\012    sub @class45 uni17C9' lookup SingleSubstitution30 uni17C4;\012} ChainedContextualGSUB17;\012\012lookup ChainedContextualGSUB18 {\012    lookupflag 0;\012    ;\012    # Original source: 17 \012    sub uni17CA' lookup SingleSubstitution30 uni17C5;\012} ChainedContextualGSUB18;\012    lookup ChainedContextualGSUB18;\012";
+name = abvs;
+},
+{
+code = "lookup SingleSubstitution19 {\012    lookupflag 0;\012    ;\012    # Original source: 18 \012    sub uni17BF by uni17BF.right1;\012    sub uni17C0 by uni17C0.right1;\012    sub uni17C4 by uni17B6;\012    sub uni17C5 by uni17C5.right;\012    } SingleSubstitution19;\012\012\012lookup ChainedContextualGSUB20 {\012    lookupflag 0;\012    ;\012    # Original source: 19 \012    sub @class47 @class48 [uni17BF.right1 uni17C0.right1]' lookup SingleSubstitution30;\012    sub @class47 @class48 @class48 [uni17BF.right1 uni17C0.right1]' lookup SingleSubstitution31;\012    } ChainedContextualGSUB20;\012\012\012lookup ChainedContextualGSUB21 {\012    lookupflag 0;\012    ;\012    # Original source: 20 \012    sub @class53 @class52' lookup SingleSubstitution32;\012    sub @class54 [uni17BF.right1 uni17C0.right1]' lookup SingleSubstitution32;\012    sub @class27 [uni17BF.right1 uni17C0.right1]' lookup SingleSubstitution32;\012    sub @class56 uni17C0.right1' lookup SingleSubstitution33;\012    } ChainedContextualGSUB21;\012\012\012lookup ChainedContextualGSUB22 {\012    lookupflag 0;\012    ;\012    # Original source: 21 \012    sub @class53 @class52' lookup SingleSubstitution34;\012    } ChainedContextualGSUB22;\012\012\012lookup ChainedContextualGSUB23 {\012    lookupflag 0;\012    ;\012    # Original source: 22 \012    sub uni17CA uni17C0.right1' lookup SingleSubstitution35;\012    } ChainedContextualGSUB23;\012";
 name = psts;
+},
+{
+code = "lookup ChainedContextualGSUB24 {\012    lookupflag 0;\012    ;\012    # Original source: 23 \012    sub uni1794' lookup SingleSubstitution35 uni17B6 @class22;\012    sub uni1794' lookup SingleSubstitution35 @class22 [uni17C9 uni17C9.r] [uni17B6 uni17C4 uni17C5];\012    sub uni1794' lookup SingleSubstitution35 @class22 [uni17B6 uni17C4 uni17C5];\012    sub uni1794' lookup SingleSubstitution35 [uni17C9 uni17C9.r] [uni17B6 uni17C4 uni17C5] @class22;\012    sub uni1794' lookup SingleSubstitution35 [uni17C9 uni17C9.r] @class22 [uni17B6 uni17C4 uni17C5];\012    } ChainedContextualGSUB24;\012\012lookup ChainedContextualGSUB25 {\012    lookupflag 0;\012    ;\012    # Original source: 24 \012    sub uni1794' lookup SingleSubstitution36 [uni17B6 uni17C4 uni17C5 uni17C5.right];\012    sub uni1794' lookup SingleSubstitution36 [uni17BB uni17C9 uni17C9.r uni17CA] [uni17B6 uni17C4 uni17C5 uni17C5.right];\012    sub uni1794' lookup SingleSubstitution37 @class22 uni17C4;\012    sub uni1794' lookup SingleSubstitution37 @class22 uni17C5;\012    } ChainedContextualGSUB25;\012\012lookup LigatureSubstitution26 {\012    lookupflag IgnoreMarks;\012    ;\012    # Original source: 25 \012    sub uni1780 uni17B6 by uni178017B6;\012    sub uni1780 uni17C5.right by uni178017C5;\012    sub uni1781 uni17B6 by uni178117B6;\012    sub uni1781 uni17C5.right by uni178117C5;\012    sub uni1782 uni17B6 by uni178217B6;\012    sub uni1782 uni17C5.right by uni178217C5;\012    sub uni1783 uni17B6 by uni178317B6;\012    sub uni1783 uni17C5.right by uni178317C5;\012    sub uni1784 uni17B6 by uni178417B6;\012    sub uni1784 uni17C5.right by uni178417C5;\012    sub uni1785 uni17B6 by uni178517B6;\012    sub uni1785 uni17C5.right by uni178517C5;\012    sub uni1786 uni17B6 by uni178617B6;\012    sub uni1786 uni17C5.right by uni178617C5;\012    sub uni1787 uni17B6 by uni178717B6;\012    sub uni1787 uni17C5.right by uni178717C5;\012    sub uni1788 uni17B6 by uni178817B6;\012    sub uni1788 uni17C5.right by uni178817C5;\012    sub uni1789 uni17B6 by uni178917B6;\012    sub uni1789 uni17C5.right by uni178917C5;\012    sub uni1789.a uni17B6 by uni178917B6.a;\012    sub uni1789.a uni17C5.right by uni178917C5.a;\012    sub uni178A uni17B6 by uni178A17B6;\012    sub uni178A uni17C5.right by uni178A17C5;\012    sub uni178B uni17B6 by uni178B17B6;\012    sub uni178B uni17C5.right by uni178B17C5;\012    sub uni178C uni17B6 by uni178C17B6;\012    sub uni178C uni17C5.right by uni178C17C5;\012    sub uni178D uni17B6 by uni178D17B6;\012    sub uni178D uni17C5.right by uni178D17C5;\012    sub uni178E uni17B6 by uni178E17B6;\012    sub uni178E uni17C5.right by uni178E17C5;\012    sub uni178F uni17B6 by uni178F17B6;\012    sub uni178F uni17C5.right by uni178F17C5;\012    sub uni1790 uni17B6 by uni179017B6;\012    sub uni1790 uni17C5.right by uni179017C5;\012    sub uni1791 uni17B6 by uni179117B6;\012    sub uni1791 uni17C5.right by uni179117C5;\012    sub uni1792 uni17B6 by uni179217B6;\012    sub uni1792 uni17C5.right by uni179217C5;\012    sub uni1793 uni17B6 by uni179317B6;\012    sub uni1793 uni17C5.right by uni179317C5;\012    sub uni1794.a uni17B6 by uni179417B6;\012    sub uni1794.a uni17C5.right by uni179417C5;\012    sub uni1794.a2 uni17B6 by uni179417B6.high;\012    sub uni1794.a2 uni17C5.right by uni179417C5.high;\012    sub uni1795 uni17B6 by uni179517B6;\012    sub uni1795 uni17C5.right by uni179517C5;\012    sub uni1796 uni17B6 by uni179617B6;\012    sub uni1796 uni17C5.right by uni179617C5;\012    sub uni1797 uni17B6 by uni179717B6;\012    sub uni1797 uni17C5.right by uni179717C5;\012    sub uni1798 uni17B6 by uni179817B6;\012    sub uni1798 uni17C5.right by uni179817C5;\012    sub uni1799 uni17B6 by uni179917B6;\012    sub uni1799 uni17C5.right by uni179917C5;\012    sub uni179A uni17B6 by uni179A17B6;\012    sub uni179A uni17C5.right by uni179A17C5;\012    sub uni179B uni17B6 by uni179B17B6;\012    sub uni179B uni17C5.right by uni179B17C5;\012    sub uni179C uni17B6 by uni179C17B6;\012    sub uni179C uni17C5.right by uni179C17C5;\012    sub uni179D uni17B6 by uni179D17B6;\012    sub uni179D uni17C5.right by uni179D17C5;\012    sub uni179E uni17B6 by uni179E17B6;\012    sub uni179E uni17C5.right by uni179E17C5;\012    sub uni179F uni17B6 by uni179F17B6;\012    sub uni179F uni17C5.right by uni179F17C5;\012    sub uni17A0 uni17B6 by uni17A017B6;\012    sub uni17A0 uni17C5.right by uni17A017C5;\012    sub uni17A1 uni17B6 by uni17A117B6;\012    sub uni17A1 uni17C5.right by uni17A117C5;\012    sub uni17A2 uni17B6 by uni17A217B6;\012    sub uni17A2 uni17C5.right by uni17A217C5;\012    sub uni17D21783 uni17B6 by uni17D2178317B6;\012    sub uni17D21783 uni17C5.right by uni17D2178317C5;\012    sub uni17D21783.low uni17B6 by uni17D2178317B6.low;\012    sub uni17D21783.low uni17C5.right by uni17D2178317C5.low;\012    sub uni17D21788 uni17B6 by uni17D2178817B6;\012    sub uni17D21788 uni17C5.right by uni17D2178817C5;\012    sub uni17D21788.low uni17B6 by uni17D2178817B6.low;\012    sub uni17D21788.low uni17C5.right by uni17D2178817C5.low;\012    sub uni17D2178D uni17B6 by uni17D2178D17B6;\012    sub uni17D2178D uni17C5.right by uni17D2178D17C5;\012    sub uni17D2178D.low uni17B6 by uni17D2178D17B6.low;\012    sub uni17D2178D.low uni17C5.right by uni17D2178D17C5.low;\012    sub uni17D21794 uni17B6 by uni17D2179417B6;\012    sub uni17D21794 uni17C5.right by uni17D2179417C5;\012    sub uni17D21794.low uni17B6 by uni17D2179417B6.low;\012    sub uni17D21794.low uni17C5.right by uni17D2179417C5.low;\012    sub uni17D21799 uni17B6 by uni17D2179917B6;\012    sub uni17D21799 uni17C5.right by uni17D2179917C5;\012    sub uni17D21799.low uni17B6 by uni17D2179917B6.low;\012    sub uni17D21799.low uni17C5.right by uni17D2179917C5.low;\012    sub uni17D2179E uni17B6 by uni17D2179E17B6;\012    sub uni17D2179E uni17C5.right by uni17D2179E17C5;\012    sub uni17D2179E.low uni17B6 by uni17D2179E17B6.low;\012    sub uni17D2179E.low uni17C5.right by uni17D2179E17C5.low;\012    sub uni17D2179F uni17B6 by uni17D2179F17B6;\012    sub uni17D2179F uni17C5.right by uni17D2179F17C5;\012    sub uni17D2179F.low uni17B6 by uni17D2179F17B6.low;\012    sub uni17D2179F.low uni17C5.right by uni17D2179F17C5.low;\012    } LigatureSubstitution26;";
+name = clig;
+},
+{
+code = "lookup LigatureSubstitution27 {\012    lookupflag IgnoreMarks;\012    ;\012    # Original source: 26 \012    sub uni1780 uni17B6 by uni178017B6;\012    sub uni1780 uni17C5.right by uni178017C5;\012    sub uni1781 uni17B6 by uni178117B6;\012    sub uni1781 uni17C5.right by uni178117C5;\012    sub uni1782 uni17B6 by uni178217B6;\012    sub uni1782 uni17C5.right by uni178217C5;\012    sub uni1783 uni17B6 by uni178317B6;\012    sub uni1783 uni17C5.right by uni178317C5;\012    sub uni1784 uni17B6 by uni178417B6;\012    sub uni1784 uni17C5.right by uni178417C5;\012    sub uni1785 uni17B6 by uni178517B6;\012    sub uni1785 uni17C5.right by uni178517C5;\012    sub uni1786 uni17B6 by uni178617B6;\012    sub uni1786 uni17C5.right by uni178617C5;\012    sub uni1787 uni17B6 by uni178717B6;\012    sub uni1787 uni17C5.right by uni178717C5;\012    sub uni1788 uni17B6 by uni178817B6;\012    sub uni1788 uni17C5.right by uni178817C5;\012    sub uni1789 uni17B6 by uni178917B6;\012    sub uni1789 uni17C5.right by uni178917C5;\012    sub uni1789.a uni17B6 by uni178917B6.a;\012    sub uni1789.a uni17C5.right by uni178917C5.a;\012    sub uni178A uni17B6 by uni178A17B6;\012    sub uni178A uni17C5.right by uni178A17C5;\012    sub uni178B uni17B6 by uni178B17B6;\012    sub uni178B uni17C5.right by uni178B17C5;\012    sub uni178C uni17B6 by uni178C17B6;\012    sub uni178C uni17C5.right by uni178C17C5;\012    sub uni178D uni17B6 by uni178D17B6;\012    sub uni178D uni17C5.right by uni178D17C5;\012    sub uni178E uni17B6 by uni178E17B6;\012    sub uni178E uni17C5.right by uni178E17C5;\012    sub uni178F uni17B6 by uni178F17B6;\012    sub uni178F uni17C5.right by uni178F17C5;\012    sub uni1790 uni17B6 by uni179017B6;\012    sub uni1790 uni17C5.right by uni179017C5;\012    sub uni1791 uni17B6 by uni179117B6;\012    sub uni1791 uni17C5.right by uni179117C5;\012    sub uni1792 uni17B6 by uni179217B6;\012    sub uni1792 uni17C5.right by uni179217C5;\012    sub uni1793 uni17B6 by uni179317B6;\012    sub uni1793 uni17C5.right by uni179317C5;\012    sub uni1794.a uni17B6 by uni179417B6;\012    sub uni1794.a uni17C5.right by uni179417C5;\012    sub uni1794.a2 uni17B6 by uni179417B6.high;\012    sub uni1794.a2 uni17C5.right by uni179417C5.high;\012    sub uni1795 uni17B6 by uni179517B6;\012    sub uni1795 uni17C5.right by uni179517C5;\012    sub uni1796 uni17B6 by uni179617B6;\012    sub uni1796 uni17C5.right by uni179617C5;\012    sub uni1797 uni17B6 by uni179717B6;\012    sub uni1797 uni17C5.right by uni179717C5;\012    sub uni1798 uni17B6 by uni179817B6;\012    sub uni1798 uni17C5.right by uni179817C5;\012    sub uni1799 uni17B6 by uni179917B6;\012    sub uni1799 uni17C5.right by uni179917C5;\012    sub uni179A uni17B6 by uni179A17B6;\012    sub uni179A uni17C5.right by uni179A17C5;\012    sub uni179B uni17B6 by uni179B17B6;\012    sub uni179B uni17C5.right by uni179B17C5;\012    sub uni179C uni17B6 by uni179C17B6;\012    sub uni179C uni17C5.right by uni179C17C5;\012    sub uni179D uni17B6 by uni179D17B6;\012    sub uni179D uni17C5.right by uni179D17C5;\012    sub uni179E uni17B6 by uni179E17B6;\012    sub uni179E uni17C5.right by uni179E17C5;\012    sub uni179F uni17B6 by uni179F17B6;\012    sub uni179F uni17C5.right by uni179F17C5;\012    sub uni17A0 uni17B6 by uni17A017B6;\012    sub uni17A0 uni17C5.right by uni17A017C5;\012    sub uni17A1 uni17B6 by uni17A117B6;\012    sub uni17A1 uni17C5.right by uni17A117C5;\012    sub uni17A2 uni17B6 by uni17A217B6;\012    sub uni17A2 uni17C5.right by uni17A217C5;\012    sub uni17D21783 uni17B6 by uni17D2178317B6;\012    sub uni17D21783 uni17C5.right by uni17D2178317C5;\012    sub uni17D21783.low uni17B6 by uni17D2178317B6.low;\012    sub uni17D21783.low uni17C5.right by uni17D2178317C5.low;\012    sub uni17D21788 uni17B6 by uni17D2178817B6;\012    sub uni17D21788 uni17C5.right by uni17D2178817C5;\012    sub uni17D21788.low uni17B6 by uni17D2178817B6.low;\012    sub uni17D21788.low uni17C5.right by uni17D2178817C5.low;\012    sub uni17D2178D uni17B6 by uni17D2178D17B6;\012    sub uni17D2178D uni17C5.right by uni17D2178D17C5;\012    sub uni17D2178D.low uni17B6 by uni17D2178D17B6.low;\012    sub uni17D2178D.low uni17C5.right by uni17D2178D17C5.low;\012    sub uni17D21794 uni17B6 by uni17D2179417B6;\012    sub uni17D21794 uni17C5.right by uni17D2179417C5;\012    sub uni17D21794.low uni17B6 by uni17D2179417B6.low;\012    sub uni17D21794.low uni17C5.right by uni17D2179417C5.low;\012    sub uni17D21799 uni17B6 by uni17D2179917B6;\012    sub uni17D21799 uni17C5.right by uni17D2179917C5;\012    sub uni17D21799.low uni17B6 by uni17D2179917B6.low;\012    sub uni17D21799.low uni17C5.right by uni17D2179917C5.low;\012    sub uni17D2179E uni17B6 by uni17D2179E17B6;\012    sub uni17D2179E uni17C5.right by uni17D2179E17C5;\012    sub uni17D2179E.low uni17B6 by uni17D2179E17B6.low;\012    sub uni17D2179E.low uni17C5.right by uni17D2179E17C5.low;\012    sub uni17D2179F uni17B6 by uni17D2179F17B6;\012    sub uni17D2179F uni17C5.right by uni17D2179F17C5;\012    sub uni17D2179F.low uni17B6 by uni17D2179F17B6.low;\012    sub uni17D2179F.low uni17C5.right by uni17D2179F17C5.low;\012} LigatureSubstitution27;\012";
+name = liga;
 },
 {
 code = "# Automatic Code Start\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGPOS25;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGPOS26;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGPOS27;\012\012# [('khmr', 'dflt')]\012    lookup ChainedContextualGPOS28;\012";
@@ -1484,7 +1405,7 @@ nodes = (
 width = 488;
 }
 );
-note = .notdef;
+note = ".notdef";
 },
 {
 glyphname = NULL;
