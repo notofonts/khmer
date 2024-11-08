@@ -1,195 +1,430 @@
 ## FontBakery report
 
-fontbakery version: 0.9.2
+fontbakery version: 0.12.10
 
-<details><summary><b>[9] NotoSansKhmer[wdth,wght].ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Noto fonts must have an ARTICLE.en_us.html file (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/description/noto_has_article">com.google.fonts/check/description/noto_has_article</a>)</summary><div>
 
 
-* 🔥 **FAIL** This is a Noto font but it lacks an ARTICLE.en_us.html file [code: missing-article]
-</div></details><details><summary>⚠ <b>WARN:</b> Check for codepoints not covered by METADATA subsets. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/metadata/unreachable_subsetting">com.google.fonts/check/metadata/unreachable_subsetting</a>)</summary><div>
 
 
-* ⚠ **WARN** The following codepoints supported by the font are not covered by
-    any subsets defined in the font's metadata file, and will never
-    be served. You can solve this by either manually adding additional
-    subset declarations to METADATA.pb, or by editing the glyphset
-    definitions.
+## Check results
 
- * U+02C7 CARON: try adding one of: tifinagh, yi, canadian-aboriginal
- * U+02C9 MODIFIER LETTER MACRON: not included in any glyphset definition
- * U+02D8 BREVE: try adding one of: yi, canadian-aboriginal
- * U+02D9 DOT ABOVE: try adding one of: yi, canadian-aboriginal
- * U+02DB OGONEK: try adding one of: yi, canadian-aboriginal
- * U+02DD DOUBLE ACUTE ACCENT: not included in any glyphset definition
- * U+0302 COMBINING CIRCUMFLEX ACCENT: try adding one of: math, coptic, tifinagh, cherokee
- * U+0306 COMBINING BREVE: try adding one of: tifinagh, old-permic
- * U+0307 COMBINING DOT ABOVE: try adding one of: tai-le, old-permic, canadian-aboriginal, malayalam, tifinagh, coptic, math, syriac
- * U+030A COMBINING RING ABOVE: try adding syriac
- * U+030B COMBINING DOUBLE ACUTE ACCENT: try adding one of: osage, cherokee
- * U+030C COMBINING CARON: try adding one of: tai-le, cherokee
- * U+0312 COMBINING TURNED COMMA ABOVE: not included in any glyphset definition
- * U+0326 COMBINING COMMA BELOW: not included in any glyphset definition
- * U+0327 COMBINING CEDILLA: not included in any glyphset definition
- * U+0328 COMBINING OGONEK: not included in any glyphset definition
- * U+200D ZERO WIDTH JOINER: try adding one of: mandaic, tai-le, yi, javanese, takri, sinhala, tagbanwa, rejang, tai-viet, phags-pa, khudawadi, saurashtra, gurmukhi, buhid, limbu, psalter-pahlavi, thaana, khojki, tirhuta, hanunoo, brahmi, duployan, hanifi-rohingya, modi, tibetan, gujarati, new-tai-lue, buginese, siddham, nko, tai-tham, dogra, tifinagh, mahajani, manichaean, devanagari, mongolian, batak, tamil, grantha, kharoshthi, pahawh-hmong, tagalog, kaithi, thai, syloti-nagri, warang-citi, lepcha, myanmar, sharada, syriac, gunjala-gondi, kayah-li, cham, meetei-mayek, telugu, newa, bengali, avestan, balinese, chakma, malayalam, kannada, old-hungarian, oriya, sundanese
- * U+2010 HYPHEN: try adding one of: yi, sora-sompeng, kayah-li, cham, kharoshthi, kaithi, coptic, lisu, sundanese, syloti-nagri
 
-Or you can add the above codepoints to one of the subsets supported by the font: `khmer`, `latin`, `latin-ext` [code: unreachable-subsetting]
-</div></details><details><summary>⚠ <b>WARN:</b> Are there caret positions declared for every ligature? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/ligature_carets">com.google.fonts/check/ligature_carets</a>)</summary><div>
 
+<details><summary>[9] NotoSansKhmer[wdth,wght].ttf</summary>
+<div>
+<details>
+    <summary>🔥 <b>FAIL</b> Check for presence of an ARTICLE.en_us.html file <a href="https://fontbakery.readthedocs.io/en/stable/fontbakery/checks/googlefonts.description.html#"></a></summary>
+    <div>
 
-* ⚠ **WARN** This font lacks caret position values for ligature glyphs on its GDEF table. [code: lacks-caret-pos]
-</div></details><details><summary>⚠ <b>WARN:</b> Is there kerning info for non-ligated sequences? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/kerning_for_non_ligated_sequences">com.google.fonts/check/kerning_for_non_ligated_sequences</a>)</summary><div>
 
 
-* ⚠ **WARN** GPOS table lacks kerning info for the following non-ligated sequences:
 
-	- uni1780 + uni17B6
 
-	- uni17B6 + uni17C5.right
 
-	- uni1781 + uni17B6
 
-	- uni1782 + uni17B6
+* 🔥 **FAIL** <p>This is a Noto font but it lacks an ARTICLE.en_us.html file.</p>
+ [code: missing-article]
 
-	- uni1783 + uni17B6
 
-	- uni1784 + uni17B6
 
-	- uni1785 + uni17B6
+* 🔥 **FAIL** <p>This is a Noto font but it lacks a DESCRIPTION.en_us.html file.</p>
+ [code: missing-description]
 
-	- uni1786 + uni17B6
 
-	- uni1787 + uni17B6
 
-	- uni1788 + uni17B6
+</div>
+</details>
 
-	- uni1789 + uni17B6
+<details>
+    <summary>⚠️ <b>WARN</b> Check GDEF mark glyph class doesn't have characters that are not marks. <a href="https://fontbakery.readthedocs.io/en/stable/fontbakery/checks/opentype.gdef.html#"></a></summary>
+    <div>
 
-	- uni1789.a + uni17B6
 
-	- uni178A + uni17B6
 
-	- uni178B + uni17B6
 
-	- uni178C + uni17B6
 
-	- uni178D + uni17B6
 
-	- uni178E + uni17B6
 
-	- uni178F + uni17B6
+* ⚠️ **WARN** <p>The following non-mark characters should not be in the GDEF mark glyph class:
+U+17BE</p>
+ [code: non-mark-chars]
 
-	- uni1790 + uni17B6
 
-	- uni1791 + uni17B6
 
-	- uni1792 + uni17B6
+</div>
+</details>
 
-	- uni1793 + uni17B6
+<details>
+    <summary>⚠️ <b>WARN</b> Does the font contain a soft hyphen? <a href="https://fontbakery.readthedocs.io/en/stable/fontbakery/checks/universal.glyphset.html#"></a></summary>
+    <div>
 
-	- uni1794.a + uni17B6
 
-	- uni1794.a2 + uni17B6
 
-	- uni1795 + uni17B6
 
-	- uni1796 + uni17B6
 
-	- uni1797 + uni17B6
 
-	- uni1798 + uni17B6
 
-	- uni1799 + uni17B6
+* ⚠️ **WARN** <p>This font has a 'Soft Hyphen' character.</p>
+ [code: softhyphen]
 
-	- uni179A + uni17B6
 
-	- uni179B + uni17B6
 
-	- uni179C + uni17B6
+</div>
+</details>
 
-	- uni179D + uni17B6
+<details>
+    <summary>⚠️ <b>WARN</b> Validate size, and resolution of article images, and ensure article page has minimum length and includes visual assets. <a href="https://fontbakery.readthedocs.io/en/stable/fontbakery/checks/googlefonts.article.html#"></a></summary>
+    <div>
 
-	- uni179E + uni17B6
 
-	- uni179F + uni17B6
 
-	- uni17A0 + uni17B6
 
-	- uni17A1 + uni17B6
 
-	- uni17A2 + uni17B6
 
-	- uni17D21783 + uni17B6
 
-	- uni17D21783.low + uni17B6
+* ⚠️ **WARN** <p>Family metadata at fonts/NotoSansKhmer/googlefonts/variable-ttf does not have an article.</p>
+ [code: lacks-article]
 
-	- uni17D21788 + uni17B6
 
-	- uni17D21788.low + uni17B6
 
-	- uni17D2178D + uni17B6
+</div>
+</details>
 
-	- uni17D2178D.low + uni17B6
+<details>
+    <summary>⚠️ <b>WARN</b> Check for codepoints not covered by METADATA subsets. <a href="https://fontbakery.readthedocs.io/en/stable/fontbakery/checks/googlefonts.subsets.html#"></a></summary>
+    <div>
 
-	- uni17D21794 + uni17B6
 
-	- uni17D21794.low + uni17B6
 
-	- uni17D21799 + uni17B6
 
-	- uni17D21799.low + uni17B6
 
-	- uni17D2179E + uni17B6
 
-	- uni17D2179E.low + uni17B6
 
-	- uni17D2179F + uni17B6
+* ⚠️ **WARN** <p>The following codepoints supported by the font are not covered by
+any subsets defined in the font's metadata file, and will never
+be served. You can solve this by either manually adding additional
+subset declarations to METADATA.pb, or by editing the glyphset
+definitions.</p>
+<ul>
+<li>U+02D8 BREVE: try adding one of: canadian-aboriginal, yi</li>
+<li>U+02D9 DOT ABOVE: try adding one of: canadian-aboriginal, yi</li>
+<li>U+02DB OGONEK: try adding one of: canadian-aboriginal, yi</li>
+<li>U+0302 COMBINING CIRCUMFLEX ACCENT: try adding one of: coptic, math, cherokee, tifinagh</li>
+<li>U+0306 COMBINING BREVE: try adding one of: old-permic, tifinagh</li>
+<li>U+0307 COMBINING DOT ABOVE: try adding one of: coptic, malayalam, duployan, todhri, syriac, tai-le, tifinagh, math, hebrew, old-permic, canadian-aboriginal</li>
+<li>U+030A COMBINING RING ABOVE: try adding one of: syriac, duployan</li>
+<li>U+030B COMBINING DOUBLE ACUTE ACCENT: try adding one of: osage, cherokee</li>
+<li>U+030C COMBINING CARON: try adding one of: tai-le, cherokee</li>
+<li>U+0326 COMBINING COMMA BELOW: try adding math</li>
+<li>U+0327 COMBINING CEDILLA: try adding math</li>
+<li>U+0328 COMBINING OGONEK: not included in any glyphset definition</li>
+<li>U+2010 HYPHEN: try adding one of: coptic, armenian, arabic, kayah-li, lisu, cham, kaithi, hebrew, sundanese, yi, kharoshthi, syloti-nagri, sora-sompeng</li>
+</ul>
+<p>Or you can add the above codepoints to one of the subsets supported by the font: <code>khmer</code>, <code>latin</code>, <code>latin-ext</code></p>
+ [code: unreachable-subsetting]
 
-	- uni17D2179F.low + uni17B6 [code: lacks-kern-info]
-</div></details><details><summary>⚠ <b>WARN:</b> Ensure fonts have ScriptLangTags declared on the 'meta' table. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/googlefonts.html#com.google.fonts/check/meta/script_lang_tags">com.google.fonts/check/meta/script_lang_tags</a>)</summary><div>
 
 
-* ⚠ **WARN** This font file does not have a 'meta' table. [code: lacks-meta-table]
-</div></details><details><summary>⚠ <b>WARN:</b> Does the font contain a soft hyphen? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_hyphen">com.google.fonts/check/soft_hyphen</a>)</summary><div>
+</div>
+</details>
 
+<details>
+    <summary>⚠️ <b>WARN</b> Ensure soft_dotted characters lose their dot when combined with marks that replace the dot. <a href="https://fontbakery.readthedocs.io/en/stable/fontbakery/checks/shaping.html#"></a></summary>
+    <div>
 
-* ⚠ **WARN** This font has a 'Soft Hyphen' character. [code: softhyphen]
-</div></details><details><summary>⚠ <b>WARN:</b> Check math signs have the same width. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/math_signs_width">com.google.fonts/check/math_signs_width</a>)</summary><div>
 
 
-* ⚠ **WARN** The most common width is 572 among a set of 6 math glyphs.
-The following math glyphs have a different width, though:
 
-Width = 322:
-minus
- [code: width-outliers]
-</div></details><details><summary>⚠ <b>WARN:</b> Check GDEF mark glyph class doesn't have characters that are not marks. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/gdef.html#com.google.fonts/check/gdef_non_mark_chars">com.google.fonts/check/gdef_non_mark_chars</a>)</summary><div>
 
 
-* ⚠ **WARN** The following non-mark characters should not be in the GDEF mark glyph class:
-	 U+17BE [code: non-mark-chars]
-</div></details><details><summary>⚠ <b>WARN:</b> Ensure soft_dotted characters lose their dot when combined with marks that replace the dot. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Shaping Checks>.html#com.google.fonts/check/soft_dotted">com.google.fonts/check/soft_dotted</a>)</summary><div>
 
+* ⚠️ **WARN** <p>The dot of soft dotted characters used in orthographies <em>must</em> disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌</p>
+<p>The dot of soft dotted characters <em>should</em> disappear in other cases, for example: į̆ į̇ į̈ į̊ į̋ į̦̀ į̦́ į̦̂ į̦̃ į̦̄ į̦̆ į̦̇ į̦̈ į̦̊ į̦̋ į̦̌ į̧̀ į̧́ į̧̂ į̧̃</p>
+<p>Your font fully covers the following languages that require the soft-dotted feature: Dutch (Latn, 31,709,104 speakers), Lithuanian (Latn, 2,357,094 speakers).</p>
+<p>Your font does <em>not</em> cover the following languages that require the soft-dotted feature: Igbo (Latn, 27,823,640 speakers), Ma’di (Latn, 584,000 speakers), Lugbara (Latn, 2,200,000 speakers), Ukrainian (Cyrl, 29,273,587 speakers), Zapotec (Latn, 490,000 speakers), Fur (Latn, 1,230,163 speakers), Heiltsuk (Latn, 300 speakers), Gulay (Latn, 250,478 speakers), Kpelle, Guinea (Latn, 622,000 speakers), Mfumte (Latn, 79,000 speakers), Sar (Latn, 500,000 speakers), Southern Kisi (Latn, 360,000 speakers), Ijo, Southeast (Latn, 2,471,000 speakers), Ejagham (Latn, 120,000 speakers), Koonzime (Latn, 40,000 speakers), Mundani (Latn, 34,000 speakers), Nzakara (Latn, 50,000 speakers), Ekpeye (Latn, 226,000 speakers), Dan (Latn, 1,099,244 speakers), Avokaya (Latn, 100,000 speakers), Dii (Latn, 71,000 speakers), Basaa (Latn, 332,940 speakers), Kaska (Latn, 125 speakers), Navajo (Latn, 166,319 speakers), Yala (Latn, 200,000 speakers), Nateni (Latn, 100,000 speakers), Han (Latn, 6 speakers), Cicipu (Latn, 44,000 speakers), South Central Banda (Latn, 244,000 speakers), Bafut (Latn, 158,146 speakers), Makaa (Latn, 221,000 speakers), Belarusian (Cyrl, 10,064,517 speakers), Kom (Latn, 360,685 speakers), Ebira (Latn, 2,200,000 speakers), Aghem (Latn, 38,843 speakers), Bete-Bendi (Latn, 100,000 speakers), Ngbaka (Latn, 1,020,000 speakers), Mango (Latn, 77,000 speakers), Vute (Latn, 21,000 speakers), Teke-Ebo (Latn, 260,000 speakers).</p>
+ [code: soft-dotted]
 
-* ⚠ **WARN** The dot of soft dotted characters used in orthographies _must_ disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌
 
-The dot of soft dotted characters _should_ disappear in other cases, for example: į̆ į̇ į̈ į̊ į̋ į̒ į̦̀ į̦́ į̦̂ į̦̃ į̦̄ į̦̆ į̦̇ į̦̈ į̦̊ į̦̋ į̦̌ į̦̒ į̧̀ į̧́
 
-Your font fully covers the following languages that require the soft-dotted feature: Lithuanian (Latn, 2,357,094 speakers). 
+</div>
+</details>
 
-Your font does *not* cover the following languages that require the soft-dotted feature: Kom (Latn, 360,685 speakers), Ukrainian (Cyrl, 29,273,587 speakers), Ebira (Latn, 2,200,000 speakers), Nateni (Latn, 100,000 speakers), Belarusian (Cyrl, 10,064,517 speakers), Ejagham (Latn, 120,000 speakers), Basaa (Latn, 332,940 speakers), Dutch (Latn, 31,709,104 speakers), Koonzime (Latn, 40,000 speakers), Igbo (Latn, 27,823,640 speakers), Avokaya (Latn, 100,000 speakers), Aghem (Latn, 38,843 speakers), Lugbara (Latn, 2,200,000 speakers), Navajo (Latn, 166,319 speakers), Ma’di (Latn, 584,000 speakers), Dan (Latn, 1,099,244 speakers). [code: soft-dotted]
-</div></details><br></div></details>
+<details>
+    <summary>⚠️ <b>WARN</b> Is there kerning info for non-ligated sequences? <a href="https://fontbakery.readthedocs.io/en/stable/fontbakery/checks/googlefonts.gpos.html#"></a></summary>
+    <div>
+
+
+
+
+
+
+
+* ⚠️ **WARN** <p>GPOS table lacks kerning info for the following non-ligated sequences:</p>
+<pre><code>- uni1780 + uni17B6
+
+- uni1780 + uni17C5.right
+
+- uni1781 + uni17B6
+
+- uni1781 + uni17C5.right
+
+- uni1782 + uni17B6
+
+- uni1782 + uni17C5.right
+
+- uni1783 + uni17B6
+
+- uni1783 + uni17C5.right
+
+- uni1784 + uni17B6
+
+- uni1784 + uni17C5.right
+
+- uni1785 + uni17B6
+
+- uni1785 + uni17C5.right
+
+- uni1786 + uni17B6
+
+- uni1786 + uni17C5.right
+
+- uni1787 + uni17B6
+
+- uni1787 + uni17C5.right
+
+- uni1788 + uni17B6
+
+- uni1788 + uni17C5.right
+
+- uni1789 + uni17B6
+
+- uni1789 + uni17C5.right
+
+- uni1789.a + uni17B6
+
+- uni1789.a + uni17C5.right
+
+- uni178A + uni17B6
+
+- uni178A + uni17C5.right
+
+- uni178B + uni17B6
+
+- uni178B + uni17C5.right
+
+- uni178C + uni17B6
+
+- uni178C + uni17C5.right
+
+- uni178D + uni17B6
+
+- uni178D + uni17C5.right
+
+- uni178E + uni17B6
+
+- uni178E + uni17C5.right
+
+- uni178F + uni17B6
+
+- uni178F + uni17C5.right
+
+- uni1790 + uni17B6
+
+- uni1790 + uni17C5.right
+
+- uni1791 + uni17B6
+
+- uni1791 + uni17C5.right
+
+- uni1792 + uni17B6
+
+- uni1792 + uni17C5.right
+
+- uni1793 + uni17B6
+
+- uni1793 + uni17C5.right
+
+- uni1794.a + uni17B6
+
+- uni1794.a + uni17C5.right
+
+- uni1794.a2 + uni17B6
+
+- uni1794.a2 + uni17C5.right
+
+- uni1795 + uni17B6
+
+- uni1795 + uni17C5.right
+
+- uni1796 + uni17B6
+
+- uni1796 + uni17C5.right
+
+- uni1797 + uni17B6
+
+- uni1797 + uni17C5.right
+
+- uni1798 + uni17B6
+
+- uni1798 + uni17C5.right
+
+- uni1799 + uni17B6
+
+- uni1799 + uni17C5.right
+
+- uni179A + uni17B6
+
+- uni179A + uni17C5.right
+
+- uni179B + uni17B6
+
+- uni179B + uni17C5.right
+
+- uni179C + uni17B6
+
+- uni179C + uni17C5.right
+
+- uni179D + uni17B6
+
+- uni179D + uni17C5.right
+
+- uni179E + uni17B6
+
+- uni179E + uni17C5.right
+
+- uni179F + uni17B6
+
+- uni179F + uni17C5.right
+
+- uni17A0 + uni17B6
+
+- uni17A0 + uni17C5.right
+
+- uni17A1 + uni17B6
+
+- uni17A1 + uni17C5.right
+
+- uni17A2 + uni17B6
+
+- uni17A2 + uni17C5.right
+
+- uni17D21783 + uni17B6
+
+- uni17D21783 + uni17C5.right
+
+- uni17D21783.low + uni17B6
+
+- uni17D21783.low + uni17C5.right
+
+- uni17D21788 + uni17B6
+
+- uni17D21788 + uni17C5.right
+
+- uni17D21788.low + uni17B6
+
+- uni17D21788.low + uni17C5.right
+
+- uni17D2178D + uni17B6
+
+- uni17D2178D + uni17C5.right
+
+- uni17D2178D.low + uni17B6
+
+- uni17D2178D.low + uni17C5.right
+
+- uni17D21794 + uni17B6
+
+- uni17D21794 + uni17C5.right
+
+- uni17D21794.low + uni17B6
+
+- uni17D21794.low + uni17C5.right
+
+- uni17D21799 + uni17B6
+
+- uni17D21799 + uni17C5.right
+
+- uni17D21799.low + uni17B6
+
+- uni17D21799.low + uni17C5.right
+
+- uni17D2179E + uni17B6
+
+- uni17D2179E + uni17C5.right
+
+- uni17D2179E.low + uni17B6
+
+- uni17D2179E.low + uni17C5.right
+
+- uni17D2179F + uni17B6
+
+- uni17D2179F + uni17C5.right
+
+- uni17D2179F.low + uni17B6
+
+- uni17D2179F.low + uni17C5.right
+</code></pre>
+ [code: lacks-kern-info]
+
+
+
+</div>
+</details>
+
+<details>
+    <summary>⚠️ <b>WARN</b> Are there caret positions declared for every ligature? <a href="https://fontbakery.readthedocs.io/en/stable/fontbakery/checks/googlefonts.gdef.html#"></a></summary>
+    <div>
+
+
+
+
+
+
+
+* ⚠️ **WARN** <p>This font lacks caret position values for ligature glyphs on its GDEF table.</p>
+ [code: lacks-caret-pos]
+
+
+
+</div>
+</details>
+
+<details>
+    <summary>⚠️ <b>WARN</b> Ensure fonts have ScriptLangTags declared on the 'meta' table. <a href="https://fontbakery.readthedocs.io/en/stable/fontbakery/checks/googlefonts.meta.html#"></a></summary>
+    <div>
+
+
+
+
+
+
+
+* ⚠️ **WARN** <p>This font file does not have a 'meta' table.</p>
+ [code: lacks-meta-table]
+
+
+
+</div>
+</details>
+</div>
+</details>
+
+
+
 
 ### Summary
 
-| 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
-|:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 1 | 8 | 96 | 8 | 136 | 0 |
-| 0% | 0% | 3% | 39% | 3% | 55% | 0% |
+| 💥 ERROR | ☠ FATAL | 🔥 FAIL | ⚠️ WARN | ⏩ SKIP | ℹ️ INFO | ✅ PASS | 🔎 DEBUG | 
+| ---|---|---|---|---|---|---|---|
+| 0 | 0 | 1 | 8 | 93 | 7 | 142 | 0 | 
+| 0% | 0% | 0% | 3% | 37% | 3% | 57% | 0% | 
+
+
 
 **Note:** The following loglevels were omitted in this report:
-* **SKIP**
-* **INFO**
-* **PASS**
-* **DEBUG**
+
+
+* SKIP
+* INFO
+* PASS
+* DEBUG

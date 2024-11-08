@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Diffenator3</title>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+		crossorigin="anonymous"></script>
+	<style type="text/css">
+		@font-face {
+      font-family: "Font Before";
+      src: url();
+    }
+
+    @font-face {
+      font-family: "Font After";
+      src: url();
+    }
+
+    .font-before, .font-after {
+      font-variation-settings: "wght" 400, "wdth" 100;
+    }
+
+    .font-before {
+      font-family: "Font Before", "Adobe Notdef";
+    }
+
+    .font-after {
+      font-family: "Font After", "Adobe Notdef";
+    }
+
+	:root {
+	--node-pt-size: 40px;
+	}
+
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    background-color: #b3d4f5 !important;
+    font-family: "Montserrat", sans-serif !important;
+}
+
+.nav-pills .nav-item.show .nav-link, .nav-pills .nav-link.active {
+    background-color: #ced9e4 !important;
+}
+.nav-item {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 2px;
+}
+
+.nav-pills .nav-link{
+    background-color: #9fcaf5 !important;
+}
+h4 {
+    color: #6f7882 !important;
+}
+
+@font-face {
+    font-family: "Adobe NotDef";
+    src: url(https://cdn.jsdelivr.net/gh/adobe-fonts/adobe-notdef/AND-Regular.ttf);
+}
+
+.box-title {
+    width: 100%;
+    font-size: 8pt;
+    font-weight: 700;
+    border-top: 1px solid black;
+    padding-top: 5px;
+    margin-bottom: 10pt;
+    display: block;
+}
+
+.box {
+    margin-bottom: 20pt;
+    width: 100%;
+    float: left;
+}
+
+.box-text {}
+
+#ui-nav {
+    position: fixed;
+    right: 20px;
+    z-index: 100;
+}
+
+#font-toggle {}
+
+.ui-nav-item {
+    display: block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
+    text-align: center;
+    color: white;
+    background-color: black;
+    display: block;
+    font-size: 14pt;
+    padding: 5px;
+    margin: 2px;
+}
+
+/* Stuff needed for the table differ */
+body {
+    font-family: Helvetica;
+}
+
+.node {
+    font-family: courier;
+    cursor: pointer;
+    position: relative;
+    left: 30px;
+    padding: 5px;
+    display: block;
+    border: 1px dashed grey;
+    background-color: #e9e9ee;
+}
+
+.header {
+    font-weight: bold;
+}
+
+.attr-before {
+    color: green;
+    cursor: text;
+}
+
+.attr-after {
+    color: red;
+    cursor: text;
+}
+
+.leaf {
+    font-weight: bold;
+}
+
+.old .cell .new {
+    display: none;
+}
+
+.new .cell .old {
+    display: none;
+}
+
+.both .cell .old {
+    opacity: 0.75;
+    color: red;
+}
+
+.both .cell .new {
+    opacity: 0.75;
+    position: absolute;
+    top: 0;
+    color: green;
+}
+
+.spacer {
+    display: block;
+    float: left;
+    width: 100%;
+}
+
+#ot-panel {
+    max-height: 400px;
+    overflow-y: scroll;
+    background: white;
+    padding: 10px;
+    display: none;
+   }
+
+   .cell{
+    z-index: -100;
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 5pt;
+    margin: 5pt;
+    width: 50pt;
+    font-size: var(--node-pt-size);
+    line-height: calc(var(--node-pt-size) * 1.5);
+  }
+  .cell-word{
+    z-index: -100;
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 5pt;
+    margin: 5pt;
+    font-size: var(--node-pt-size);
+    line-height: calc(var(--node-pt-size) * 1.5);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+  .cell-glyph{
+    z-index: -100;
+    float: left;
+    display: block;
+    text-align: center;
+    border-radius: 5pt;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    padding: 5pt;
+    margin: 5pt;
+    width: calc(var(--node-pt-size) * 2);
+    min-height: calc(var(--node-pt-size) * 2);
+    font-size: var(--node-pt-size);
+  }
+  .cell-glyph.font-before, .cell-word.font-before {
+    background: #eff6f2;
+  }
+  .cell-glyph.font-after, .cell-word.font-after {
+    background: #f7f4f4;
+  }
+
+  .cell-glyph:hover {
+    box-shadow: none;
+    background: #f0f0f5;
+  }
+  .cat-strings .cell {
+    clear: both;
+    position: static;
+    float: none;
+    text-align: left;
+  }
+  .codepoint {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 10pt;
+    line-height: 10pt;
+  }
+  .box-title {
+    clear: both;
+  }
+  .node.closed::before {
+    content: "+";
+    margin-right: 5pt;
+  }
+  .node.open::before {
+    content: "-";
+    margin-right: 5pt;
+  }
+
+  .tooltip pre {
+    background-color: #6f7882;
+    padding: 5px;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  .tooltip {
+    line-height: 1em;
+  }
+  .tooltip-inner {
+    max-width: 300px;
+  }
+
+  h1,h2,h3,h4,h5 {
+    clear: both;
+  }
+
+  #locationnav li {
+    white-space: wrap;
+  }
+
+  #userdefined div { width: 100%; }
+  
+/* The following rules are used in the WASM version, not in the CLI version.
+   But we keep them here so we can share them between the two versions. */
+
+   .modal-dialog {
+    max-width: 100% !important;
+    margin: 0 !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    display: flex;
+  }
+
+  .fontdrop {
+    padding: 30px;
+    border-radius: 20px;
+    outline: 3px dashed #ffffffff;
+    outline-offset: -20px;
+  }
+
+  #fontbefore {
+    background-color: #ddffdddd;
+  }
+
+  #fontafter {
+    background-color: #ffdddddd;
+  }
+
+  .dragging {
+    background-image: linear-gradient(rgb(0 0 0/5%) 0 0);
+    outline: 5px dashed #ffffffff;
+  }
+
+  #diffkerns {
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+		</style>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+	integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+		<div id="ui-nav">
+		  <div class="ui-nav-item" id="fonttoggle">Old</div>
+		  <div class="ui-nav-item" id="fontanimate">Animate</div>
+		  <div id="axes">
+		  </div>
+		</div>
+	
+	<div class="row">
+		<div class="col-2">
+			<ul class="nav nav-pills" id="locationnav">
+			</ul>
+		</div>
+		<div class="col-9 mt-3">
+			<div id="title"></div>
+			<div id="cmapdiff"> </div>
+			<div id="main"></div>
+			<div id="userdefined">
+				<h4>User defined sample text</h4>
+				<div contenteditable="true" class="font-before cell-word">
+					You can type your own text here to see it previewed in the fonts.
+				</div>
+				<div style="clear: both"></div>
+			</div>
+			<div id="diffkerns"> </div>
+			<div id="difftable"> </div>
+		</div>
+	</div>
+	<script type="module">
+		function renderTableDiff(node, toplevel) {
+  var wrapper = $("<div> </div>");
+  if (!node) {
+    return wrapper;
+  }
+  if (Array.isArray(node) && node.length == 2) {
+    var before = $("<span/>");
+    before.addClass("attr-before");
+    before.html(" " + node[0] + " ");
+    var after = $("<span/>");
+    after.addClass("attr-after");
+    after.append(renderTableDiff(node[1], true).children());
+    wrapper.append(before);
+    wrapper.append(after);
+    return wrapper;
+  }
+  if (node.constructor != Object) {
+    var thing = $("<span/>");
+    thing.html(node);
+    wrapper.append(thing);
+    return wrapper;
+  }
+  for (const [key, value] of Object.entries(node)) {
+    var display = $("<div/>");
+    display.addClass("node");
+    if (!toplevel) {
+      display.hide();
+    }
+    display.append(key);
+    display.append(renderTableDiff(value, false).children());
+    if (display.children(".node").length > 0) {
+      display.addClass("closed");
+    }
+    wrapper.append(display);
+  }
+  return wrapper;
+}
+
+function addAGlyph(glyph, where) {
+  let title = "";
+  if (glyph.name) {
+    title = "name: " + glyph.name;
+  }
+  let cp =
+    "<br>U+" +
+    glyph.string.codePointAt(0).toString(16).padStart(4, "0").toUpperCase();
+  where.append(`
+        <div class="cell-glyph font-before">
+        <div data-toggle="tooltip" data-html="true" data-title="${glyph.differing_pixels} pixels"> ${glyph.string}
+        <div class="codepoint" data-toggle="tooltip" data-html="true" data-title="${title}">
+		${cp}
+        </div>
+        </div>
+    `);
+}
+
+function addAWord(diff, where) {
+  if (!diff.buffer_b) {
+    diff.buffer_b = diff.buffer_a;
+  }
+  where.append(`
+		<div class="cell-word font-before">
+		<span data-toggle="tooltip" data-html="true" data-title="Before: <pre>${diff.buffer_a}</pre>After: <pre>${diff.buffer_b}</pre><br>difference: ${diff.differing_pixels} pixels">
+		${diff.word}
+		</span>
+		</div>
+	`);
+}
+
+function diffTables(report) {
+  $("#difftable").empty();
+  $("#difftable").append(`<h4 class="mt-2 box-title">Table-level details</h4>`);
+  $("#difftable").append(
+    renderTableDiff({ tables: report["tables"] }, true).children()
+  );
+  $("#difftable .node").on("click", function (e) {
+    $(this).toggleClass("closed open");
+    $(this).children(".node").toggle();
+    e.stopPropagation();
+  });
+}
+function diffKerns(report) {
+  $("#diffkerns").empty();
+  $("#diffkerns").append(`<h4 class="mt-2">Modified Kerns</h4>`);
+  $("#diffkerns").append(
+    `<table class="table table-striped" id="diffkerns"><tr><th>Pair</th><th>Old</old><th>New</th></table>`
+  );
+  for (let [pair, value] of Object.entries(report["kerns"])) {
+    if (pair == "error") {
+      $("#diffkerns").append(`<p class="text-danger">Error: ${value}</p>`);
+      continue;
+    } else {
+      let row = $("<tr>");
+      row.append(`<td>${pair}</td>`);
+      row.append(`<td>${serializeKernBefore(value)}</td>`);
+      row.append(`<td>${serializeKernAfter(value)}</td>`);
+      $("#diffkerns table").append(row);
+    }
+  }
+}
+
+function serializeKernBefore(kern) {
+  if (Array.isArray(kern)) {
+    return serializeKern(kern[0], -1);
+  }
+  return serializeKern(kern, 0);
+}
+
+function serializeKernAfter(kern) {
+  if (Array.isArray(kern)) {
+    return serializeKern(kern[1], -1);
+  }
+  return serializeKern(kern, 1);
+}
+
+function serializeKern(kern, index) {
+  let string = "";
+  if (kern === null || kern === undefined) {
+    return "(null)";
+  }
+  if (kern.x) {
+    string += serializeKernValue(kern.x, index);
+  } else if (kern.y) {
+    string = "0";
+  }
+
+  if (kern.y) {
+    string += "," + serializeKernValue(kern.y, index);
+  }
+  if (!kern.x_placement && !kern.y_placement) {
+    return string;
+  }
+  string += "@";
+  if (kern.x_placement) {
+    string += serializeKernValue(kern.x_placement, index);
+  } else if (kern.y_placement) {
+    string += "0";
+  }
+  if (kern.y_placement) {
+    string += "," + serializeKernValue(kern.y_placement, index);
+  }
+  return string;
+}
+
+function serializeKernValue(kern, index) {
+  if (typeof kern == "number") {
+    return kern;
+  }
+  let string = "(";
+  let verybig = Object.entries(kern).length > 5;
+  for (let [key, value] of Object.entries(kern)) {
+    if (key == "default") {
+      string += value[index] + " ";
+    } else {
+      string += value[index] + "@" + key + " ";
+    }
+    if (verybig) {
+      string += "<br>";
+    }
+  }
+  return string.trim() + ")";
+}
+
+function cmapDiff(report) {
+  if (report.cmap_diff && (report.cmap_diff.new || report.cmap_diff.missing)) {
+    $("#cmapdiff").append(
+      `<h4 class="mt-2">Added and Removed Encoded Glyphs</h4>`
+    );
+    if (report["cmap_diff"]["new"]) {
+      $("#cmapdiff").append(`<h4 class="box-title">Added Glyphs</h4>`);
+      let added = $("<div>");
+      for (let glyph of report["cmap_diff"]["new"]) {
+        addAGlyph(glyph, added);
+      }
+      $("#cmapdiff").append(added);
+    }
+
+    if (report["cmap_diff"]["missing"]) {
+      $("#cmapdiff").append(`<h4 class="box-title">Removed Glyphs</h4>`);
+      let missing = $("<div>");
+      for (let glyph of report["cmap_diff"]["missing"]) {
+        addAGlyph(glyph, missing);
+      }
+      $("#cmapdiff").append(missing);
+    }
+  } else {
+    $("#cmapdiff").append(`<p>No changes to encoded glyphs</p>`);
+  }
+}
+
+function setupAnimation() {
+  $("#fonttoggle").click(function () {
+    if ($(this).text() == "Old") {
+      $(this).text("New");
+      $(".font-before").removeClass("font-before").addClass("font-after");
+    } else {
+      $(this).text("Old");
+      $(".font-after").removeClass("font-after").addClass("font-before");
+    }
+  });
+
+  let animationHandle;
+  function animate() {
+    $("#fonttoggle").click();
+    animationHandle = setTimeout(animate, 1000);
+  }
+  $("#fontanimate").click(function () {
+    if ($(this).text() == "Animate") {
+      $(this).text("Stop");
+      animate();
+    } else {
+      $(this).text("Animate");
+      clearTimeout(animationHandle);
+    }
+  });
+}
+
+export {
+  renderTableDiff,
+  addAGlyph,
+  addAWord,
+  cmapDiff,
+  diffTables,
+  diffKerns,
+  setupAnimation,
+};
+
+	var report = {"tables":{"GPOS":{"feature_list":{"abvm":{"12":[19,39],"13":[20,40],"14":[21,41],"15":[22,42],"16":[null,43],"17":[null,44],"18":[null,45],"19":[null,46],"20":[null,47],"21":[null,19],"22":[null,20],"23":[null,21],"24":[null,22]},"mark":{"0":[39,48],"1":[40,49],"2":[41,50],"3":[null,51]}},"lookup_list":{"27":{"0":{"marks":{"anchor_1":[{"uni17BB":{"x":-197,"y":16},"uni17BB.b":{"x":-300,"y":16},"uni17BC":{"x":-197,"y":16},"uni17BC.b":{"x":-264,"y":16},"uni17BD":{"x":-197,"y":16},"uni17BD.b":{"x":-295,"y":16},"uni17D21780":{"x":-319,"y":16},"uni17D21781":{"x":-318,"y":16},"uni17D21782":{"x":-318,"y":16},"uni17D21784":{"x":-324,"y":16},"uni17D21785":{"x":-318,"y":16},"uni17D21786":{"x":-317,"y":16},"uni17D21787":{"x":-326,"y":16},"uni17D21789":{"x":-321,"y":16},"uni17D2178A":{"x":-317,"y":16},"uni17D2178A.r":{"x":-319,"y":16},"uni17D2178B":{"x":-301,"y":16},"uni17D2178C":{"x":-323,"y":16},"uni17D2178E":{"x":-690,"y":10},"uni17D2178E.alt":{"x":-690,"y":10},"uni17D2178F":{"x":-317,"y":16},"uni17D2178F.r":{"x":-317,"y":16},"uni17D21790":{"x":-312,"y":16},"uni17D21791":{"x":-325,"y":16},"uni17D21792":{"x":-321,"y":16},"uni17D21793":{"x":-307,"y":16},"uni17D21795":{"x":-318,"y":16},"uni17D21796":{"x":-320,"y":16},"uni17D21797":{"x":-339,"y":16},"uni17D21797.r":{"x":-339,"y":16},"uni17D21798":{"x":-297,"y":16},"uni17D21798.r":{"x":-345,"y":16},"uni17D2179B":{"x":-334,"y":16},"uni17D2179C":{"x":-320,"y":16},"uni17D2179D":{"x":-318,"y":16},"uni17D217A0":{"x":-323,"y":16},"uni17D217A2":{"x":-332,"y":16},"uni17D217A7":{"x":-320,"y":16},"uni17D217AB":{"x":-327,"y":16},"uni17D217AC":{"x":-328,"y":16},"uni17D217AF":{"x":-284,"y":16}},null],"anchor_2":[{"uni17D21789.a":{"x":-526,"y":16}},null]},"bases":{"uni1780":{"anchor_1":[{"x":284,"y":0},null]},"uni1781":{"anchor_1":[{"x":291,"y":0},null]},"uni1782":{"anchor_1":[{"x":284,"y":0},null]},"uni1783":{"anchor_1":[{"x":601,"y":0},null]},"uni1784":{"anchor_1":[{"x":320,"y":0},null]},"uni1785":{"anchor_1":[{"x":289,"y":0},null]},"uni1786":{"anchor_1":[{"x":289,"y":0},null]},"uni1787":{"anchor_1":[{"x":294,"y":0},null]},"uni1788":{"anchor_1":[{"x":904,"y":0},null]},"uni1789":{"anchor_1":[{"x":613,"y":-274},null]},"uni1789.a":{"anchor_1":[{"x":613,"y":0},null],"anchor_2":[{"x":450,"y":0},null]},"uni178A":{"anchor_1":[{"x":293,"y":0},null]},"uni178B":{"anchor_1":[{"x":308,"y":0},null]},"uni178C":{"anchor_1":[{"x":310,"y":-49},null]},"uni178D":{"anchor_1":[{"x":564,"y":0},null]},"uni178E":{"anchor_1":[{"x":594,"y":0},null]},"uni178F":{"anchor_1":[{"x":283,"y":0},null]},"uni1790":{"anchor_1":[{"x":289,"y":0},null]},"uni1791":{"anchor_1":[{"x":235,"y":0},null]},"uni1792":{"anchor_1":[{"x":291,"y":0},null]},"uni1793":{"anchor_1":[{"x":294,"y":0},null]},"uni1794":{"anchor_1":[{"x":296,"y":0},null]},"uni1794.a":{"anchor_1":[{"x":288,"y":-40},null]},"uni1794.a2":{"anchor_1":[{"x":288,"y":-40},null]},"uni1795":{"anchor_1":[{"x":299,"y":0},null]},"uni1796":{"anchor_1":[{"x":308,"y":0},null]},"uni1797":{"anchor_1":[{"x":313,"y":0},null]},"uni1798":{"anchor_1":[{"x":296,"y":0},null]},"uni1799":{"anchor_1":[{"x":629,"y":0},null]},"uni179A":{"anchor_1":[{"x":192,"y":0},null]},"uni179B":{"anchor_1":[{"x":615,"y":0},null]},"uni179C":{"anchor_1":[{"x":144,"y":0},null]},"uni179D":{"anchor_1":[{"x":280,"y":0},null]},"uni179E":{"anchor_1":[{"x":319,"y":0},null]},"uni179F":{"anchor_1":[{"x":608,"y":0},null]},"uni17A0":{"anchor_1":[{"x":598,"y":0},null]},"uni17A1":{"anchor_1":[{"x":479,"y":-318},null]},"uni17A2":{"anchor_1":[{"x":324,"y":0},null]},"uni17A3":{"anchor_1":[{"x":324,"y":0},null]},"uni17A4":{"anchor_1":[{"x":324,"y":0},null]},"uni17A7":{"anchor_1":[{"x":326,"y":-49},null]},"uni17A8":{"anchor_1":[{"x":341,"y":-49},null]},"uni17A9":{"anchor_1":[{"x":341,"y":-49},null]},"uni17AA":{"anchor_1":[{"x":341,"y":-49},null]},"uni17B1":{"anchor_1":[{"x":330,"y":-49},null]},"uni17B3":{"anchor_1":[{"x":341,"y":-49},null]},"uni17D21783":{"anchor_1":[{"x":-47,"y":-296},null]},"uni17D21783.low":{"anchor_1":[{"x":-59,"y":-552},null]},"uni17D21788":{"anchor_1":[{"x":-27,"y":-317},null]},"uni17D21788.low":{"anchor_1":[{"x":-27,"y":-548},null]},"uni17D21794":{"anchor_1":[{"x":14,"y":-320},null]},"uni17D21794.low":{"anchor_1":[{"x":14,"y":-571},null]},"uni17D21799":{"anchor_1":[{"x":10,"y":-317},null]},"uni17D21799.low":{"anchor_1":[{"x":11,"y":-551},null]},"uni17D2179E":{"anchor_1":[{"x":14,"y":-320},null]},"uni17D2179E.low":{"anchor_1":[{"x":14,"y":-571},null]},"uni17D2179F":{"anchor_1":[{"x":23,"y":-318},null]},"uni17D2179F.low":{"anchor_1":[{"x":21,"y":-610},null]},"uni17D217A1":{"anchor_1":[{"x":23,"y":-318},null]}}}},"28":{"0":{"marks":{"anchor_1":[{"uni17D21789.a":{"x":-526,"y":16}},null],"anchor_2":[{"uni17D2178E":{"x":-689,"y":10}},null]},"bases":{"uni1789":[{"anchor_1":{"x":450,"y":0}},null],"uni1789.a":[{"anchor_1":{"x":450,"y":0}},null],"uni179F":[{"anchor_2":{"x":448,"y":0}},null]}}},"29":{"0":{"marks":{"anchor_0":{"uni17BB":[{"x":-197,"y":16},null],"uni17BB.b":[{"x":-300,"y":16},null],"uni17BC":[{"x":-197,"y":16},null],"uni17BC.b":[{"x":-264,"y":16},null],"uni17BD":[{"x":-197,"y":16},null],"uni17BD.b":[{"x":-295,"y":16},null],"uni17D21780":[{"x":-319,"y":16},null],"uni17D21781":[{"x":-318,"y":16},null],"uni17D21782":[{"x":-318,"y":16},null],"uni17D21784":[{"x":-324,"y":16},null],"uni17D21785":[{"x":-318,"y":16},null],"uni17D21786":[{"x":-317,"y":16},null],"uni17D21787":[{"x":-326,"y":16},null],"uni17D21789":[{"x":-321,"y":16},null],"uni17D2178A":[{"x":-317,"y":16},null],"uni17D2178A.r":[{"x":-319,"y":16},null],"uni17D2178B":[{"x":-301,"y":16},null],"uni17D2178C":[{"x":-323,"y":16},null],"uni17D2178E":[{"x":-690,"y":10},null],"uni17D2178E.alt":[{"x":-690,"y":10},null],"uni17D2178F":[{"x":-317,"y":16},null],"uni17D2178F.r":[{"x":-317,"y":16},null],"uni17D21790":[{"x":-312,"y":16},null],"uni17D21791":[{"x":-325,"y":16},null],"uni17D21792":[{"x":-321,"y":16},null],"uni17D21793":[{"x":-307,"y":16},null],"uni17D21795":[{"x":-318,"y":16},null],"uni17D21796":[{"x":-320,"y":16},null],"uni17D21797":[{"x":-339,"y":16},null],"uni17D21797.r":[{"x":-339,"y":16},null],"uni17D21798":[{"x":-297,"y":16},null],"uni17D21798.r":[{"x":-345,"y":16},null],"uni17D2179B":[{"x":-334,"y":16},null],"uni17D2179C":[{"x":-320,"y":16},null],"uni17D2179D":[{"x":-318,"y":16},null],"uni17D217A0":[{"x":-323,"y":16},null],"uni17D217A2":[{"x":-332,"y":16},null],"uni17D217A7":[{"x":-320,"y":16},null],"uni17D217AB":[{"x":-327,"y":16},null],"uni17D217AC":[{"x":-328,"y":16},null],"uni17D217AF":[{"x":-284,"y":16},null],"uni17C6":[null,{"x":-353,"y":854}],"uni17C6.r":[null,{"x":-353,"y":854}]},"anchor_1":[{"uni17C6":{"x":-353,"y":854},"uni17C6.r":{"x":-353,"y":854}},null]},"bases":{"uni1780":[{"anchor_0":{"x":284,"y":0}},null],"uni1781":[{"anchor_0":{"x":291,"y":0}},null],"uni1782":[{"anchor_0":{"x":284,"y":0}},null],"uni1783":[{"anchor_0":{"x":601,"y":0}},null],"uni1784":[{"anchor_0":{"x":320,"y":0}},null],"uni1785":[{"anchor_0":{"x":289,"y":0}},null],"uni1786":[{"anchor_0":{"x":289,"y":0}},null],"uni1787":[{"anchor_0":{"x":294,"y":0}},null],"uni1788":[{"anchor_0":{"x":904,"y":0}},null],"uni1789":[{"anchor_0":{"x":613,"y":-274}},null],"uni1789.a":[{"anchor_0":{"x":613,"y":0}},null],"uni178A":[{"anchor_0":{"x":293,"y":0}},null],"uni178B":[{"anchor_0":{"x":308,"y":0}},null],"uni178C":[{"anchor_0":{"x":310,"y":-49}},null],"uni178D":[{"anchor_0":{"x":564,"y":0}},null],"uni178E":[{"anchor_0":{"x":594,"y":0}},null],"uni178F":[{"anchor_0":{"x":283,"y":0}},null],"uni1790":[{"anchor_0":{"x":289,"y":0}},null],"uni1791":[{"anchor_0":{"x":235,"y":0}},null],"uni1792":[{"anchor_0":{"x":291,"y":0}},null],"uni1793":[{"anchor_0":{"x":294,"y":0}},null],"uni1794":[{"anchor_0":{"x":296,"y":0}},null],"uni1794.a":[{"anchor_0":{"x":288,"y":-40}},null],"uni1794.a2":[{"anchor_0":{"x":288,"y":-40}},null],"uni1795":[{"anchor_0":{"x":299,"y":0}},null],"uni1796":[{"anchor_0":{"x":308,"y":0}},null],"uni1797":[{"anchor_0":{"x":313,"y":0}},null],"uni1798":[{"anchor_0":{"x":296,"y":0}},null],"uni1799":[{"anchor_0":{"x":629,"y":0}},null],"uni179A":[{"anchor_0":{"x":192,"y":0}},null],"uni179B":[{"anchor_0":{"x":615,"y":0}},null],"uni179C":[{"anchor_0":{"x":144,"y":0}},null],"uni179D":[{"anchor_0":{"x":280,"y":0}},null],"uni179E":[{"anchor_0":{"x":319,"y":0}},null],"uni179F":[{"anchor_0":{"x":608,"y":0}},null],"uni17A0":[{"anchor_0":{"x":598,"y":0}},null],"uni17A1":[{"anchor_0":{"x":479,"y":-318}},null],"uni17A2":[{"anchor_0":{"x":324,"y":0}},null],"uni17A3":[{"anchor_0":{"x":324,"y":0}},null],"uni17A4":[{"anchor_0":{"x":324,"y":0}},null],"uni17A7":[{"anchor_0":{"x":326,"y":-49}},null],"uni17A8":[{"anchor_0":{"x":341,"y":-49}},null],"uni17A9":[{"anchor_0":{"x":341,"y":-49}},null],"uni17AA":[{"anchor_0":{"x":341,"y":-49}},null],"uni17AB":[{"anchor_0":{"x":296,"y":0}},null],"uni17AC":[{"anchor_0":{"x":296,"y":0}},null],"uni17AD":[{"anchor_0":{"x":308,"y":0}},null],"uni17AE":[{"anchor_0":{"x":308,"y":0}},null],"uni17B0":[{"anchor_0":{"x":324,"y":-251}},null],"uni17B1":[{"anchor_0":{"x":330,"y":-49}},null],"uni17B3":[{"anchor_0":{"x":341,"y":-49}},null],"uni17B6":{"anchor_1":[{"x":15,"y":740},null],"anchor_0":[null,{"x":15,"y":740}]},"uni17BF":[{"anchor_0":{"x":633,"y":45}},null],"uni17C0":[{"anchor_0":{"x":608,"y":45}},null],"uni17C4":[{"anchor_0":{"x":589,"y":45}},null],"uni17C5":[{"anchor_0":{"x":589,"y":45}},null],"uni17D8":[{"anchor_0":{"x":1251,"y":0}},null],"uni17DB":[{"anchor_0":{"x":192,"y":0}},null],"uni17D21783":[{"anchor_0":{"x":-47,"y":-296}},null],"uni17D21783.low":[{"anchor_0":{"x":-59,"y":-552}},null],"uni17D21788":[{"anchor_0":{"x":-27,"y":-317}},null],"uni17D21788.low":[{"anchor_0":{"x":-27,"y":-548}},null],"uni17D2178D":[{"anchor_0":{"x":41,"y":-317}},null],"uni17D2178D.low":[{"anchor_0":{"x":-16,"y":-582}},null],"uni17D21794":[{"anchor_0":{"x":14,"y":-320}},null],"uni17D21794.low":[{"anchor_0":{"x":14,"y":-571}},null],"uni17D21799":[{"anchor_0":{"x":10,"y":-317}},null],"uni17D21799.low":[{"anchor_0":{"x":11,"y":-551}},null],"uni17D2179E":[{"anchor_0":{"x":14,"y":-320}},null],"uni17D2179E.low":[{"anchor_0":{"x":14,"y":-571}},null],"uni17D2179F":[{"anchor_0":{"x":23,"y":-318}},null],"uni17D2179F.low":[{"anchor_0":{"x":21,"y":-610}},null],"uni17D217A1":[{"anchor_0":{"x":23,"y":-318}},null]}}},"30":{"0":{"marks":{"anchor_0":{"uni17B7":[{"x":-353,"y":854},null],"uni17B7.r":[{"x":-390,"y":858},null],"uni17B717CD":[{"x":-353,"y":854},null],"uni17B717CD.r":[{"x":-390,"y":857},null],"uni17B8":[{"x":-353,"y":854},null],"uni17B8.r":[{"x":-390,"y":859},null],"uni17B9":[{"x":-353,"y":854},null],"uni17B9.r":[{"x":-390,"y":859},null],"uni17BA":[{"x":-353,"y":854},null],"uni17BA.r":[{"x":-390,"y":858},null],"uni17BE":[{"x":543,"y":751},null],"uni17C6":[{"x":-353,"y":854},null],"uni17C6.r":[{"x":-353,"y":854},null],"uni17C9":[{"x":-353,"y":854},null],"uni17C9.r":[{"x":-353,"y":854},null],"uni17CA":[{"x":-353,"y":854},null],"uni17CA.r":[{"x":-353,"y":783},null],"uni17CA.b":[{"x":-353,"y":823},null],"uni17CB":[{"x":-353,"y":826},null],"uni17CC":[{"x":-353,"y":865},null],"uni17CC.r":[{"x":-353,"y":865},null],"uni17CD":[{"x":-353,"y":791},null],"uni17CD.r":[{"x":-353,"y":791},null],"uni17CE":[{"x":-353,"y":854},null],"uni17CF":[{"x":-353,"y":854},null],"uni17CF.r":[{"x":-353,"y":854},null],"uni17D0":[{"x":-353,"y":854},null],"uni17D1":[{"x":-353,"y":854},null],"uni17D1.r":[{"x":-353,"y":854},null],"uni17D3":[{"x":-353,"y":854},null],"uni17D3.r":[{"x":-353,"y":854},null],"uni17DD":[{"x":-297,"y":854},null],"uni17DD.r":[{"x":-297,"y":854},null],"uni17BB":[null,{"x":-197,"y":16}],"uni17BB.b":[null,{"x":-300,"y":16}],"uni17BC":[null,{"x":-197,"y":16}],"uni17BC.b":[null,{"x":-264,"y":16}],"uni17BD":[null,{"x":-197,"y":16}],"uni17BD.b":[null,{"x":-295,"y":16}],"uni17D21780":[null,{"x":-319,"y":16}],"uni17D21781":[null,{"x":-318,"y":16}],"uni17D21782":[null,{"x":-318,"y":16}],"uni17D21784":[null,{"x":-324,"y":16}],"uni17D21785":[null,{"x":-318,"y":16}],"uni17D21786":[null,{"x":-317,"y":16}],"uni17D21787":[null,{"x":-326,"y":16}],"uni17D21789":[null,{"x":-321,"y":16}],"uni17D2178A":[null,{"x":-317,"y":16}],"uni17D2178A.r":[null,{"x":-319,"y":16}],"uni17D2178B":[null,{"x":-301,"y":16}],"uni17D2178C":[null,{"x":-323,"y":16}],"uni17D2178E":[null,{"x":-690,"y":10}],"uni17D2178E.alt":[null,{"x":-690,"y":10}],"uni17D2178F":[null,{"x":-317,"y":16}],"uni17D2178F.r":[null,{"x":-317,"y":16}],"uni17D21790":[null,{"x":-312,"y":16}],"uni17D21791":[null,{"x":-325,"y":16}],"uni17D21792":[null,{"x":-321,"y":16}],"uni17D21793":[null,{"x":-307,"y":16}],"uni17D21795":[null,{"x":-318,"y":16}],"uni17D21796":[null,{"x":-320,"y":16}],"uni17D21797":[null,{"x":-339,"y":16}],"uni17D21797.r":[null,{"x":-339,"y":16}],"uni17D21798":[null,{"x":-297,"y":16}],"uni17D21798.r":[null,{"x":-345,"y":16}],"uni17D2179B":[null,{"x":-334,"y":16}],"uni17D2179C":[null,{"x":-320,"y":16}],"uni17D2179D":[null,{"x":-318,"y":16}],"uni17D217A0":[null,{"x":-323,"y":16}],"uni17D217A2":[null,{"x":-332,"y":16}],"uni17D217A7":[null,{"x":-320,"y":16}],"uni17D217AB":[null,{"x":-327,"y":16}],"uni17D217AC":[null,{"x":-328,"y":16}],"uni17D217AF":[null,{"x":-284,"y":16}]},"anchor_1":[{"uni17D2178E":{"x":-689,"y":10}},null]},"bases":{"uni1780":{"anchor_0":{"x":[286,284],"y":[760,0]}},"uni1781":{"anchor_0":{"y":[760,0]}},"uni1782":{"anchor_0":{"x":[286,284],"y":[760,0]}},"uni1783":{"anchor_0":{"x":[595,601],"y":[760,0]}},"uni1784":{"anchor_0":{"x":[301,320],"y":[840,0]}},"uni1785":{"anchor_0":{"y":[760,0]}},"uni1786":{"anchor_0":{"y":[760,0]}},"uni1787":{"anchor_0":{"y":[860,0]}},"uni1788":{"anchor_0":{"x":[881,904],"y":[760,0]}},"uni1789":{"anchor_0":{"x":[616,613],"y":[760,-274]}},"uni1789.a":{"anchor_0":{"x":[607,613],"y":[760,0]}},"uni178A":{"anchor_0":{"y":[840,0]}},"uni178B":{"anchor_0":{"y":[850,0]}},"uni178C":{"anchor_0":{"x":[301,310],"y":[760,-49]}},"uni178D":{"anchor_0":{"x":[589,564],"y":[760,0]}},"uni178E":{"anchor_0":{"y":[760,0]}},"uni178F":{"anchor_0":{"x":[285,283],"y":[760,0]}},"uni1790":{"anchor_0":{"x":[284,289],"y":[860,0]}},"uni1791":{"anchor_0":{"x":[254,235],"y":[760,0]}},"uni1792":{"anchor_0":{"y":[760,0]}},"uni1793":{"anchor_0":{"y":[760,0]}},"uni1794":{"anchor_0":{"y":[760,0]}},"uni1794.a":{"anchor_0":{"x":[299,288],"y":[760,-40]}},"uni1794.a2":{"anchor_0":{"x":[299,288],"y":[760,-40]}},"uni1795":{"anchor_0":{"x":[286,299],"y":[860,0]}},"uni1796":{"anchor_0":{"x":[285,308],"y":[760,0]}},"uni1797":{"anchor_0":{"x":[308,313],"y":[760,0]}},"uni1798":{"anchor_0":{"y":[760,0]}},"uni1799":{"anchor_0":{"x":[624,629],"y":[760,0]}},"uni179A":{"anchor_0":{"x":[181,192],"y":[760,0]}},"uni179B":{"anchor_0":{"y":[760,0]}},"uni179C":{"anchor_0":{"y":[840,0]}},"uni179D":{"anchor_0":{"x":[279,280],"y":[760,0]}},"uni179E":{"anchor_0":{"x":[312,319],"y":[760,0]}},"uni179F":{"anchor_0":{"x":[594,608],"y":[760,0]},"anchor_1":[{"x":448,"y":0},null]},"uni17A0":{"anchor_0":{"x":[601,598],"y":[760,0]}},"uni17A1":{"anchor_0":{"x":[474,479],"y":[760,-318]}},"uni17A2":{"anchor_0":{"x":[331,324],"y":[760,0]}},"uni17A3":{"anchor_0":{"x":[331,324],"y":[760,0]}},"uni17A4":{"anchor_0":{"x":[331,324],"y":[760,0]}},"uni17A7":{"anchor_0":{"y":[760,-49]}},"uni17A8":{"anchor_0":{"x":[329,341],"y":[940,-49]}},"uni17A9":{"anchor_0":{"x":[330,341],"y":[760,-49]}},"uni17AA":{"anchor_0":{"x":[335,341],"y":[1058,-49]}},"uni17AB":[{"anchor_0":{"x":332,"y":760}},null],"uni17AC":[{"anchor_0":{"x":332,"y":760}},null],"uni17AD":[{"anchor_0":{"x":285,"y":760}},null],"uni17AE":[{"anchor_0":{"x":285,"y":760}},null],"uni17B0":[{"anchor_0":{"x":285,"y":760}},null],"uni17B1":{"anchor_0":{"x":[308,330],"y":[993,-49]}},"uni17B3":{"anchor_0":{"x":[300,341],"y":[1069,-49]}},"uni17BF":[{"anchor_0":{"x":933,"y":1220}},null],"uni17BF.right1":[{"anchor_0":{"x":-30,"y":1220}},null],"uni17BF.right2":[{"anchor_0":{"x":-30,"y":1220}},null],"uni17BF.right3":[{"anchor_0":{"x":-30,"y":1220}},null],"uni17C0":[{"anchor_0":{"x":926,"y":1230}},null],"uni17C0.right1":[{"anchor_0":{"x":4,"y":1230}},null],"uni17C0.right1.high":[{"anchor_0":{"x":4,"y":1280}},null],"uni17C0.right2":[{"anchor_0":{"x":4,"y":1230}},null],"uni17C0.right3":[{"anchor_0":{"x":4,"y":1230}},null],"uni17C1":[{"anchor_0":{"x":51,"y":760}},null],"uni17C2":[{"anchor_0":{"x":51,"y":760}},null],"uni17C3":[{"anchor_0":{"x":51,"y":760}},null],"uni17C4":[{"anchor_0":{"x":589,"y":645}},null],"uni17C5":[{"anchor_0":{"x":589,"y":645}},null],"uni17C7":[{"anchor_0":{"x":180,"y":332}},null],"uni17D6":[{"anchor_0":{"x":282,"y":332}},null],"uni17D8":[{"anchor_0":{"x":1251,"y":760}},null],"uni17DB":[{"anchor_0":{"x":181,"y":760}},null],"uni17D21783":{"anchor_0":{"x":[48,-47],"y":[760,-296]}},"uni17D21783.low":{"anchor_0":{"x":[48,-59],"y":[760,-552]}},"uni17D21788":{"anchor_0":{"x":[74,-27],"y":[760,-317]}},"uni17D21788.low":{"anchor_0":{"x":[74,-27],"y":[760,-548]}},"uni17D2178D":[{"anchor_0":{"x":78,"y":760}},null],"uni17D2178D.low":[{"anchor_0":{"x":78,"y":760}},null],"uni17D21794":{"anchor_0":{"x":[87,14],"y":[760,-320]}},"uni17D21794.low":{"anchor_0":{"x":[87,14],"y":[760,-571]}},"uni17D21799":{"anchor_0":{"x":[81,10],"y":[760,-317]}},"uni17D21799.low":{"anchor_0":{"x":[80,11],"y":[760,-551]}},"uni17D2179A":[{"anchor_0":{"x":90,"y":760}},null],"uni17D2179A.low":[{"anchor_0":{"x":90,"y":760}},null],"uni17D2179E":{"anchor_0":{"x":[87,14],"y":[760,-320]}},"uni17D2179E.low":{"anchor_0":{"x":[87,14],"y":[760,-571]}},"uni17D2179F":{"anchor_0":{"x":[93,23],"y":[760,-318]}},"uni17D2179F.low":{"anchor_0":{"x":[93,21],"y":[760,-610]}},"uni17D217A1":{"anchor_0":{"x":[96,23],"y":[760,-318]}}}}},"31":{"0":{"marks":{"anchor_0":{"uni17C6":[{"x":-353,"y":854},null],"uni17C6.r":[{"x":-353,"y":854},null],"uni17C9":[{"x":-353,"y":854},null],"uni17C9.r":[{"x":-353,"y":854},null],"uni17D0":[{"x":-353,"y":854},null],"uni17D2178E":[null,{"x":-689,"y":10}]}},"bases":{"uni17A4":[{"anchor_0":{"x":648,"y":760}},null],"uni17B6":[{"anchor_0":{"x":15,"y":740}},null],"uni17C4":[{"anchor_0":{"x":912,"y":740}},null],"uni17C5":[{"anchor_0":{"x":912,"y":740}},null],"uni17C5.right":[{"anchor_0":{"x":15,"y":740}},null],"uni179F":[null,{"anchor_0":{"x":448,"y":0}}]}}},"32":{"0":{"marks":{"anchor_0":{"uni17C6":[{"x":-353,"y":854},null],"uni17C6.r":[{"x":-353,"y":854},null],"uni17D21789.a":[null,{"x":-526,"y":16}]}},"bases":{"uni1780":[{"anchor_0":{"x":286,"y":728}},null],"uni1782":[{"anchor_0":{"x":286,"y":728}},null],"uni1787":[{"anchor_0":{"x":294,"y":830}},null],"uni178A":[{"anchor_0":{"x":274,"y":754}},null],"uni178F":[{"anchor_0":{"x":285,"y":728}},null],"uni1790":[{"anchor_0":{"x":285,"y":839}},null],"uni1795":[{"anchor_0":{"x":287,"y":810}},null],"uni1797":[{"anchor_0":{"x":290,"y":725}},null],"uni179D":[{"anchor_0":{"x":286,"y":728}},null],"uni17A4":[{"anchor_0":{"x":758,"y":740}},null],"uni17B6":[{"anchor_0":{"x":15,"y":740}},null],"uni17C4":[{"anchor_0":{"x":912,"y":740}},null],"uni17C5":[{"anchor_0":{"x":912,"y":740}},null],"uni17C5.right":[{"anchor_0":{"x":15,"y":740}},null],"uni1789.a":[null,{"anchor_0":{"x":450,"y":0}}]}}},"33":{"0":{"type":["mark_to_lig","mark_to_base"],"marks":{"anchor_0":{"uni17BE":[null,{"x":543,"y":751}]},"anchor_1":[{"uni17BB":{"x":-197,"y":16},"uni17BB.b":{"x":-300,"y":16},"uni17BC":{"x":-197,"y":16},"uni17BC.b":{"x":-264,"y":16},"uni17BD":{"x":-197,"y":16},"uni17BD.b":{"x":-295,"y":16},"uni17D21780":{"x":-319,"y":16},"uni17D21781":{"x":-318,"y":16},"uni17D21782":{"x":-318,"y":16},"uni17D21784":{"x":-324,"y":16},"uni17D21785":{"x":-318,"y":16},"uni17D21786":{"x":-317,"y":16},"uni17D21787":{"x":-326,"y":16},"uni17D21789":{"x":-321,"y":16},"uni17D2178A":{"x":-317,"y":16},"uni17D2178A.r":{"x":-319,"y":16},"uni17D2178B":{"x":-301,"y":16},"uni17D2178C":{"x":-323,"y":16},"uni17D2178E":{"x":-690,"y":10},"uni17D2178E.alt":{"x":-690,"y":10},"uni17D2178F":{"x":-317,"y":16},"uni17D2178F.r":{"x":-317,"y":16},"uni17D21790":{"x":-312,"y":16},"uni17D21791":{"x":-325,"y":16},"uni17D21792":{"x":-321,"y":16},"uni17D21793":{"x":-307,"y":16},"uni17D21795":{"x":-318,"y":16},"uni17D21796":{"x":-320,"y":16},"uni17D21797":{"x":-339,"y":16},"uni17D21797.r":{"x":-339,"y":16},"uni17D21798":{"x":-297,"y":16},"uni17D21798.r":{"x":-345,"y":16},"uni17D2179B":{"x":-334,"y":16},"uni17D2179C":{"x":-320,"y":16},"uni17D2179D":{"x":-318,"y":16},"uni17D217A0":{"x":-323,"y":16},"uni17D217A2":{"x":-332,"y":16},"uni17D217A7":{"x":-320,"y":16},"uni17D217AB":{"x":-327,"y":16},"uni17D217AC":{"x":-328,"y":16},"uni17D217AF":{"x":-284,"y":16}},null],"anchor_2":[{"uni17D21789.a":{"x":-526,"y":16}},null]},"ligatures":[{"uni178017B6":{"anchor_0_1":{"x":284,"y":760},"anchor_1_1":{"x":284,"y":0},"anchor_0_2":{"x":601,"y":760},"anchor_1_2":{"x":588,"y":0}},"uni178017C5":{"anchor_0_1":{"x":284,"y":760},"anchor_1_1":{"x":284,"y":0},"anchor_0_2":{"x":284,"y":760},"anchor_1_2":{"x":588,"y":0}},"uni178117B6":{"anchor_0_1":{"x":291,"y":760},"anchor_1_1":{"x":291,"y":0},"anchor_0_2":{"x":604,"y":760},"anchor_1_2":{"x":609,"y":0}},"uni178117C5":{"anchor_0_1":{"x":291,"y":760},"anchor_1_1":{"x":291,"y":0},"anchor_0_2":{"x":291,"y":760},"anchor_1_2":{"x":609,"y":0}},"uni178217B6":{"anchor_0_1":{"x":283,"y":760},"anchor_1_1":{"x":285,"y":0},"anchor_0_2":{"x":601,"y":760},"anchor_1_2":{"x":588,"y":0}},"uni178217C5":{"anchor_0_1":{"x":283,"y":760},"anchor_1_1":{"x":285,"y":0},"anchor_0_2":{"x":283,"y":760},"anchor_1_2":{"x":588,"y":0}},"uni178317B6":{"anchor_0_1":{"x":579,"y":760},"anchor_1_1":{"x":601,"y":0},"anchor_0_2":{"x":900,"y":760},"anchor_1_2":{"x":905,"y":0}},"uni178317C5":{"anchor_0_1":{"x":579,"y":760},"anchor_1_1":{"x":601,"y":0},"anchor_0_2":{"x":579,"y":760},"anchor_1_2":{"x":905,"y":0}},"uni178417B6":{"anchor_0_1":{"x":310,"y":826},"anchor_1_1":{"x":330,"y":0},"anchor_0_2":{"x":620,"y":760},"anchor_1_2":{"x":628,"y":0}},"uni178417C5":{"anchor_0_1":{"x":310,"y":826},"anchor_1_1":{"x":330,"y":0},"anchor_0_2":{"x":310,"y":826},"anchor_1_2":{"x":628,"y":0}},"uni178517B6":{"anchor_0_1":{"x":286,"y":760},"anchor_1_1":{"x":286,"y":0},"anchor_0_2":{"x":613,"y":760},"anchor_1_2":{"x":600,"y":0}},"uni178517C5":{"anchor_0_1":{"x":286,"y":760},"anchor_1_1":{"x":286,"y":0},"anchor_0_2":{"x":286,"y":760},"anchor_1_2":{"x":600,"y":0}},"uni178617B6":{"anchor_0_1":{"x":288,"y":760},"anchor_1_1":{"x":288,"y":0},"anchor_0_2":{"x":616,"y":760},"anchor_1_2":{"x":602,"y":0}},"uni178617C5":{"anchor_0_1":{"x":288,"y":760},"anchor_1_1":{"x":288,"y":0},"anchor_0_2":{"x":288,"y":760},"anchor_1_2":{"x":602,"y":0}},"uni178717B6":{"anchor_0_1":{"x":294,"y":860},"anchor_1_1":{"x":297,"y":0},"anchor_0_2":{"x":624,"y":832},"anchor_1_2":{"x":618,"y":0}},"uni178717C5":{"anchor_0_1":{"x":294,"y":860},"anchor_1_1":{"x":297,"y":0},"anchor_0_2":{"x":294,"y":860},"anchor_1_2":{"x":635,"y":0}},"uni178817B6":{"anchor_0_1":{"x":881,"y":760},"anchor_1_1":{"x":904,"y":0},"anchor_0_2":{"x":1204,"y":760},"anchor_1_2":{"x":1209,"y":0}},"uni178817C5":{"anchor_0_1":{"x":881,"y":760},"anchor_1_1":{"x":904,"y":0},"anchor_0_2":{"x":881,"y":760},"anchor_1_2":{"x":1209,"y":0}},"uni178917B6":{"anchor_0_1":{"x":616,"y":761},"anchor_1_1":{"x":629,"y":-317},"anchor_0_2":{"x":905,"y":760},"anchor_1_2":{"x":910,"y":-317}},"uni178917C5":{"anchor_0_1":{"x":616,"y":761},"anchor_1_1":{"x":629,"y":-317},"anchor_0_2":{"x":616,"y":761},"anchor_1_2":{"x":910,"y":-317}},"uni178917B6.a":{"anchor_0_1":{"x":616,"y":760},"anchor_1_1":{"x":613,"y":0},"anchor_2_1":{"x":450,"y":0},"anchor_0_2":{"x":905,"y":760},"anchor_1_2":{"x":910,"y":0},"anchor_2_2":{"x":450,"y":0}},"uni178917C5.a":{"anchor_0_1":{"x":616,"y":760},"anchor_1_1":{"x":613,"y":0},"anchor_2_1":{"x":450,"y":0},"anchor_0_2":{"x":844,"y":760},"anchor_1_2":{"x":910,"y":0},"anchor_2_2":{"x":450,"y":0}},"uni178A17B6":{"anchor_0_1":{"x":319,"y":807},"anchor_1_1":{"x":330,"y":0},"anchor_0_2":{"x":589,"y":807},"anchor_1_2":{"x":610,"y":0}},"uni178A17C5":{"anchor_0_1":{"x":319,"y":807},"anchor_1_1":{"x":330,"y":0},"anchor_0_2":{"x":319,"y":807},"anchor_1_2":{"x":610,"y":0}},"uni178B17B6":{"anchor_0_1":{"x":308,"y":850},"anchor_1_1":{"x":308,"y":0},"anchor_0_2":{"x":651,"y":850},"anchor_1_2":{"x":619,"y":0}},"uni178B17C5":{"anchor_0_1":{"x":308,"y":850},"anchor_1_1":{"x":308,"y":0},"anchor_0_2":{"x":308,"y":850},"anchor_1_2":{"x":619,"y":0}},"uni178C17B6":{"anchor_0_1":{"x":301,"y":760},"anchor_1_1":{"x":310,"y":-49},"anchor_0_2":{"x":616,"y":760},"anchor_1_2":{"x":621,"y":-49}},"uni178C17C5":{"anchor_0_1":{"x":301,"y":760},"anchor_1_1":{"x":310,"y":-49},"anchor_0_2":{"x":301,"y":760},"anchor_1_2":{"x":621,"y":-49}},"uni178D17B6":{"anchor_0_1":{"x":575,"y":760},"anchor_1_1":{"x":617,"y":0},"anchor_0_2":{"x":909,"y":760},"anchor_1_2":{"x":914,"y":0}},"uni178D17C5":{"anchor_0_1":{"x":575,"y":760},"anchor_1_1":{"x":617,"y":0},"anchor_0_2":{"x":575,"y":760},"anchor_1_2":{"x":914,"y":0}},"uni178E17B6":{"anchor_0_1":{"x":594,"y":760},"anchor_1_1":{"x":594,"y":0},"anchor_0_2":{"x":1201,"y":760},"anchor_1_2":{"x":1206,"y":0}},"uni178E17C5":{"anchor_0_1":{"x":594,"y":760},"anchor_1_1":{"x":594,"y":0},"anchor_0_2":{"x":594,"y":760},"anchor_1_2":{"x":1206,"y":0}},"uni178F17B6":{"anchor_0_1":{"x":266,"y":760},"anchor_1_1":{"x":280,"y":0},"anchor_0_2":{"x":601,"y":760},"anchor_1_2":{"x":588,"y":0}},"uni178F17C5":{"anchor_0_1":{"x":279,"y":760},"anchor_1_1":{"x":280,"y":0},"anchor_0_2":{"x":279,"y":760},"anchor_1_2":{"x":588,"y":0}},"uni179017B6":{"anchor_0_1":{"x":284,"y":832},"anchor_1_1":{"x":289,"y":0},"anchor_0_2":{"x":621,"y":832},"anchor_1_2":{"x":606,"y":0}},"uni179017C5":{"anchor_0_1":{"x":284,"y":832},"anchor_1_1":{"x":289,"y":0},"anchor_0_2":{"x":284,"y":832},"anchor_1_2":{"x":606,"y":0}},"uni179117B6":{"anchor_0_1":{"x":293,"y":760},"anchor_1_1":{"x":275,"y":0},"anchor_0_2":{"x":567,"y":760},"anchor_1_2":{"x":572,"y":0}},"uni179117C5":{"anchor_0_1":{"x":293,"y":760},"anchor_1_1":{"x":275,"y":0},"anchor_0_2":{"x":293,"y":760},"anchor_1_2":{"x":572,"y":0}},"uni179217B6":{"anchor_0_1":{"x":291,"y":760},"anchor_1_1":{"x":289,"y":0},"anchor_0_2":{"x":604,"y":760},"anchor_1_2":{"x":590,"y":0}},"uni179217C5":{"anchor_0_1":{"x":291,"y":760},"anchor_1_1":{"x":289,"y":0},"anchor_0_2":{"x":291,"y":760},"anchor_1_2":{"x":590,"y":0}},"uni179317B6":{"anchor_0_1":{"x":294,"y":760},"anchor_1_1":{"x":294,"y":0},"anchor_0_2":{"x":604,"y":760},"anchor_1_2":{"x":609,"y":0}},"uni179317C5":{"anchor_0_1":{"x":294,"y":760},"anchor_1_1":{"x":294,"y":0},"anchor_0_2":{"x":294,"y":760},"anchor_1_2":{"x":609,"y":0}},"uni179417B6":{"anchor_0_1":{"x":229,"y":760},"anchor_1_1":{"x":274,"y":-50},"anchor_0_2":{"x":592,"y":760},"anchor_1_2":{"x":579,"y":-50}},"uni179417B6.high":{"anchor_0_1":{"x":229,"y":760},"anchor_1_1":{"x":274,"y":-40},"anchor_0_2":{"x":592,"y":760},"anchor_1_2":{"x":579,"y":-40}},"uni179417C5":{"anchor_0_1":{"x":285,"y":760},"anchor_1_1":{"x":274,"y":-50},"anchor_0_2":{"x":285,"y":760},"anchor_1_2":{"x":579,"y":-50}},"uni179417C5.high":{"anchor_0_1":{"x":285,"y":760},"anchor_1_1":{"x":274,"y":-40},"anchor_0_2":{"x":285,"y":760},"anchor_1_2":{"x":579,"y":-40}},"uni179517B6":{"anchor_0_1":{"x":295,"y":838},"anchor_1_1":{"x":308,"y":0},"anchor_0_2":{"x":614,"y":838},"anchor_1_2":{"x":614,"y":0}},"uni179517C5":{"anchor_0_1":{"x":295,"y":833},"anchor_1_1":{"x":308,"y":0},"anchor_0_2":{"x":295,"y":833},"anchor_1_2":{"x":614,"y":0}},"uni179617B6":{"anchor_0_1":{"x":295,"y":760},"anchor_1_1":{"x":318,"y":0},"anchor_0_2":{"x":605,"y":760},"anchor_1_2":{"x":610,"y":0}},"uni179617C5":{"anchor_0_1":{"x":295,"y":760},"anchor_1_1":{"x":318,"y":0},"anchor_0_2":{"x":295,"y":760},"anchor_1_2":{"x":610,"y":0}},"uni179717B6":{"anchor_0_1":{"x":308,"y":760},"anchor_1_1":{"x":313,"y":0},"anchor_0_2":{"x":619,"y":760},"anchor_1_2":{"x":606,"y":0}},"uni179717C5":{"anchor_0_1":{"x":308,"y":760},"anchor_1_1":{"x":313,"y":0},"anchor_0_2":{"x":308,"y":760},"anchor_1_2":{"x":606,"y":0}},"uni179817B6":{"anchor_0_1":{"x":296,"y":760},"anchor_1_1":{"x":296,"y":0},"anchor_0_2":{"x":598,"y":760},"anchor_1_2":{"x":603,"y":0}},"uni179817C5":{"anchor_0_1":{"x":296,"y":760},"anchor_1_1":{"x":296,"y":0},"anchor_0_2":{"x":296,"y":760},"anchor_1_2":{"x":603,"y":0}},"uni179917B6":{"anchor_0_1":{"x":597,"y":760},"anchor_1_1":{"x":619,"y":0},"anchor_0_2":{"x":930,"y":760},"anchor_1_2":{"x":935,"y":0}},"uni179917C5":{"anchor_0_1":{"x":597,"y":760},"anchor_1_1":{"x":619,"y":0},"anchor_0_2":{"x":597,"y":760},"anchor_1_2":{"x":935,"y":0}},"uni179A17B6":{"anchor_0_1":{"x":175,"y":760},"anchor_1_1":{"x":186,"y":0},"anchor_0_2":{"x":340,"y":760},"anchor_1_2":{"x":345,"y":0}},"uni179A17C5":{"anchor_0_1":{"x":175,"y":760},"anchor_1_1":{"x":186,"y":0},"anchor_0_2":{"x":175,"y":760},"anchor_1_2":{"x":345,"y":0}},"uni179B17B6":{"anchor_0_1":{"x":615,"y":760},"anchor_1_1":{"x":615,"y":0},"anchor_0_2":{"x":915,"y":760},"anchor_1_2":{"x":920,"y":0}},"uni179B17C5":{"anchor_0_1":{"x":615,"y":760},"anchor_1_1":{"x":615,"y":0},"anchor_0_2":{"x":615,"y":760},"anchor_1_2":{"x":920,"y":0}},"uni179C17B6":{"anchor_0_1":{"x":144,"y":840},"anchor_1_1":{"x":144,"y":0},"anchor_0_2":{"x":307,"y":840},"anchor_1_2":{"x":284,"y":0}},"uni179C17C5":{"anchor_0_1":{"x":144,"y":840},"anchor_1_1":{"x":144,"y":0},"anchor_0_2":{"x":144,"y":840},"anchor_1_2":{"x":284,"y":0}},"uni179D17B6":{"anchor_0_1":{"x":283,"y":760},"anchor_1_1":{"x":284,"y":0},"anchor_0_2":{"x":601,"y":760},"anchor_1_2":{"x":588,"y":0}},"uni179D17C5":{"anchor_0_1":{"x":288,"y":760},"anchor_1_1":{"x":289,"y":0},"anchor_0_2":{"x":530,"y":760},"anchor_1_2":{"x":588,"y":0}},"uni179E17B6":{"anchor_0_1":{"x":259,"y":760},"anchor_1_1":{"x":298,"y":0},"anchor_0_2":{"x":598,"y":760},"anchor_1_2":{"x":603,"y":0}},"uni179E17C5":{"anchor_0_1":{"x":259,"y":760},"anchor_1_1":{"x":298,"y":0},"anchor_0_2":{"x":526,"y":760},"anchor_1_2":{"x":603,"y":0}},"uni179F17B6":{"anchor_0_1":{"x":580,"y":760},"anchor_1_1":{"x":602,"y":0},"anchor_0_2":{"x":913,"y":760},"anchor_1_2":{"x":918,"y":0}},"uni179F17C5":{"anchor_0_1":{"x":580,"y":760},"anchor_1_1":{"x":602,"y":0},"anchor_0_2":{"x":580,"y":760},"anchor_1_2":{"x":918,"y":0}},"uni17A017B6":{"anchor_0_1":{"x":595,"y":760},"anchor_1_1":{"x":592,"y":0},"anchor_0_2":{"x":899,"y":760},"anchor_1_2":{"x":904,"y":0}},"uni17A017C5":{"anchor_0_1":{"x":595,"y":760},"anchor_1_1":{"x":592,"y":0},"anchor_0_2":{"x":595,"y":760},"anchor_1_2":{"x":904,"y":0}},"uni17A117B6":{"anchor_0_1":{"x":503,"y":760},"anchor_1_1":{"x":484,"y":-317},"anchor_0_2":{"x":783,"y":760},"anchor_1_2":{"x":788,"y":-317}},"uni17A117C5":{"anchor_0_1":{"x":500,"y":760},"anchor_1_1":{"x":482,"y":-318},"anchor_0_2":{"x":500,"y":760},"anchor_1_2":{"x":790,"y":-317}},"uni17A217B6":{"anchor_0_1":{"x":331,"y":760},"anchor_1_1":{"x":324,"y":0},"anchor_0_2":{"x":648,"y":760},"anchor_1_2":{"x":653,"y":0}},"uni17A217C5":{"anchor_0_1":{"x":331,"y":760},"anchor_1_1":{"x":324,"y":0},"anchor_0_2":{"x":331,"y":760},"anchor_1_2":{"x":653,"y":0}},"uni17D2178317B6":{"anchor_0_1":{"x":274,"y":760},"anchor_1_1":{"x":-58,"y":-277},"anchor_0_2":{"x":274,"y":760},"anchor_1_2":{"x":-60,"y":-277}},"uni17D2178317B6.low":{"anchor_0_1":{"x":274,"y":760},"anchor_1_1":{"x":-59,"y":-579},"anchor_0_2":{"x":274,"y":760},"anchor_1_2":{"x":-59,"y":-579}},"uni17D2178317C5":{"anchor_0_1":{"x":39,"y":760},"anchor_1_1":{"x":-59,"y":-282},"anchor_0_2":{"x":39,"y":760},"anchor_1_2":{"x":-59,"y":-282}},"uni17D2178317C5.low":{"anchor_0_1":{"x":39,"y":760},"anchor_1_1":{"x":-59,"y":-582},"anchor_0_2":{"x":39,"y":760},"anchor_1_2":{"x":-59,"y":-582}},"uni17D2178817B6":{"anchor_0_1":{"x":301,"y":760},"anchor_1_1":{"x":-27,"y":-317},"anchor_0_2":{"x":301,"y":760},"anchor_1_2":{"x":-27,"y":-317}},"uni17D2178817B6.low":{"anchor_0_1":{"x":301,"y":760},"anchor_1_1":{"x":-27,"y":-577},"anchor_0_2":{"x":301,"y":760},"anchor_1_2":{"x":-27,"y":-577}},"uni17D2178817C5":{"anchor_0_1":{"x":56,"y":760},"anchor_1_1":{"x":-27,"y":-317},"anchor_0_2":{"x":56,"y":760},"anchor_1_2":{"x":-27,"y":-317}},"uni17D2178817C5.low":{"anchor_0_1":{"x":56,"y":760},"anchor_1_1":{"x":-27,"y":-577},"anchor_0_2":{"x":56,"y":760},"anchor_1_2":{"x":-27,"y":-577}},"uni17D2178D17B6":{"anchor_0_1":{"x":305,"y":760},"anchor_1_1":{"x":-15,"y":-317},"anchor_0_2":{"x":305,"y":760},"anchor_1_2":{"x":-15,"y":-317}},"uni17D2178D17B6.low":{"anchor_0_1":{"x":305,"y":760},"anchor_1_1":{"x":-19,"y":-574},"anchor_0_2":{"x":305,"y":760},"anchor_1_2":{"x":-19,"y":-574}},"uni17D2178D17C5":{"anchor_0_1":{"x":15,"y":760},"anchor_1_1":{"x":-8,"y":-318},"anchor_0_2":{"x":15,"y":760},"anchor_1_2":{"x":-7,"y":-317}},"uni17D2178D17C5.low":{"anchor_0_1":{"x":15,"y":760},"anchor_1_1":{"x":-19,"y":-571},"anchor_0_2":{"x":15,"y":760},"anchor_1_2":{"x":-19,"y":-571}},"uni17D2179417B6":{"anchor_0_1":{"x":314,"y":760},"anchor_1_1":{"x":16,"y":-317},"anchor_0_2":{"x":314,"y":760},"anchor_1_2":{"x":16,"y":-317}},"uni17D2179417B6.low":{"anchor_0_1":{"x":314,"y":760},"anchor_1_1":{"x":16,"y":-562},"anchor_0_2":{"x":314,"y":760},"anchor_1_2":{"x":16,"y":-562}},"uni17D2179417C5":{"anchor_0_1":{"x":48,"y":760},"anchor_1_1":{"x":16,"y":-317},"anchor_0_2":{"x":48,"y":760},"anchor_1_2":{"x":16,"y":-317}},"uni17D2179417C5.low":{"anchor_0_1":{"x":48,"y":760},"anchor_1_1":{"x":16,"y":-562},"anchor_0_2":{"x":48,"y":760},"anchor_1_2":{"x":16,"y":-562}},"uni17D2179917B6":{"anchor_0_1":{"x":307,"y":760},"anchor_1_1":{"x":10,"y":-317},"anchor_0_2":{"x":307,"y":760},"anchor_1_2":{"x":10,"y":-317}},"uni17D2179917B6.low":{"anchor_0_1":{"x":307,"y":760},"anchor_1_1":{"x":10,"y":-582},"anchor_0_2":{"x":307,"y":760},"anchor_1_2":{"x":10,"y":-582}},"uni17D2179917C5":{"anchor_0_1":{"x":9,"y":760},"anchor_1_1":{"x":10,"y":-317},"anchor_0_2":{"x":9,"y":760},"anchor_1_2":{"x":10,"y":-317}},"uni17D2179917C5.low":{"anchor_0_1":{"x":9,"y":760},"anchor_1_1":{"x":10,"y":-582},"anchor_0_2":{"x":9,"y":760},"anchor_1_2":{"x":10,"y":-582}},"uni17D2179E17B6":{"anchor_0_1":{"x":314,"y":760},"anchor_1_1":{"x":14,"y":-320},"anchor_0_2":{"x":314,"y":760},"anchor_1_2":{"x":14,"y":-320}},"uni17D2179E17B6.low":{"anchor_0_1":{"x":314,"y":760},"anchor_1_1":{"x":14,"y":-596},"anchor_0_2":{"x":314,"y":760},"anchor_1_2":{"x":14,"y":-596}},"uni17D2179E17C5":{"anchor_0_1":{"x":31,"y":760},"anchor_1_1":{"x":14,"y":-320},"anchor_0_2":{"x":167,"y":760},"anchor_1_2":{"x":14,"y":-320}},"uni17D2179E17C5.low":{"anchor_0_1":{"x":31,"y":760},"anchor_1_1":{"x":14,"y":-596},"anchor_0_2":{"x":167,"y":760},"anchor_1_2":{"x":14,"y":-596}},"uni17D2179F17B6":{"anchor_0_1":{"x":320,"y":760},"anchor_1_1":{"x":21,"y":-317},"anchor_0_2":{"x":320,"y":760},"anchor_1_2":{"x":21,"y":-317}},"uni17D2179F17B6.low":{"anchor_0_1":{"x":320,"y":760},"anchor_1_1":{"x":21,"y":-606},"anchor_0_2":{"x":320,"y":760},"anchor_1_2":{"x":21,"y":-606}},"uni17D2179F17C5":{"anchor_0_1":{"x":20,"y":760},"anchor_1_1":{"x":21,"y":-317},"anchor_0_2":{"x":20,"y":760},"anchor_1_2":{"x":21,"y":-317}},"uni17D2179F17C5.low":{"anchor_0_1":{"x":20,"y":760},"anchor_1_1":{"x":21,"y":-606},"anchor_0_2":{"x":20,"y":760},"anchor_1_2":{"x":21,"y":-606}}},null],"bases":[null,{"uni1780":{"anchor_0":{"x":286,"y":760}},"uni1781":{"anchor_0":{"x":291,"y":760}},"uni1782":{"anchor_0":{"x":286,"y":760}},"uni1783":{"anchor_0":{"x":595,"y":760}},"uni1784":{"anchor_0":{"x":301,"y":840}},"uni1785":{"anchor_0":{"x":289,"y":760}},"uni1786":{"anchor_0":{"x":289,"y":760}},"uni1787":{"anchor_0":{"x":294,"y":860}},"uni1788":{"anchor_0":{"x":881,"y":760}},"uni1789":{"anchor_0":{"x":616,"y":760}},"uni1789.a":{"anchor_0":{"x":607,"y":760}},"uni178A":{"anchor_0":{"x":293,"y":840}},"uni178B":{"anchor_0":{"x":308,"y":850}},"uni178C":{"anchor_0":{"x":301,"y":760}},"uni178D":{"anchor_0":{"x":589,"y":760}},"uni178E":{"anchor_0":{"x":594,"y":760}},"uni178F":{"anchor_0":{"x":285,"y":760}},"uni1790":{"anchor_0":{"x":284,"y":860}},"uni1791":{"anchor_0":{"x":254,"y":760}},"uni1792":{"anchor_0":{"x":291,"y":760}},"uni1793":{"anchor_0":{"x":294,"y":760}},"uni1794":{"anchor_0":{"x":296,"y":760}},"uni1794.a":{"anchor_0":{"x":299,"y":760}},"uni1794.a2":{"anchor_0":{"x":299,"y":760}},"uni1795":{"anchor_0":{"x":286,"y":860}},"uni1796":{"anchor_0":{"x":285,"y":760}},"uni1797":{"anchor_0":{"x":308,"y":760}},"uni1798":{"anchor_0":{"x":296,"y":760}},"uni1799":{"anchor_0":{"x":624,"y":760}},"uni179A":{"anchor_0":{"x":181,"y":760}},"uni179B":{"anchor_0":{"x":615,"y":760}},"uni179C":{"anchor_0":{"x":144,"y":840}},"uni179D":{"anchor_0":{"x":279,"y":760}},"uni179E":{"anchor_0":{"x":312,"y":760}},"uni179F":{"anchor_0":{"x":594,"y":760}},"uni17A0":{"anchor_0":{"x":601,"y":760}},"uni17A1":{"anchor_0":{"x":474,"y":760}},"uni17A2":{"anchor_0":{"x":331,"y":760}},"uni17A3":{"anchor_0":{"x":331,"y":760}},"uni17A4":{"anchor_0":{"x":331,"y":760}},"uni17A7":{"anchor_0":{"x":326,"y":760}},"uni17A8":{"anchor_0":{"x":329,"y":940}},"uni17A9":{"anchor_0":{"x":330,"y":760}},"uni17AA":{"anchor_0":{"x":335,"y":1058}},"uni17AB":{"anchor_0":{"x":332,"y":760}},"uni17AC":{"anchor_0":{"x":332,"y":760}},"uni17AD":{"anchor_0":{"x":285,"y":760}},"uni17AE":{"anchor_0":{"x":285,"y":760}},"uni17B0":{"anchor_0":{"x":285,"y":760}},"uni17B1":{"anchor_0":{"x":308,"y":993}},"uni17B3":{"anchor_0":{"x":300,"y":1069}},"uni17BF":{"anchor_0":{"x":933,"y":1220}},"uni17BF.right1":{"anchor_0":{"x":-30,"y":1220}},"uni17BF.right2":{"anchor_0":{"x":-30,"y":1220}},"uni17BF.right3":{"anchor_0":{"x":-30,"y":1220}},"uni17C0":{"anchor_0":{"x":926,"y":1230}},"uni17C0.right1":{"anchor_0":{"x":4,"y":1230}},"uni17C0.right1.high":{"anchor_0":{"x":4,"y":1280}},"uni17C0.right2":{"anchor_0":{"x":4,"y":1230}},"uni17C0.right3":{"anchor_0":{"x":4,"y":1230}},"uni17C1":{"anchor_0":{"x":51,"y":760}},"uni17C2":{"anchor_0":{"x":51,"y":760}},"uni17C3":{"anchor_0":{"x":51,"y":760}},"uni17C4":{"anchor_0":{"x":589,"y":645}},"uni17C5":{"anchor_0":{"x":589,"y":645}},"uni17C7":{"anchor_0":{"x":180,"y":332}},"uni17D6":{"anchor_0":{"x":282,"y":332}},"uni17D8":{"anchor_0":{"x":1251,"y":760}},"uni17DB":{"anchor_0":{"x":181,"y":760}},"uni17D21783":{"anchor_0":{"x":48,"y":760}},"uni17D21783.low":{"anchor_0":{"x":48,"y":760}},"uni17D21788":{"anchor_0":{"x":74,"y":760}},"uni17D21788.low":{"anchor_0":{"x":74,"y":760}},"uni17D2178D":{"anchor_0":{"x":78,"y":760}},"uni17D2178D.low":{"anchor_0":{"x":78,"y":760}},"uni17D21794":{"anchor_0":{"x":87,"y":760}},"uni17D21794.low":{"anchor_0":{"x":87,"y":760}},"uni17D21799":{"anchor_0":{"x":81,"y":760}},"uni17D21799.low":{"anchor_0":{"x":80,"y":760}},"uni17D2179A":{"anchor_0":{"x":90,"y":760}},"uni17D2179A.low":{"anchor_0":{"x":90,"y":760}},"uni17D2179E":{"anchor_0":{"x":87,"y":760}},"uni17D2179E.low":{"anchor_0":{"x":87,"y":760}},"uni17D2179F":{"anchor_0":{"x":93,"y":760}},"uni17D2179F.low":{"anchor_0":{"x":93,"y":760}},"uni17D217A1":{"anchor_0":{"x":96,"y":760}}}]}},"34":{"0":{"type":["mark_to_lig","mark_to_base"],"marks":{"anchor_0":{"uni17C9":[null,{"x":-353,"y":854}],"uni17C9.r":[null,{"x":-353,"y":854}],"uni17D0":[null,{"x":-353,"y":854}]},"anchor_1":[{"uni17C9":{"x":-353,"y":854},"uni17C9.r":{"x":-353,"y":854}},null]},"ligatures":[{"uni178017B6":{"anchor_0_1":{"x":284,"y":760},"anchor_0_2":{"x":673,"y":740}},"uni178117B6":{"anchor_0_1":{"x":291,"y":760},"anchor_0_2":{"x":713,"y":740}},"uni178217B6":{"anchor_0_1":{"x":283,"y":760},"anchor_0_2":{"x":670,"y":740}},"uni178317B6":{"anchor_0_1":{"x":579,"y":760},"anchor_0_2":{"x":1009,"y":740}},"uni178417B6":{"anchor_0_1":{"x":310,"y":826},"anchor_0_2":{"x":729,"y":740}},"uni178517B6":{"anchor_0_1":{"x":286,"y":760},"anchor_0_2":{"x":682,"y":740}},"uni178617B6":{"anchor_0_1":{"x":288,"y":760},"anchor_0_2":{"x":685,"y":740}},"uni178717B6":{"anchor_0_1":{"x":294,"y":860},"anchor_0_2":{"x":294,"y":830}},"uni178717C5":{"anchor_0_1":{"x":294,"y":860},"anchor_0_2":{"x":294,"y":830}},"uni178817B6":{"anchor_0_1":{"x":881,"y":760},"anchor_0_2":{"x":1313,"y":740}},"uni178917B6":{"anchor_0_1":{"x":616,"y":761},"anchor_0_2":{"x":1015,"y":740}},"uni178917B6.a":{"anchor_0_1":{"x":616,"y":760},"anchor_0_2":{"x":1014,"y":740}},"uni178A17B6":{"anchor_0_1":{"x":319,"y":807},"anchor_0_2":{"x":687,"y":807}},"uni178A17C5":{"anchor_0_1":{"x":319,"y":807},"anchor_0_2":{"x":306,"y":794}},"uni178B17B6":{"anchor_0_1":{"x":308,"y":850},"anchor_0_2":{"x":738,"y":850}},"uni178C17B6":{"anchor_0_1":{"x":301,"y":760},"anchor_0_2":{"x":725,"y":740}},"uni178D17B6":{"anchor_0_1":{"x":575,"y":760},"anchor_0_2":{"x":1018,"y":740}},"uni178E17B6":{"anchor_0_1":{"x":594,"y":760},"anchor_0_2":{"x":1310,"y":740}},"uni178F17B6":{"anchor_0_1":{"x":266,"y":760},"anchor_0_2":{"x":670,"y":740}},"uni179017B6":{"anchor_0_1":{"x":284,"y":832},"anchor_0_2":{"x":710,"y":740}},"uni179017C5":{"anchor_0_1":{"x":284,"y":832},"anchor_0_2":{"x":285,"y":832}},"uni179117B6":{"anchor_0_1":{"x":293,"y":760},"anchor_0_2":{"x":677,"y":740}},"uni179217B6":{"anchor_0_1":{"x":291,"y":760},"anchor_0_2":{"x":673,"y":740}},"uni179317B6":{"anchor_0_1":{"x":294,"y":760},"anchor_0_2":{"x":713,"y":740}},"uni179417B6":{"anchor_0_1":{"x":229,"y":760},"anchor_0_2":{"x":661,"y":740}},"uni179417B6.high":{"anchor_0_1":{"x":229,"y":760},"anchor_0_2":{"x":661,"y":740}},"uni179517B6":{"anchor_0_1":{"x":295,"y":838},"anchor_0_2":{"x":696,"y":760}},"uni179517C5":{"anchor_0_1":{"x":295,"y":833},"anchor_0_2":{"x":295,"y":830}},"uni179617B6":{"anchor_0_1":{"x":295,"y":760},"anchor_0_2":{"x":714,"y":740}},"uni179717B6":{"anchor_0_1":{"x":308,"y":760},"anchor_0_2":{"x":688,"y":740}},"uni179817B6":{"anchor_0_1":{"x":296,"y":760},"anchor_0_2":{"x":707,"y":740}},"uni179917B6":{"anchor_0_1":{"x":597,"y":760},"anchor_0_2":{"x":1039,"y":740}},"uni179A17B6":{"anchor_0_1":{"x":175,"y":760},"anchor_1_1":{"x":272,"y":760},"anchor_0_2":{"x":449,"y":740},"anchor_1_2":{"x":272,"y":760}},"uni179B17B6":{"anchor_0_1":{"x":615,"y":760},"anchor_0_2":{"x":1024,"y":740}},"uni179C17B6":{"anchor_0_1":{"x":144,"y":840},"anchor_1_1":{"x":307,"y":840},"anchor_0_2":{"x":406,"y":772},"anchor_1_2":{"x":307,"y":840}},"uni179D17B6":{"anchor_0_1":{"x":283,"y":760},"anchor_0_2":{"x":670,"y":740}},"uni179E17B6":{"anchor_0_1":{"x":259,"y":760},"anchor_0_2":{"x":707,"y":740}},"uni179F17B6":{"anchor_0_1":{"x":580,"y":760},"anchor_0_2":{"x":1022,"y":740}},"uni17A017B6":{"anchor_0_1":{"x":595,"y":760},"anchor_0_2":{"x":1008,"y":740}},"uni17A117B6":{"anchor_0_1":{"x":503,"y":760},"anchor_0_2":{"x":892,"y":740}},"uni17A217B6":{"anchor_0_1":{"x":331,"y":760},"anchor_0_2":{"x":758,"y":740}},"uni17D2178317B6":{"anchor_0_1":{"x":274,"y":760},"anchor_0_2":{"x":383,"y":740}},"uni17D2178317B6.low":{"anchor_0_1":{"x":274,"y":760},"anchor_0_2":{"x":383,"y":740}},"uni17D2178817B6":{"anchor_0_1":{"x":301,"y":760},"anchor_0_2":{"x":410,"y":740}},"uni17D2178817B6.low":{"anchor_0_1":{"x":301,"y":760},"anchor_0_2":{"x":410,"y":740}},"uni17D2178D17B6":{"anchor_0_1":{"x":305,"y":760},"anchor_0_2":{"x":414,"y":740}},"uni17D2178D17B6.low":{"anchor_0_1":{"x":305,"y":760},"anchor_0_2":{"x":414,"y":740}},"uni17D2179417B6":{"anchor_0_1":{"x":314,"y":760},"anchor_0_2":{"x":423,"y":740}},"uni17D2179417B6.low":{"anchor_0_1":{"x":314,"y":760},"anchor_0_2":{"x":423,"y":740}},"uni17D2179917B6":{"anchor_0_1":{"x":307,"y":760},"anchor_0_2":{"x":416,"y":740}},"uni17D2179917B6.low":{"anchor_0_1":{"x":307,"y":760},"anchor_0_2":{"x":416,"y":740}},"uni17D2179E17B6":{"anchor_0_1":{"x":314,"y":760},"anchor_0_2":{"x":423,"y":740}},"uni17D2179E17B6.low":{"anchor_0_1":{"x":314,"y":760},"anchor_0_2":{"x":423,"y":740}},"uni17D2179F17B6":{"anchor_0_1":{"x":320,"y":760},"anchor_0_2":{"x":430,"y":740}},"uni17D2179F17B6.low":{"anchor_0_1":{"x":320,"y":760},"anchor_0_2":{"x":430,"y":740}}},null],"bases":[null,{"uni17A4":{"anchor_0":{"x":648,"y":760}},"uni17B6":{"anchor_0":{"x":15,"y":740}},"uni17C4":{"anchor_0":{"x":912,"y":740}},"uni17C5":{"anchor_0":{"x":912,"y":740}},"uni17C5.right":{"anchor_0":{"x":15,"y":740}}}]}},"35":{"0":{"type":["mark_to_mark","mark_to_base"],"marks":{"anchor_0":{"uni17B7":[{"x":-353,"y":854},null],"uni17B7.r":[{"x":-390,"y":858},null],"uni17B717CD":[{"x":-353,"y":854},null],"uni17B717CD.r":[{"x":-390,"y":857},null],"uni17B8":[{"x":-353,"y":854},null],"uni17B8.r":[{"x":-390,"y":859},null],"uni17B9":[{"x":-353,"y":854},null],"uni17B9.r":[{"x":-390,"y":859},null],"uni17BA":[{"x":-353,"y":854},null],"uni17BA.r":[{"x":-390,"y":858},null],"uni17C9":[{"x":-353,"y":854},null],"uni17C9.r":[{"x":-353,"y":854},null],"uni17CA":[{"x":-353,"y":854},null],"uni17CA.r":[{"x":-353,"y":783},null],"uni17CA.b":[{"x":-353,"y":823},null],"uni17CB":[{"x":-353,"y":826},null],"uni17CC":[{"x":-353,"y":865},null],"uni17CC.r":[{"x":-353,"y":865},null],"uni17CD":[{"x":-353,"y":791},null],"uni17CD.r":[{"x":-353,"y":791},null],"uni17CE":[{"x":-353,"y":854},null],"uni17CF":[{"x":-353,"y":854},null],"uni17CF.r":[{"x":-353,"y":854},null],"uni17D0":[{"x":-353,"y":854},null],"uni17D1":[{"x":-353,"y":854},null],"uni17D1.r":[{"x":-353,"y":854},null],"uni17D3":[{"x":-353,"y":854},null],"uni17D3.r":[{"x":-353,"y":854},null],"uni17DD":[{"x":-297,"y":854},null],"uni17DD.r":[{"x":-297,"y":854},null]}},"basemarks":[{"uni17B7":{"anchor_0":{"x":-353,"y":1085}},"uni17B7.r":{"anchor_0":{"x":-390,"y":1089}},"uni17B717CD":{"anchor_0":{"x":-353,"y":1201}},"uni17B717CD.r":{"anchor_0":{"x":-390,"y":1177}},"uni17B8":{"anchor_0":{"x":-353,"y":1134}},"uni17B8.r":{"anchor_0":{"x":-390,"y":1129}},"uni17B9":{"anchor_0":{"x":-353,"y":1116}},"uni17B9.r":{"anchor_0":{"x":-390,"y":1129}},"uni17BA":{"anchor_0":{"x":-353,"y":1170}},"uni17BA.r":{"anchor_0":{"x":-390,"y":1167}},"uni17C6":{"anchor_0":{"x":-353,"y":1164}},"uni17C6.r":{"anchor_0":{"x":-353,"y":1164}},"uni17C9":{"anchor_0":{"x":-353,"y":1120}},"uni17C9.r":{"anchor_0":{"x":-353,"y":1120}},"uni17CA":{"anchor_0":{"x":-353,"y":1107}},"uni17CA.r":{"anchor_0":{"x":-353,"y":1017}},"uni17CA.b":{"anchor_0":{"x":-353,"y":1030}},"uni17CB":{"anchor_0":{"x":-353,"y":1091}},"uni17CC":{"anchor_0":{"x":-353,"y":1156}},"uni17CC.r":{"anchor_0":{"x":-353,"y":1156}},"uni17CD":{"anchor_0":{"x":-353,"y":1091}},"uni17CD.r":{"anchor_0":{"x":-353,"y":1091}},"uni17CE":{"anchor_0":{"x":-353,"y":1163}},"uni17CF":{"anchor_0":{"x":-353,"y":1174}},"uni17CF.r":{"anchor_0":{"x":-353,"y":1174}},"uni17D0":{"anchor_0":{"x":-353,"y":1134}},"uni17D1":{"anchor_0":{"x":-353,"y":980}},"uni17D1.r":{"anchor_0":{"x":-353,"y":972}},"uni17D3":{"anchor_0":{"x":-353,"y":1118}},"uni17D3.r":{"anchor_0":{"x":-353,"y":1118}},"uni17DD":{"anchor_0":{"x":-297,"y":1108}},"uni17DD.r":{"anchor_0":{"x":-297,"y":1108}}},null],"bases":[null,{"uni1780":{"anchor_0":{"x":286,"y":728}},"uni1782":{"anchor_0":{"x":286,"y":728}},"uni1787":{"anchor_0":{"x":294,"y":830}},"uni178A":{"anchor_0":{"x":274,"y":754}},"uni178F":{"anchor_0":{"x":285,"y":728}},"uni1790":{"anchor_0":{"x":285,"y":839}},"uni1795":{"anchor_0":{"x":287,"y":810}},"uni1797":{"anchor_0":{"x":290,"y":725}},"uni179D":{"anchor_0":{"x":286,"y":728}},"uni17A4":{"anchor_0":{"x":758,"y":740}},"uni17B6":{"anchor_0":{"x":15,"y":740}},"uni17C4":{"anchor_0":{"x":912,"y":740}},"uni17C5":{"anchor_0":{"x":912,"y":740}},"uni17C5.right":{"anchor_0":{"x":15,"y":740}}}]}},"36":{"0":{"type":["mark_to_mark","mark_to_base"],"basemarks":[{"uni17D21780":{"anchor_0":{"x":-319,"y":-317}},"uni17D21781":{"anchor_0":{"x":-320,"y":-320}},"uni17D21782":{"anchor_0":{"x":-318,"y":-317}},"uni17D21784":{"anchor_0":{"x":-324,"y":-274}},"uni17D21785":{"anchor_0":{"x":-331,"y":-290}},"uni17D21786":{"anchor_0":{"x":-328,"y":-309}},"uni17D21787":{"anchor_0":{"x":-321,"y":-275}},"uni17D21789":{"anchor_0":{"x":-319,"y":-269}},"uni17D21789.a":{"anchor_0":{"x":-523,"y":-387}},"uni17D2178A":{"anchor_0":{"x":-319,"y":-317}},"uni17D2178A.r":{"anchor_0":{"x":-320,"y":-317}},"uni17D2178B":{"anchor_0":{"x":-301,"y":-320}},"uni17D2178C":{"anchor_0":{"x":-322,"y":-320}},"uni17D2178E":{"anchor_0":{"x":-690,"y":-317}},"uni17D2178E.alt":{"anchor_0":{"x":-690,"y":-317}},"uni17D2178F":{"anchor_0":{"x":-319,"y":-295}},"uni17D2178F.r":{"anchor_0":{"x":-319,"y":-295}},"uni17D21790":{"anchor_0":{"x":-307,"y":-270}},"uni17D21791":{"anchor_0":{"x":-324,"y":-299}},"uni17D21792":{"anchor_0":{"x":-303,"y":-311}},"uni17D21793":{"anchor_0":{"x":-307,"y":-260}},"uni17D21795":{"anchor_0":{"x":-324,"y":-320}},"uni17D21796":{"anchor_0":{"x":-320,"y":-318}},"uni17D21797":{"anchor_0":{"x":-330,"y":-317}},"uni17D21797.r":{"anchor_0":{"x":-330,"y":-317}},"uni17D21798":{"anchor_0":{"x":-291,"y":-291}},"uni17D21798.r":{"anchor_0":{"x":-321,"y":-291}},"uni17D2179B":{"anchor_0":{"x":-334,"y":-274}},"uni17D2179C":{"anchor_0":{"x":-320,"y":-296}},"uni17D2179D":{"anchor_0":{"x":-318,"y":-317}},"uni17D217A0":{"anchor_0":{"x":-323,"y":-300}},"uni17D217A2":{"anchor_0":{"x":-332,"y":-320}},"uni17D217A7":{"anchor_0":{"x":-320,"y":-406}},"uni17D217AB":{"anchor_0":{"x":-324,"y":-518}},"uni17D217AC":{"anchor_0":{"x":-325,"y":-518}}},null],"bases":[null,{"uni1780":{"anchor_0":{"x":284,"y":0}},"uni1781":{"anchor_0":{"x":291,"y":0}},"uni1782":{"anchor_0":{"x":284,"y":0}},"uni1783":{"anchor_0":{"x":601,"y":0}},"uni1784":{"anchor_0":{"x":320,"y":0}},"uni1785":{"anchor_0":{"x":289,"y":0}},"uni1786":{"anchor_0":{"x":289,"y":0}},"uni1787":{"anchor_0":{"x":294,"y":0}},"uni1788":{"anchor_0":{"x":904,"y":0}},"uni1789":{"anchor_0":{"x":613,"y":-274}},"uni1789.a":{"anchor_0":{"x":613,"y":0}},"uni178A":{"anchor_0":{"x":293,"y":0}},"uni178B":{"anchor_0":{"x":308,"y":0}},"uni178C":{"anchor_0":{"x":310,"y":-49}},"uni178D":{"anchor_0":{"x":564,"y":0}},"uni178E":{"anchor_0":{"x":594,"y":0}},"uni178F":{"anchor_0":{"x":283,"y":0}},"uni1790":{"anchor_0":{"x":289,"y":0}},"uni1791":{"anchor_0":{"x":235,"y":0}},"uni1792":{"anchor_0":{"x":291,"y":0}},"uni1793":{"anchor_0":{"x":294,"y":0}},"uni1794":{"anchor_0":{"x":296,"y":0}},"uni1794.a":{"anchor_0":{"x":288,"y":-40}},"uni1794.a2":{"anchor_0":{"x":288,"y":-40}},"uni1795":{"anchor_0":{"x":299,"y":0}},"uni1796":{"anchor_0":{"x":308,"y":0}},"uni1797":{"anchor_0":{"x":313,"y":0}},"uni1798":{"anchor_0":{"x":296,"y":0}},"uni1799":{"anchor_0":{"x":629,"y":0}},"uni179A":{"anchor_0":{"x":192,"y":0}},"uni179B":{"anchor_0":{"x":615,"y":0}},"uni179C":{"anchor_0":{"x":144,"y":0}},"uni179D":{"anchor_0":{"x":280,"y":0}},"uni179E":{"anchor_0":{"x":319,"y":0}},"uni179F":{"anchor_0":{"x":608,"y":0}},"uni17A0":{"anchor_0":{"x":598,"y":0}},"uni17A1":{"anchor_0":{"x":479,"y":-318}},"uni17A2":{"anchor_0":{"x":324,"y":0}},"uni17A3":{"anchor_0":{"x":324,"y":0}},"uni17A4":{"anchor_0":{"x":324,"y":0}},"uni17A7":{"anchor_0":{"x":326,"y":-49}},"uni17A8":{"anchor_0":{"x":341,"y":-49}},"uni17A9":{"anchor_0":{"x":341,"y":-49}},"uni17AA":{"anchor_0":{"x":341,"y":-49}},"uni17AB":{"anchor_0":{"x":296,"y":0}},"uni17AC":{"anchor_0":{"x":296,"y":0}},"uni17AD":{"anchor_0":{"x":308,"y":0}},"uni17AE":{"anchor_0":{"x":308,"y":0}},"uni17B0":{"anchor_0":{"x":324,"y":-251}},"uni17B1":{"anchor_0":{"x":330,"y":-49}},"uni17B3":{"anchor_0":{"x":341,"y":-49}},"uni17BF":{"anchor_0":{"x":633,"y":45}},"uni17C0":{"anchor_0":{"x":608,"y":45}},"uni17C4":{"anchor_0":{"x":589,"y":45}},"uni17C5":{"anchor_0":{"x":589,"y":45}},"uni17D8":{"anchor_0":{"x":1251,"y":0}},"uni17DB":{"anchor_0":{"x":192,"y":0}},"uni17D21783":{"anchor_0":{"x":-47,"y":-296}},"uni17D21783.low":{"anchor_0":{"x":-59,"y":-552}},"uni17D21788":{"anchor_0":{"x":-27,"y":-317}},"uni17D21788.low":{"anchor_0":{"x":-27,"y":-548}},"uni17D2178D":{"anchor_0":{"x":41,"y":-317}},"uni17D2178D.low":{"anchor_0":{"x":-16,"y":-582}},"uni17D21794":{"anchor_0":{"x":14,"y":-320}},"uni17D21794.low":{"anchor_0":{"x":14,"y":-571}},"uni17D21799":{"anchor_0":{"x":10,"y":-317}},"uni17D21799.low":{"anchor_0":{"x":11,"y":-551}},"uni17D2179E":{"anchor_0":{"x":14,"y":-320}},"uni17D2179E.low":{"anchor_0":{"x":14,"y":-571}},"uni17D2179F":{"anchor_0":{"x":23,"y":-318}},"uni17D2179F.low":{"anchor_0":{"x":21,"y":-610}},"uni17D217A1":{"anchor_0":{"x":23,"y":-318}}}]}},"37":{"0":{"type":["mark_to_mark","mark_to_base"],"marks":{"anchor_0":{"uni17B7":[{"x":-353,"y":854},null],"uni17B7.r":[{"x":-390,"y":858},null],"uni17B717CD":[{"x":-353,"y":854},null],"uni17B717CD.r":[{"x":-390,"y":857},null],"uni17B8":[{"x":-353,"y":854},null],"uni17B8.r":[{"x":-390,"y":859},null],"uni17B9":[{"x":-353,"y":854},null],"uni17B9.r":[{"x":-390,"y":859},null],"uni17BA":[{"x":-353,"y":854},null],"uni17BA.r":[{"x":-390,"y":858},null],"uni17BE":[{"x":543,"y":751},null],"uni17C6":[{"x":-353,"y":854},null],"uni17C6.r":[{"x":-353,"y":854},null],"uni17C9":[{"x":-353,"y":854},null],"uni17C9.r":[{"x":-353,"y":854},null],"uni17CA":[{"x":-353,"y":854},null],"uni17CA.r":[{"x":-353,"y":783},null],"uni17CA.b":[{"x":-353,"y":823},null],"uni17CB":[{"x":-353,"y":826},null],"uni17CC":[{"x":-353,"y":865},null],"uni17CC.r":[{"x":-353,"y":865},null],"uni17CD":[{"x":-353,"y":791},null],"uni17CD.r":[{"x":-353,"y":791},null],"uni17CE":[{"x":-353,"y":854},null],"uni17CF":[{"x":-353,"y":854},null],"uni17CF.r":[{"x":-353,"y":854},null],"uni17D0":[{"x":-353,"y":854},null],"uni17D1":[{"x":-353,"y":854},null],"uni17D1.r":[{"x":-353,"y":854},null],"uni17D3":[{"x":-353,"y":854},null],"uni17D3.r":[{"x":-353,"y":854},null],"uni17DD":[{"x":-297,"y":854},null],"uni17DD.r":[{"x":-297,"y":854},null],"uni17D2178E":[null,{"x":-689,"y":10}]}},"basemarks":[{"uni17B7":{"anchor_0":{"x":-353,"y":1085}},"uni17B7.r":{"anchor_0":{"x":-390,"y":1089}},"uni17B717CD":{"anchor_0":{"x":-353,"y":1201}},"uni17B717CD.r":{"anchor_0":{"x":-390,"y":1177}},"uni17B8":{"anchor_0":{"x":-353,"y":1134}},"uni17B8.r":{"anchor_0":{"x":-390,"y":1129}},"uni17B9":{"anchor_0":{"x":-353,"y":1116}},"uni17B9.r":{"anchor_0":{"x":-390,"y":1129}},"uni17BA":{"anchor_0":{"x":-353,"y":1170}},"uni17BA.r":{"anchor_0":{"x":-390,"y":1167}},"uni17BE":{"anchor_0":{"x":580,"y":645}},"uni17C6":{"anchor_0":{"x":-353,"y":1164}},"uni17C6.r":{"anchor_0":{"x":-353,"y":1164}},"uni17C9":{"anchor_0":{"x":-353,"y":1120}},"uni17C9.r":{"anchor_0":{"x":-353,"y":1120}},"uni17CA":{"anchor_0":{"x":-353,"y":1107}},"uni17CA.r":{"anchor_0":{"x":-353,"y":1017}},"uni17CA.b":{"anchor_0":{"x":-353,"y":1030}},"uni17CB":{"anchor_0":{"x":-353,"y":1091}},"uni17CC":{"anchor_0":{"x":-353,"y":1156}},"uni17CC.r":{"anchor_0":{"x":-353,"y":1156}},"uni17CD":{"anchor_0":{"x":-353,"y":1091}},"uni17CD.r":{"anchor_0":{"x":-353,"y":1091}},"uni17CE":{"anchor_0":{"x":-353,"y":1163}},"uni17CF":{"anchor_0":{"x":-353,"y":1174}},"uni17CF.r":{"anchor_0":{"x":-353,"y":1174}},"uni17D0":{"anchor_0":{"x":-353,"y":1134}},"uni17D1":{"anchor_0":{"x":-353,"y":980}},"uni17D1.r":{"anchor_0":{"x":-353,"y":972}},"uni17D3":{"anchor_0":{"x":-353,"y":1118}},"uni17D3.r":{"anchor_0":{"x":-353,"y":1118}},"uni17DD":{"anchor_0":{"x":-297,"y":1108}},"uni17DD.r":{"anchor_0":{"x":-297,"y":1108}}},null],"bases":[null,{"uni179F":{"anchor_0":{"x":448,"y":0}}}]}},"38":{"0":{"type":["mark_to_mark","mark_to_base"],"marks":{"anchor_0":{"uni17BB":[{"x":-197,"y":16},null],"uni17BB.b":[{"x":-300,"y":16},null],"uni17BC":[{"x":-197,"y":16},null],"uni17BC.b":[{"x":-264,"y":16},null],"uni17BD":[{"x":-197,"y":16},null],"uni17BD.b":[{"x":-295,"y":16},null],"uni17D21780":[{"x":-319,"y":16},null],"uni17D21781":[{"x":-318,"y":16},null],"uni17D21782":[{"x":-318,"y":16},null],"uni17D21784":[{"x":-324,"y":16},null],"uni17D21785":[{"x":-318,"y":16},null],"uni17D21786":[{"x":-317,"y":16},null],"uni17D21787":[{"x":-326,"y":16},null],"uni17D21789":[{"x":-321,"y":16},null],"uni17D2178A":[{"x":-317,"y":16},null],"uni17D2178A.r":[{"x":-319,"y":16},null],"uni17D2178B":[{"x":-301,"y":16},null],"uni17D2178C":[{"x":-323,"y":16},null],"uni17D2178E":[{"x":-690,"y":10},null],"uni17D2178E.alt":[{"x":-690,"y":10},null],"uni17D2178F":[{"x":-317,"y":16},null],"uni17D2178F.r":[{"x":-317,"y":16},null],"uni17D21790":[{"x":-312,"y":16},null],"uni17D21791":[{"x":-325,"y":16},null],"uni17D21792":[{"x":-321,"y":16},null],"uni17D21793":[{"x":-307,"y":16},null],"uni17D21795":[{"x":-318,"y":16},null],"uni17D21796":[{"x":-320,"y":16},null],"uni17D21797":[{"x":-339,"y":16},null],"uni17D21797.r":[{"x":-339,"y":16},null],"uni17D21798":[{"x":-297,"y":16},null],"uni17D21798.r":[{"x":-345,"y":16},null],"uni17D2179B":[{"x":-334,"y":16},null],"uni17D2179C":[{"x":-320,"y":16},null],"uni17D2179D":[{"x":-318,"y":16},null],"uni17D217A0":[{"x":-323,"y":16},null],"uni17D217A2":[{"x":-332,"y":16},null],"uni17D217A7":[{"x":-320,"y":16},null],"uni17D217AB":[{"x":-327,"y":16},null],"uni17D217AC":[{"x":-328,"y":16},null],"uni17D217AF":[{"x":-284,"y":16},null],"uni17D21789.a":[null,{"x":-526,"y":16}]}},"basemarks":[{"uni17BE":{"anchor_0":{"x":580,"y":45}},"uni17D21780":{"anchor_0":{"x":-319,"y":-317}},"uni17D21781":{"anchor_0":{"x":-320,"y":-320}},"uni17D21782":{"anchor_0":{"x":-318,"y":-317}},"uni17D21784":{"anchor_0":{"x":-324,"y":-274}},"uni17D21785":{"anchor_0":{"x":-331,"y":-290}},"uni17D21786":{"anchor_0":{"x":-328,"y":-309}},"uni17D21787":{"anchor_0":{"x":-321,"y":-275}},"uni17D21789":{"anchor_0":{"x":-319,"y":-269}},"uni17D21789.a":{"anchor_0":{"x":-523,"y":-387}},"uni17D2178A":{"anchor_0":{"x":-319,"y":-317}},"uni17D2178A.r":{"anchor_0":{"x":-320,"y":-317}},"uni17D2178B":{"anchor_0":{"x":-301,"y":-320}},"uni17D2178C":{"anchor_0":{"x":-322,"y":-320}},"uni17D2178E":{"anchor_0":{"x":-690,"y":-317}},"uni17D2178E.alt":{"anchor_0":{"x":-690,"y":-317}},"uni17D2178F":{"anchor_0":{"x":-319,"y":-295}},"uni17D2178F.r":{"anchor_0":{"x":-319,"y":-295}},"uni17D21790":{"anchor_0":{"x":-307,"y":-270}},"uni17D21791":{"anchor_0":{"x":-324,"y":-299}},"uni17D21792":{"anchor_0":{"x":-303,"y":-311}},"uni17D21793":{"anchor_0":{"x":-307,"y":-260}},"uni17D21795":{"anchor_0":{"x":-324,"y":-320}},"uni17D21796":{"anchor_0":{"x":-320,"y":-318}},"uni17D21797":{"anchor_0":{"x":-330,"y":-317}},"uni17D21797.r":{"anchor_0":{"x":-330,"y":-317}},"uni17D21798":{"anchor_0":{"x":-291,"y":-291}},"uni17D21798.r":{"anchor_0":{"x":-321,"y":-291}},"uni17D2179B":{"anchor_0":{"x":-334,"y":-274}},"uni17D2179C":{"anchor_0":{"x":-320,"y":-296}},"uni17D2179D":{"anchor_0":{"x":-318,"y":-317}},"uni17D217A0":{"anchor_0":{"x":-323,"y":-300}},"uni17D217A2":{"anchor_0":{"x":-332,"y":-320}},"uni17D217A7":{"anchor_0":{"x":-320,"y":-406}},"uni17D217AB":{"anchor_0":{"x":-324,"y":-518}},"uni17D217AC":{"anchor_0":{"x":-325,"y":-518}}},null],"bases":[null,{"uni1789":{"anchor_0":{"x":450,"y":0}},"uni1789.a":{"anchor_0":{"x":450,"y":0}}}]}},"39":{"0":{"type":["mark_to_base","mark_to_lig"],"marks":{"anchor_1":[{"uni17BB":{"x":-197,"y":16},"uni17BB.b":{"x":-300,"y":16},"uni17BC":{"x":-197,"y":16},"uni17BC.b":{"x":-264,"y":16},"uni17BD":{"x":-197,"y":16},"uni17BD.b":{"x":-295,"y":16},"uni17D21780":{"x":-319,"y":16},"uni17D21781":{"x":-318,"y":16},"uni17D21782":{"x":-318,"y":16},"uni17D21784":{"x":-324,"y":16},"uni17D21785":{"x":-318,"y":16},"uni17D21786":{"x":-317,"y":16},"uni17D21787":{"x":-326,"y":16},"uni17D21789":{"x":-321,"y":16},"uni17D2178A":{"x":-317,"y":16},"uni17D2178A.r":{"x":-319,"y":16},"uni17D2178B":{"x":-301,"y":16},"uni17D2178C":{"x":-323,"y":16},"uni17D2178E":{"x":-690,"y":10},"uni17D2178E.alt":{"x":-690,"y":10},"uni17D2178F":{"x":-317,"y":16},"uni17D2178F.r":{"x":-317,"y":16},"uni17D21790":{"x":-312,"y":16},"uni17D21791":{"x":-325,"y":16},"uni17D21792":{"x":-321,"y":16},"uni17D21793":{"x":-307,"y":16},"uni17D21795":{"x":-318,"y":16},"uni17D21796":{"x":-320,"y":16},"uni17D21797":{"x":-339,"y":16},"uni17D21797.r":{"x":-339,"y":16},"uni17D21798":{"x":-297,"y":16},"uni17D21798.r":{"x":-345,"y":16},"uni17D2179B":{"x":-334,"y":16},"uni17D2179C":{"x":-320,"y":16},"uni17D2179D":{"x":-318,"y":16},"uni17D217A0":{"x":-323,"y":16},"uni17D217A2":{"x":-332,"y":16},"uni17D217A7":{"x":-320,"y":16},"uni17D217AB":{"x":-327,"y":16},"uni17D217AC":{"x":-328,"y":16},"uni17D217AF":{"x":-284,"y":16}},null]},"bases":[{"uni25CC":{"anchor_0":{"x":320,"y":600},"anchor_1":{"x":320,"y":0}}},null],"ligatures":[null,{"uni178017B6":{"anchor_0_1":{"x":284,"y":760},"anchor_0_2":{"x":601,"y":760}},"uni178017C5":{"anchor_0_1":{"x":284,"y":760},"anchor_0_2":{"x":284,"y":760}},"uni178117B6":{"anchor_0_1":{"x":291,"y":760},"anchor_0_2":{"x":604,"y":760}},"uni178117C5":{"anchor_0_1":{"x":291,"y":760},"anchor_0_2":{"x":291,"y":760}},"uni178217B6":{"anchor_0_1":{"x":283,"y":760},"anchor_0_2":{"x":601,"y":760}},"uni178217C5":{"anchor_0_1":{"x":283,"y":760},"anchor_0_2":{"x":283,"y":760}},"uni178317B6":{"anchor_0_1":{"x":579,"y":760},"anchor_0_2":{"x":900,"y":760}},"uni178317C5":{"anchor_0_1":{"x":579,"y":760},"anchor_0_2":{"x":579,"y":760}},"uni178417B6":{"anchor_0_1":{"x":310,"y":826},"anchor_0_2":{"x":620,"y":760}},"uni178417C5":{"anchor_0_1":{"x":310,"y":826},"anchor_0_2":{"x":310,"y":826}},"uni178517B6":{"anchor_0_1":{"x":286,"y":760},"anchor_0_2":{"x":613,"y":760}},"uni178517C5":{"anchor_0_1":{"x":286,"y":760},"anchor_0_2":{"x":286,"y":760}},"uni178617B6":{"anchor_0_1":{"x":288,"y":760},"anchor_0_2":{"x":616,"y":760}},"uni178617C5":{"anchor_0_1":{"x":288,"y":760},"anchor_0_2":{"x":288,"y":760}},"uni178717B6":{"anchor_0_1":{"x":294,"y":860},"anchor_0_2":{"x":624,"y":832}},"uni178717C5":{"anchor_0_1":{"x":294,"y":860},"anchor_0_2":{"x":294,"y":860}},"uni178817B6":{"anchor_0_1":{"x":881,"y":760},"anchor_0_2":{"x":1204,"y":760}},"uni178817C5":{"anchor_0_1":{"x":881,"y":760},"anchor_0_2":{"x":881,"y":760}},"uni178917B6":{"anchor_0_1":{"x":616,"y":761},"anchor_0_2":{"x":905,"y":760}},"uni178917C5":{"anchor_0_1":{"x":616,"y":761},"anchor_0_2":{"x":616,"y":761}},"uni178917B6.a":{"anchor_0_1":{"x":616,"y":760},"anchor_0_2":{"x":905,"y":760}},"uni178917C5.a":{"anchor_0_1":{"x":616,"y":760},"anchor_0_2":{"x":844,"y":760}},"uni178A17B6":{"anchor_0_1":{"x":319,"y":807},"anchor_0_2":{"x":589,"y":807}},"uni178A17C5":{"anchor_0_1":{"x":319,"y":807},"anchor_0_2":{"x":319,"y":807}},"uni178B17B6":{"anchor_0_1":{"x":308,"y":850},"anchor_0_2":{"x":651,"y":850}},"uni178B17C5":{"anchor_0_1":{"x":308,"y":850},"anchor_0_2":{"x":308,"y":850}},"uni178C17B6":{"anchor_0_1":{"x":301,"y":760},"anchor_0_2":{"x":616,"y":760}},"uni178C17C5":{"anchor_0_1":{"x":301,"y":760},"anchor_0_2":{"x":301,"y":760}},"uni178D17B6":{"anchor_0_1":{"x":575,"y":760},"anchor_0_2":{"x":909,"y":760}},"uni178D17C5":{"anchor_0_1":{"x":575,"y":760},"anchor_0_2":{"x":575,"y":760}},"uni178E17B6":{"anchor_0_1":{"x":594,"y":760},"anchor_0_2":{"x":1201,"y":760}},"uni178E17C5":{"anchor_0_1":{"x":594,"y":760},"anchor_0_2":{"x":594,"y":760}},"uni178F17B6":{"anchor_0_1":{"x":266,"y":760},"anchor_0_2":{"x":601,"y":760}},"uni178F17C5":{"anchor_0_1":{"x":279,"y":760},"anchor_0_2":{"x":279,"y":760}},"uni179017B6":{"anchor_0_1":{"x":284,"y":832},"anchor_0_2":{"x":621,"y":832}},"uni179017C5":{"anchor_0_1":{"x":284,"y":832},"anchor_0_2":{"x":284,"y":832}},"uni179117B6":{"anchor_0_1":{"x":293,"y":760},"anchor_0_2":{"x":567,"y":760}},"uni179117C5":{"anchor_0_1":{"x":293,"y":760},"anchor_0_2":{"x":293,"y":760}},"uni179217B6":{"anchor_0_1":{"x":291,"y":760},"anchor_0_2":{"x":604,"y":760}},"uni179217C5":{"anchor_0_1":{"x":291,"y":760},"anchor_0_2":{"x":291,"y":760}},"uni179317B6":{"anchor_0_1":{"x":294,"y":760},"anchor_0_2":{"x":604,"y":760}},"uni179317C5":{"anchor_0_1":{"x":294,"y":760},"anchor_0_2":{"x":294,"y":760}},"uni179417B6":{"anchor_0_1":{"x":229,"y":760},"anchor_0_2":{"x":592,"y":760}},"uni179417B6.high":{"anchor_0_1":{"x":229,"y":760},"anchor_0_2":{"x":592,"y":760}},"uni179417C5":{"anchor_0_1":{"x":285,"y":760},"anchor_0_2":{"x":285,"y":760}},"uni179417C5.high":{"anchor_0_1":{"x":285,"y":760},"anchor_0_2":{"x":285,"y":760}},"uni179517B6":{"anchor_0_1":{"x":295,"y":838},"anchor_0_2":{"x":614,"y":838}},"uni179517C5":{"anchor_0_1":{"x":295,"y":833},"anchor_0_2":{"x":295,"y":833}},"uni179617B6":{"anchor_0_1":{"x":295,"y":760},"anchor_0_2":{"x":605,"y":760}},"uni179617C5":{"anchor_0_1":{"x":295,"y":760},"anchor_0_2":{"x":295,"y":760}},"uni179717B6":{"anchor_0_1":{"x":308,"y":760},"anchor_0_2":{"x":619,"y":760}},"uni179717C5":{"anchor_0_1":{"x":308,"y":760},"anchor_0_2":{"x":308,"y":760}},"uni179817B6":{"anchor_0_1":{"x":296,"y":760},"anchor_0_2":{"x":598,"y":760}},"uni179817C5":{"anchor_0_1":{"x":296,"y":760},"anchor_0_2":{"x":296,"y":760}},"uni179917B6":{"anchor_0_1":{"x":597,"y":760},"anchor_0_2":{"x":930,"y":760}},"uni179917C5":{"anchor_0_1":{"x":597,"y":760},"anchor_0_2":{"x":597,"y":760}},"uni179A17B6":{"anchor_0_1":{"x":175,"y":760},"anchor_0_2":{"x":340,"y":760}},"uni179A17C5":{"anchor_0_1":{"x":175,"y":760},"anchor_0_2":{"x":175,"y":760}},"uni179B17B6":{"anchor_0_1":{"x":615,"y":760},"anchor_0_2":{"x":915,"y":760}},"uni179B17C5":{"anchor_0_1":{"x":615,"y":760},"anchor_0_2":{"x":615,"y":760}},"uni179C17B6":{"anchor_0_1":{"x":144,"y":840},"anchor_0_2":{"x":307,"y":840}},"uni179C17C5":{"anchor_0_1":{"x":144,"y":840},"anchor_0_2":{"x":144,"y":840}},"uni179D17B6":{"anchor_0_1":{"x":283,"y":760},"anchor_0_2":{"x":601,"y":760}},"uni179D17C5":{"anchor_0_1":{"x":288,"y":760},"anchor_0_2":{"x":530,"y":760}},"uni179E17B6":{"anchor_0_1":{"x":259,"y":760},"anchor_0_2":{"x":598,"y":760}},"uni179E17C5":{"anchor_0_1":{"x":259,"y":760},"anchor_0_2":{"x":526,"y":760}},"uni179F17B6":{"anchor_0_1":{"x":580,"y":760},"anchor_0_2":{"x":913,"y":760}},"uni179F17C5":{"anchor_0_1":{"x":580,"y":760},"anchor_0_2":{"x":580,"y":760}},"uni17A017B6":{"anchor_0_1":{"x":595,"y":760},"anchor_0_2":{"x":899,"y":760}},"uni17A017C5":{"anchor_0_1":{"x":595,"y":760},"anchor_0_2":{"x":595,"y":760}},"uni17A117B6":{"anchor_0_1":{"x":503,"y":760},"anchor_0_2":{"x":783,"y":760}},"uni17A117C5":{"anchor_0_1":{"x":500,"y":760},"anchor_0_2":{"x":500,"y":760}},"uni17A217B6":{"anchor_0_1":{"x":331,"y":760},"anchor_0_2":{"x":648,"y":760}},"uni17A217C5":{"anchor_0_1":{"x":331,"y":760},"anchor_0_2":{"x":331,"y":760}},"uni17D2178317B6":{"anchor_0_1":{"x":274,"y":760},"anchor_0_2":{"x":274,"y":760}},"uni17D2178317B6.low":{"anchor_0_1":{"x":274,"y":760},"anchor_0_2":{"x":274,"y":760}},"uni17D2178317C5":{"anchor_0_1":{"x":39,"y":760},"anchor_0_2":{"x":39,"y":760}},"uni17D2178317C5.low":{"anchor_0_1":{"x":39,"y":760},"anchor_0_2":{"x":39,"y":760}},"uni17D2178817B6":{"anchor_0_1":{"x":301,"y":760},"anchor_0_2":{"x":301,"y":760}},"uni17D2178817B6.low":{"anchor_0_1":{"x":301,"y":760},"anchor_0_2":{"x":301,"y":760}},"uni17D2178817C5":{"anchor_0_1":{"x":56,"y":760},"anchor_0_2":{"x":56,"y":760}},"uni17D2178817C5.low":{"anchor_0_1":{"x":56,"y":760},"anchor_0_2":{"x":56,"y":760}},"uni17D2178D17B6":{"anchor_0_1":{"x":305,"y":760},"anchor_0_2":{"x":305,"y":760}},"uni17D2178D17B6.low":{"anchor_0_1":{"x":305,"y":760},"anchor_0_2":{"x":305,"y":760}},"uni17D2178D17C5":{"anchor_0_1":{"x":15,"y":760},"anchor_0_2":{"x":15,"y":760}},"uni17D2178D17C5.low":{"anchor_0_1":{"x":15,"y":760},"anchor_0_2":{"x":15,"y":760}},"uni17D2179417B6":{"anchor_0_1":{"x":314,"y":760},"anchor_0_2":{"x":314,"y":760}},"uni17D2179417B6.low":{"anchor_0_1":{"x":314,"y":760},"anchor_0_2":{"x":314,"y":760}},"uni17D2179417C5":{"anchor_0_1":{"x":48,"y":760},"anchor_0_2":{"x":48,"y":760}},"uni17D2179417C5.low":{"anchor_0_1":{"x":48,"y":760},"anchor_0_2":{"x":48,"y":760}},"uni17D2179917B6":{"anchor_0_1":{"x":307,"y":760},"anchor_0_2":{"x":307,"y":760}},"uni17D2179917B6.low":{"anchor_0_1":{"x":307,"y":760},"anchor_0_2":{"x":307,"y":760}},"uni17D2179917C5":{"anchor_0_1":{"x":9,"y":760},"anchor_0_2":{"x":9,"y":760}},"uni17D2179917C5.low":{"anchor_0_1":{"x":9,"y":760},"anchor_0_2":{"x":9,"y":760}},"uni17D2179E17B6":{"anchor_0_1":{"x":314,"y":760},"anchor_0_2":{"x":314,"y":760}},"uni17D2179E17B6.low":{"anchor_0_1":{"x":314,"y":760},"anchor_0_2":{"x":314,"y":760}},"uni17D2179E17C5":{"anchor_0_1":{"x":31,"y":760},"anchor_0_2":{"x":167,"y":760}},"uni17D2179E17C5.low":{"anchor_0_1":{"x":31,"y":760},"anchor_0_2":{"x":167,"y":760}},"uni17D2179F17B6":{"anchor_0_1":{"x":320,"y":760},"anchor_0_2":{"x":320,"y":760}},"uni17D2179F17B6.low":{"anchor_0_1":{"x":320,"y":760},"anchor_0_2":{"x":320,"y":760}},"uni17D2179F17C5":{"anchor_0_1":{"x":20,"y":760},"anchor_0_2":{"x":20,"y":760}},"uni17D2179F17C5.low":{"anchor_0_1":{"x":20,"y":760},"anchor_0_2":{"x":20,"y":760}}}]}},"40":{"0":{"type":["mark_to_base","mark_to_lig"],"marks":{"anchor_0":{"uni17BB":[{"x":-197,"y":16},null],"uni17BB.b":[{"x":-300,"y":16},null],"uni17BC":[{"x":-197,"y":16},null],"uni17BC.b":[{"x":-264,"y":16},null],"uni17BD":[{"x":-197,"y":16},null],"uni17BD.b":[{"x":-295,"y":16},null],"uni17D21780":[{"x":-319,"y":16},null],"uni17D21781":[{"x":-318,"y":16},null],"uni17D21782":[{"x":-318,"y":16},null],"uni17D21784":[{"x":-324,"y":16},null],"uni17D21785":[{"x":-318,"y":16},null],"uni17D21786":[{"x":-317,"y":16},null],"uni17D21787":[{"x":-326,"y":16},null],"uni17D21789":[{"x":-321,"y":16},null],"uni17D2178A":[{"x":-317,"y":16},null],"uni17D2178A.r":[{"x":-319,"y":16},null],"uni17D2178B":[{"x":-301,"y":16},null],"uni17D2178C":[{"x":-323,"y":16},null],"uni17D2178E":[{"x":-690,"y":10},null],"uni17D2178E.alt":[{"x":-690,"y":10},null],"uni17D2178F":[{"x":-317,"y":16},null],"uni17D2178F.r":[{"x":-317,"y":16},null],"uni17D21790":[{"x":-312,"y":16},null],"uni17D21791":[{"x":-325,"y":16},null],"uni17D21792":[{"x":-321,"y":16},null],"uni17D21793":[{"x":-307,"y":16},null],"uni17D21795":[{"x":-318,"y":16},null],"uni17D21796":[{"x":-320,"y":16},null],"uni17D21797":[{"x":-339,"y":16},null],"uni17D21797.r":[{"x":-339,"y":16},null],"uni17D21798":[{"x":-297,"y":16},null],"uni17D21798.r":[{"x":-345,"y":16},null],"uni17D2179B":[{"x":-334,"y":16},null],"uni17D2179C":[{"x":-320,"y":16},null],"uni17D2179D":[{"x":-318,"y":16},null],"uni17D217A0":[{"x":-323,"y":16},null],"uni17D217A2":[{"x":-332,"y":16},null],"uni17D217A7":[{"x":-320,"y":16},null],"uni17D217AB":[{"x":-327,"y":16},null],"uni17D217AC":[{"x":-328,"y":16},null],"uni17D217AF":[{"x":-284,"y":16},null],"uni17C6":[null,{"x":-353,"y":854}],"uni17C6.r":[null,{"x":-353,"y":854}]}},"bases":[{"uni25CC":{"anchor_0":{"x":320,"y":0}}},null],"ligatures":[null,{"uni178017B6":{"anchor_0_1":{"x":284,"y":760},"anchor_0_2":{"x":673,"y":740}},"uni178117B6":{"anchor_0_1":{"x":291,"y":760},"anchor_0_2":{"x":713,"y":740}},"uni178217B6":{"anchor_0_1":{"x":283,"y":760},"anchor_0_2":{"x":670,"y":740}},"uni178317B6":{"anchor_0_1":{"x":579,"y":760},"anchor_0_2":{"x":1009,"y":740}},"uni178417B6":{"anchor_0_1":{"x":310,"y":826},"anchor_0_2":{"x":729,"y":740}},"uni178517B6":{"anchor_0_1":{"x":286,"y":760},"anchor_0_2":{"x":682,"y":740}},"uni178617B6":{"anchor_0_1":{"x":288,"y":760},"anchor_0_2":{"x":685,"y":740}},"uni178717B6":{"anchor_0_1":{"x":294,"y":860},"anchor_0_2":{"x":294,"y":830}},"uni178717C5":{"anchor_0_1":{"x":294,"y":860},"anchor_0_2":{"x":294,"y":830}},"uni178817B6":{"anchor_0_1":{"x":881,"y":760},"anchor_0_2":{"x":1313,"y":740}},"uni178917B6":{"anchor_0_1":{"x":616,"y":761},"anchor_0_2":{"x":1015,"y":740}},"uni178917B6.a":{"anchor_0_1":{"x":616,"y":760},"anchor_0_2":{"x":1014,"y":740}},"uni178A17B6":{"anchor_0_1":{"x":319,"y":807},"anchor_0_2":{"x":687,"y":807}},"uni178A17C5":{"anchor_0_1":{"x":319,"y":807},"anchor_0_2":{"x":306,"y":794}},"uni178B17B6":{"anchor_0_1":{"x":308,"y":850},"anchor_0_2":{"x":738,"y":850}},"uni178C17B6":{"anchor_0_1":{"x":301,"y":760},"anchor_0_2":{"x":725,"y":740}},"uni178D17B6":{"anchor_0_1":{"x":575,"y":760},"anchor_0_2":{"x":1018,"y":740}},"uni178E17B6":{"anchor_0_1":{"x":594,"y":760},"anchor_0_2":{"x":1310,"y":740}},"uni178F17B6":{"anchor_0_1":{"x":266,"y":760},"anchor_0_2":{"x":670,"y":740}},"uni179017B6":{"anchor_0_1":{"x":284,"y":832},"anchor_0_2":{"x":710,"y":740}},"uni179017C5":{"anchor_0_1":{"x":284,"y":832},"anchor_0_2":{"x":285,"y":832}},"uni179117B6":{"anchor_0_1":{"x":293,"y":760},"anchor_0_2":{"x":677,"y":740}},"uni179217B6":{"anchor_0_1":{"x":291,"y":760},"anchor_0_2":{"x":673,"y":740}},"uni179317B6":{"anchor_0_1":{"x":294,"y":760},"anchor_0_2":{"x":713,"y":740}},"uni179417B6":{"anchor_0_1":{"x":229,"y":760},"anchor_0_2":{"x":661,"y":740}},"uni179417B6.high":{"anchor_0_1":{"x":229,"y":760},"anchor_0_2":{"x":661,"y":740}},"uni179517B6":{"anchor_0_1":{"x":295,"y":838},"anchor_0_2":{"x":696,"y":760}},"uni179517C5":{"anchor_0_1":{"x":295,"y":833},"anchor_0_2":{"x":295,"y":830}},"uni179617B6":{"anchor_0_1":{"x":295,"y":760},"anchor_0_2":{"x":714,"y":740}},"uni179717B6":{"anchor_0_1":{"x":308,"y":760},"anchor_0_2":{"x":688,"y":740}},"uni179817B6":{"anchor_0_1":{"x":296,"y":760},"anchor_0_2":{"x":707,"y":740}},"uni179917B6":{"anchor_0_1":{"x":597,"y":760},"anchor_0_2":{"x":1039,"y":740}},"uni179A17B6":{"anchor_0_1":{"x":175,"y":760},"anchor_0_2":{"x":449,"y":740}},"uni179B17B6":{"anchor_0_1":{"x":615,"y":760},"anchor_0_2":{"x":1024,"y":740}},"uni179C17B6":{"anchor_0_1":{"x":144,"y":840},"anchor_0_2":{"x":406,"y":772}},"uni179D17B6":{"anchor_0_1":{"x":283,"y":760},"anchor_0_2":{"x":670,"y":740}},"uni179E17B6":{"anchor_0_1":{"x":259,"y":760},"anchor_0_2":{"x":707,"y":740}},"uni179F17B6":{"anchor_0_1":{"x":580,"y":760},"anchor_0_2":{"x":1022,"y":740}},"uni17A017B6":{"anchor_0_1":{"x":595,"y":760},"anchor_0_2":{"x":1008,"y":740}},"uni17A117B6":{"anchor_0_1":{"x":503,"y":760},"anchor_0_2":{"x":892,"y":740}},"uni17A217B6":{"anchor_0_1":{"x":331,"y":760},"anchor_0_2":{"x":758,"y":740}},"uni17D2178317B6":{"anchor_0_1":{"x":274,"y":760},"anchor_0_2":{"x":383,"y":740}},"uni17D2178317B6.low":{"anchor_0_1":{"x":274,"y":760},"anchor_0_2":{"x":383,"y":740}},"uni17D2178817B6":{"anchor_0_1":{"x":301,"y":760},"anchor_0_2":{"x":410,"y":740}},"uni17D2178817B6.low":{"anchor_0_1":{"x":301,"y":760},"anchor_0_2":{"x":410,"y":740}},"uni17D2178D17B6":{"anchor_0_1":{"x":305,"y":760},"anchor_0_2":{"x":414,"y":740}},"uni17D2178D17B6.low":{"anchor_0_1":{"x":305,"y":760},"anchor_0_2":{"x":414,"y":740}},"uni17D2179417B6":{"anchor_0_1":{"x":314,"y":760},"anchor_0_2":{"x":423,"y":740}},"uni17D2179417B6.low":{"anchor_0_1":{"x":314,"y":760},"anchor_0_2":{"x":423,"y":740}},"uni17D2179917B6":{"anchor_0_1":{"x":307,"y":760},"anchor_0_2":{"x":416,"y":740}},"uni17D2179917B6.low":{"anchor_0_1":{"x":307,"y":760},"anchor_0_2":{"x":416,"y":740}},"uni17D2179E17B6":{"anchor_0_1":{"x":314,"y":760},"anchor_0_2":{"x":423,"y":740}},"uni17D2179E17B6.low":{"anchor_0_1":{"x":314,"y":760},"anchor_0_2":{"x":423,"y":740}},"uni17D2179F17B6":{"anchor_0_1":{"x":320,"y":760},"anchor_0_2":{"x":430,"y":740}},"uni17D2179F17B6.low":{"anchor_0_1":{"x":320,"y":760},"anchor_0_2":{"x":430,"y":740}}}]}},"41":{"0":{"type":["mark_to_base","mark_to_lig"],"marks":{"anchor_0":{"uni17B7":[{"x":-353,"y":854},null],"uni17B7.r":[{"x":-390,"y":858},null],"uni17B717CD":[{"x":-353,"y":854},null],"uni17B717CD.r":[{"x":-390,"y":857},null],"uni17B8":[{"x":-353,"y":854},null],"uni17B8.r":[{"x":-390,"y":859},null],"uni17B9":[{"x":-353,"y":854},null],"uni17B9.r":[{"x":-390,"y":859},null],"uni17BA":[{"x":-353,"y":854},null],"uni17BA.r":[{"x":-390,"y":858},null],"uni17BE":[{"x":543,"y":751},null],"uni17C6":[{"x":-353,"y":854},null],"uni17C6.r":[{"x":-353,"y":854},null],"uni17CA":[{"x":-353,"y":854},null],"uni17CA.r":[{"x":-353,"y":783},null],"uni17CA.b":[{"x":-353,"y":823},null],"uni17CB":[{"x":-353,"y":826},null],"uni17CC":[{"x":-353,"y":865},null],"uni17CC.r":[{"x":-353,"y":865},null],"uni17CD":[{"x":-353,"y":791},null],"uni17CD.r":[{"x":-353,"y":791},null],"uni17CE":[{"x":-353,"y":854},null],"uni17CF":[{"x":-353,"y":854},null],"uni17CF.r":[{"x":-353,"y":854},null],"uni17D0":[{"x":-353,"y":854},null],"uni17D1":[{"x":-353,"y":854},null],"uni17D1.r":[{"x":-353,"y":854},null],"uni17D3":[{"x":-353,"y":854},null],"uni17D3.r":[{"x":-353,"y":854},null],"uni17DD":[{"x":-297,"y":854},null],"uni17DD.r":[{"x":-297,"y":854},null]}},"bases":[{"uni25CC":{"anchor_0":{"x":320,"y":600}}},null],"ligatures":[null,{"uni179A17B6":{"anchor_0_1":{"x":272,"y":760},"anchor_0_2":{"x":272,"y":760}},"uni179C17B6":{"anchor_0_1":{"x":307,"y":840},"anchor_0_2":{"x":307,"y":840}}}]}},"42":[null,[{"type":"mark_to_lig","marks":{"anchor_0":{"uni17BB":{"x":-197,"y":16},"uni17BB.b":{"x":-300,"y":16},"uni17BC":{"x":-197,"y":16},"uni17BC.b":{"x":-264,"y":16},"uni17BD":{"x":-197,"y":16},"uni17BD.b":{"x":-295,"y":16},"uni17D21780":{"x":-319,"y":16},"uni17D21781":{"x":-318,"y":16},"uni17D21782":{"x":-318,"y":16},"uni17D21784":{"x":-324,"y":16},"uni17D21785":{"x":-318,"y":16},"uni17D21786":{"x":-317,"y":16},"uni17D21787":{"x":-326,"y":16},"uni17D21789":{"x":-321,"y":16},"uni17D2178A":{"x":-317,"y":16},"uni17D2178A.r":{"x":-319,"y":16},"uni17D2178B":{"x":-301,"y":16},"uni17D2178C":{"x":-323,"y":16},"uni17D2178E":{"x":-690,"y":10},"uni17D2178E.alt":{"x":-690,"y":10},"uni17D2178F":{"x":-317,"y":16},"uni17D2178F.r":{"x":-317,"y":16},"uni17D21790":{"x":-312,"y":16},"uni17D21791":{"x":-325,"y":16},"uni17D21792":{"x":-321,"y":16},"uni17D21793":{"x":-307,"y":16},"uni17D21795":{"x":-318,"y":16},"uni17D21796":{"x":-320,"y":16},"uni17D21797":{"x":-339,"y":16},"uni17D21797.r":{"x":-339,"y":16},"uni17D21798":{"x":-297,"y":16},"uni17D21798.r":{"x":-345,"y":16},"uni17D2179B":{"x":-334,"y":16},"uni17D2179C":{"x":-320,"y":16},"uni17D2179D":{"x":-318,"y":16},"uni17D217A0":{"x":-323,"y":16},"uni17D217A2":{"x":-332,"y":16},"uni17D217A7":{"x":-320,"y":16},"uni17D217AB":{"x":-327,"y":16},"uni17D217AC":{"x":-328,"y":16},"uni17D217AF":{"x":-284,"y":16}}},"ligatures":{"uni178017B6":{"anchor_0_1":{"x":284,"y":0},"anchor_0_2":{"x":588,"y":0}},"uni178017C5":{"anchor_0_1":{"x":284,"y":0},"anchor_0_2":{"x":588,"y":0}},"uni178117B6":{"anchor_0_1":{"x":291,"y":0},"anchor_0_2":{"x":609,"y":0}},"uni178117C5":{"anchor_0_1":{"x":291,"y":0},"anchor_0_2":{"x":609,"y":0}},"uni178217B6":{"anchor_0_1":{"x":285,"y":0},"anchor_0_2":{"x":588,"y":0}},"uni178217C5":{"anchor_0_1":{"x":285,"y":0},"anchor_0_2":{"x":588,"y":0}},"uni178317B6":{"anchor_0_1":{"x":601,"y":0},"anchor_0_2":{"x":905,"y":0}},"uni178317C5":{"anchor_0_1":{"x":601,"y":0},"anchor_0_2":{"x":905,"y":0}},"uni178417B6":{"anchor_0_1":{"x":330,"y":0},"anchor_0_2":{"x":628,"y":0}},"uni178417C5":{"anchor_0_1":{"x":330,"y":0},"anchor_0_2":{"x":628,"y":0}},"uni178517B6":{"anchor_0_1":{"x":286,"y":0},"anchor_0_2":{"x":600,"y":0}},"uni178517C5":{"anchor_0_1":{"x":286,"y":0},"anchor_0_2":{"x":600,"y":0}},"uni178617B6":{"anchor_0_1":{"x":288,"y":0},"anchor_0_2":{"x":602,"y":0}},"uni178617C5":{"anchor_0_1":{"x":288,"y":0},"anchor_0_2":{"x":602,"y":0}},"uni178717B6":{"anchor_0_1":{"x":297,"y":0},"anchor_0_2":{"x":618,"y":0}},"uni178717C5":{"anchor_0_1":{"x":297,"y":0},"anchor_0_2":{"x":635,"y":0}},"uni178817B6":{"anchor_0_1":{"x":904,"y":0},"anchor_0_2":{"x":1209,"y":0}},"uni178817C5":{"anchor_0_1":{"x":904,"y":0},"anchor_0_2":{"x":1209,"y":0}},"uni178917B6":{"anchor_0_1":{"x":629,"y":-317},"anchor_0_2":{"x":910,"y":-317}},"uni178917C5":{"anchor_0_1":{"x":629,"y":-317},"anchor_0_2":{"x":910,"y":-317}},"uni178917B6.a":{"anchor_0_1":{"x":613,"y":0},"anchor_0_2":{"x":910,"y":0}},"uni178917C5.a":{"anchor_0_1":{"x":613,"y":0},"anchor_0_2":{"x":910,"y":0}},"uni178A17B6":{"anchor_0_1":{"x":330,"y":0},"anchor_0_2":{"x":610,"y":0}},"uni178A17C5":{"anchor_0_1":{"x":330,"y":0},"anchor_0_2":{"x":610,"y":0}},"uni178B17B6":{"anchor_0_1":{"x":308,"y":0},"anchor_0_2":{"x":619,"y":0}},"uni178B17C5":{"anchor_0_1":{"x":308,"y":0},"anchor_0_2":{"x":619,"y":0}},"uni178C17B6":{"anchor_0_1":{"x":310,"y":-49},"anchor_0_2":{"x":621,"y":-49}},"uni178C17C5":{"anchor_0_1":{"x":310,"y":-49},"anchor_0_2":{"x":621,"y":-49}},"uni178D17B6":{"anchor_0_1":{"x":617,"y":0},"anchor_0_2":{"x":914,"y":0}},"uni178D17C5":{"anchor_0_1":{"x":617,"y":0},"anchor_0_2":{"x":914,"y":0}},"uni178E17B6":{"anchor_0_1":{"x":594,"y":0},"anchor_0_2":{"x":1206,"y":0}},"uni178E17C5":{"anchor_0_1":{"x":594,"y":0},"anchor_0_2":{"x":1206,"y":0}},"uni178F17B6":{"anchor_0_1":{"x":280,"y":0},"anchor_0_2":{"x":588,"y":0}},"uni178F17C5":{"anchor_0_1":{"x":280,"y":0},"anchor_0_2":{"x":588,"y":0}},"uni179017B6":{"anchor_0_1":{"x":289,"y":0},"anchor_0_2":{"x":606,"y":0}},"uni179017C5":{"anchor_0_1":{"x":289,"y":0},"anchor_0_2":{"x":606,"y":0}},"uni179117B6":{"anchor_0_1":{"x":275,"y":0},"anchor_0_2":{"x":572,"y":0}},"uni179117C5":{"anchor_0_1":{"x":275,"y":0},"anchor_0_2":{"x":572,"y":0}},"uni179217B6":{"anchor_0_1":{"x":289,"y":0},"anchor_0_2":{"x":590,"y":0}},"uni179217C5":{"anchor_0_1":{"x":289,"y":0},"anchor_0_2":{"x":590,"y":0}},"uni179317B6":{"anchor_0_1":{"x":294,"y":0},"anchor_0_2":{"x":609,"y":0}},"uni179317C5":{"anchor_0_1":{"x":294,"y":0},"anchor_0_2":{"x":609,"y":0}},"uni179417B6":{"anchor_0_1":{"x":274,"y":-50},"anchor_0_2":{"x":579,"y":-50}},"uni179417B6.high":{"anchor_0_1":{"x":274,"y":-40},"anchor_0_2":{"x":579,"y":-40}},"uni179417C5":{"anchor_0_1":{"x":274,"y":-50},"anchor_0_2":{"x":579,"y":-50}},"uni179417C5.high":{"anchor_0_1":{"x":274,"y":-40},"anchor_0_2":{"x":579,"y":-40}},"uni179517B6":{"anchor_0_1":{"x":308,"y":0},"anchor_0_2":{"x":614,"y":0}},"uni179517C5":{"anchor_0_1":{"x":308,"y":0},"anchor_0_2":{"x":614,"y":0}},"uni179617B6":{"anchor_0_1":{"x":318,"y":0},"anchor_0_2":{"x":610,"y":0}},"uni179617C5":{"anchor_0_1":{"x":318,"y":0},"anchor_0_2":{"x":610,"y":0}},"uni179717B6":{"anchor_0_1":{"x":313,"y":0},"anchor_0_2":{"x":606,"y":0}},"uni179717C5":{"anchor_0_1":{"x":313,"y":0},"anchor_0_2":{"x":606,"y":0}},"uni179817B6":{"anchor_0_1":{"x":296,"y":0},"anchor_0_2":{"x":603,"y":0}},"uni179817C5":{"anchor_0_1":{"x":296,"y":0},"anchor_0_2":{"x":603,"y":0}},"uni179917B6":{"anchor_0_1":{"x":619,"y":0},"anchor_0_2":{"x":935,"y":0}},"uni179917C5":{"anchor_0_1":{"x":619,"y":0},"anchor_0_2":{"x":935,"y":0}},"uni179A17B6":{"anchor_0_1":{"x":186,"y":0},"anchor_0_2":{"x":345,"y":0}},"uni179A17C5":{"anchor_0_1":{"x":186,"y":0},"anchor_0_2":{"x":345,"y":0}},"uni179B17B6":{"anchor_0_1":{"x":615,"y":0},"anchor_0_2":{"x":920,"y":0}},"uni179B17C5":{"anchor_0_1":{"x":615,"y":0},"anchor_0_2":{"x":920,"y":0}},"uni179C17B6":{"anchor_0_1":{"x":144,"y":0},"anchor_0_2":{"x":284,"y":0}},"uni179C17C5":{"anchor_0_1":{"x":144,"y":0},"anchor_0_2":{"x":284,"y":0}},"uni179D17B6":{"anchor_0_1":{"x":284,"y":0},"anchor_0_2":{"x":588,"y":0}},"uni179D17C5":{"anchor_0_1":{"x":289,"y":0},"anchor_0_2":{"x":588,"y":0}},"uni179E17B6":{"anchor_0_1":{"x":298,"y":0},"anchor_0_2":{"x":603,"y":0}},"uni179E17C5":{"anchor_0_1":{"x":298,"y":0},"anchor_0_2":{"x":603,"y":0}},"uni179F17B6":{"anchor_0_1":{"x":602,"y":0},"anchor_0_2":{"x":918,"y":0}},"uni179F17C5":{"anchor_0_1":{"x":602,"y":0},"anchor_0_2":{"x":918,"y":0}},"uni17A017B6":{"anchor_0_1":{"x":592,"y":0},"anchor_0_2":{"x":904,"y":0}},"uni17A017C5":{"anchor_0_1":{"x":592,"y":0},"anchor_0_2":{"x":904,"y":0}},"uni17A117B6":{"anchor_0_1":{"x":484,"y":-317},"anchor_0_2":{"x":788,"y":-317}},"uni17A117C5":{"anchor_0_1":{"x":482,"y":-318},"anchor_0_2":{"x":790,"y":-317}},"uni17A217B6":{"anchor_0_1":{"x":324,"y":0},"anchor_0_2":{"x":653,"y":0}},"uni17A217C5":{"anchor_0_1":{"x":324,"y":0},"anchor_0_2":{"x":653,"y":0}},"uni17D2178317B6":{"anchor_0_1":{"x":-58,"y":-277},"anchor_0_2":{"x":-60,"y":-277}},"uni17D2178317B6.low":{"anchor_0_1":{"x":-59,"y":-579},"anchor_0_2":{"x":-59,"y":-579}},"uni17D2178317C5":{"anchor_0_1":{"x":-59,"y":-282},"anchor_0_2":{"x":-59,"y":-282}},"uni17D2178317C5.low":{"anchor_0_1":{"x":-59,"y":-582},"anchor_0_2":{"x":-59,"y":-582}},"uni17D2178817B6":{"anchor_0_1":{"x":-27,"y":-317},"anchor_0_2":{"x":-27,"y":-317}},"uni17D2178817B6.low":{"anchor_0_1":{"x":-27,"y":-577},"anchor_0_2":{"x":-27,"y":-577}},"uni17D2178817C5":{"anchor_0_1":{"x":-27,"y":-317},"anchor_0_2":{"x":-27,"y":-317}},"uni17D2178817C5.low":{"anchor_0_1":{"x":-27,"y":-577},"anchor_0_2":{"x":-27,"y":-577}},"uni17D2178D17B6":{"anchor_0_1":{"x":-15,"y":-317},"anchor_0_2":{"x":-15,"y":-317}},"uni17D2178D17B6.low":{"anchor_0_1":{"x":-19,"y":-574},"anchor_0_2":{"x":-19,"y":-574}},"uni17D2178D17C5":{"anchor_0_1":{"x":-8,"y":-318},"anchor_0_2":{"x":-7,"y":-317}},"uni17D2178D17C5.low":{"anchor_0_1":{"x":-19,"y":-571},"anchor_0_2":{"x":-19,"y":-571}},"uni17D2179417B6":{"anchor_0_1":{"x":16,"y":-317},"anchor_0_2":{"x":16,"y":-317}},"uni17D2179417B6.low":{"anchor_0_1":{"x":16,"y":-562},"anchor_0_2":{"x":16,"y":-562}},"uni17D2179417C5":{"anchor_0_1":{"x":16,"y":-317},"anchor_0_2":{"x":16,"y":-317}},"uni17D2179417C5.low":{"anchor_0_1":{"x":16,"y":-562},"anchor_0_2":{"x":16,"y":-562}},"uni17D2179917B6":{"anchor_0_1":{"x":10,"y":-317},"anchor_0_2":{"x":10,"y":-317}},"uni17D2179917B6.low":{"anchor_0_1":{"x":10,"y":-582},"anchor_0_2":{"x":10,"y":-582}},"uni17D2179917C5":{"anchor_0_1":{"x":10,"y":-317},"anchor_0_2":{"x":10,"y":-317}},"uni17D2179917C5.low":{"anchor_0_1":{"x":10,"y":-582},"anchor_0_2":{"x":10,"y":-582}},"uni17D2179E17B6":{"anchor_0_1":{"x":14,"y":-320},"anchor_0_2":{"x":14,"y":-320}},"uni17D2179E17B6.low":{"anchor_0_1":{"x":14,"y":-596},"anchor_0_2":{"x":14,"y":-596}},"uni17D2179E17C5":{"anchor_0_1":{"x":14,"y":-320},"anchor_0_2":{"x":14,"y":-320}},"uni17D2179E17C5.low":{"anchor_0_1":{"x":14,"y":-596},"anchor_0_2":{"x":14,"y":-596}},"uni17D2179F17B6":{"anchor_0_1":{"x":21,"y":-317},"anchor_0_2":{"x":21,"y":-317}},"uni17D2179F17B6.low":{"anchor_0_1":{"x":21,"y":-606},"anchor_0_2":{"x":21,"y":-606}},"uni17D2179F17C5":{"anchor_0_1":{"x":21,"y":-317},"anchor_0_2":{"x":21,"y":-317}},"uni17D2179F17C5.low":{"anchor_0_1":{"x":21,"y":-606},"anchor_0_2":{"x":21,"y":-606}}}}]],"43":[null,[{"type":"mark_to_lig","marks":{"anchor_0":{"uni17D21789.a":{"x":-526,"y":16}}},"ligatures":{"uni178917B6.a":{"anchor_0_1":{"x":450,"y":0},"anchor_0_2":{"x":450,"y":0}},"uni178917C5.a":{"anchor_0_1":{"x":450,"y":0},"anchor_0_2":{"x":450,"y":0}}}}]],"44":[null,[{"type":"mark_to_mark","marks":{"anchor_0":{"uni17B7":{"x":-353,"y":854},"uni17B7.r":{"x":-390,"y":858},"uni17B717CD":{"x":-353,"y":854},"uni17B717CD.r":{"x":-390,"y":857},"uni17B8":{"x":-353,"y":854},"uni17B8.r":{"x":-390,"y":859},"uni17B9":{"x":-353,"y":854},"uni17B9.r":{"x":-390,"y":859},"uni17BA":{"x":-353,"y":854},"uni17BA.r":{"x":-390,"y":858},"uni17C6":{"x":-353,"y":854},"uni17C6.r":{"x":-353,"y":854},"uni17C9":{"x":-353,"y":854},"uni17C9.r":{"x":-353,"y":854},"uni17CA":{"x":-353,"y":854},"uni17CA.r":{"x":-353,"y":783},"uni17CA.b":{"x":-353,"y":823},"uni17CB":{"x":-353,"y":826},"uni17CC":{"x":-353,"y":865},"uni17CC.r":{"x":-353,"y":865},"uni17CD":{"x":-353,"y":791},"uni17CD.r":{"x":-353,"y":791},"uni17CE":{"x":-353,"y":854},"uni17CF":{"x":-353,"y":854},"uni17CF.r":{"x":-353,"y":854},"uni17D0":{"x":-353,"y":854},"uni17D1":{"x":-353,"y":854},"uni17D1.r":{"x":-353,"y":854},"uni17D3":{"x":-353,"y":854},"uni17D3.r":{"x":-353,"y":854},"uni17DD":{"x":-297,"y":854},"uni17DD.r":{"x":-297,"y":854}}},"basemarks":{"uni17B7":{"anchor_0":{"x":-353,"y":1085}},"uni17B7.r":{"anchor_0":{"x":-390,"y":1089}},"uni17B717CD":{"anchor_0":{"x":-353,"y":1201}},"uni17B717CD.r":{"anchor_0":{"x":-390,"y":1177}},"uni17B8":{"anchor_0":{"x":-353,"y":1134}},"uni17B8.r":{"anchor_0":{"x":-390,"y":1129}},"uni17B9":{"anchor_0":{"x":-353,"y":1116}},"uni17B9.r":{"anchor_0":{"x":-390,"y":1129}},"uni17BA":{"anchor_0":{"x":-353,"y":1170}},"uni17BA.r":{"anchor_0":{"x":-390,"y":1167}},"uni17C6":{"anchor_0":{"x":-353,"y":1164}},"uni17C6.r":{"anchor_0":{"x":-353,"y":1164}},"uni17C9":{"anchor_0":{"x":-353,"y":1120}},"uni17C9.r":{"anchor_0":{"x":-353,"y":1120}},"uni17CA":{"anchor_0":{"x":-353,"y":1107}},"uni17CA.r":{"anchor_0":{"x":-353,"y":1017}},"uni17CA.b":{"anchor_0":{"x":-353,"y":1030}},"uni17CB":{"anchor_0":{"x":-353,"y":1091}},"uni17CC":{"anchor_0":{"x":-353,"y":1156}},"uni17CC.r":{"anchor_0":{"x":-353,"y":1156}},"uni17CD":{"anchor_0":{"x":-353,"y":1091}},"uni17CD.r":{"anchor_0":{"x":-353,"y":1091}},"uni17CE":{"anchor_0":{"x":-353,"y":1163}},"uni17CF":{"anchor_0":{"x":-353,"y":1174}},"uni17CF.r":{"anchor_0":{"x":-353,"y":1174}},"uni17D0":{"anchor_0":{"x":-353,"y":1134}},"uni17D1":{"anchor_0":{"x":-353,"y":980}},"uni17D1.r":{"anchor_0":{"x":-353,"y":972}},"uni17D3":{"anchor_0":{"x":-353,"y":1118}},"uni17D3.r":{"anchor_0":{"x":-353,"y":1118}},"uni17DD":{"anchor_0":{"x":-297,"y":1108}},"uni17DD.r":{"anchor_0":{"x":-297,"y":1108}}}}]],"45":[null,[{"type":"mark_to_mark","marks":{"anchor_0":{"uni17BB":{"x":-197,"y":16},"uni17BB.b":{"x":-300,"y":16},"uni17BC":{"x":-197,"y":16},"uni17BC.b":{"x":-264,"y":16},"uni17BD":{"x":-197,"y":16},"uni17BD.b":{"x":-295,"y":16},"uni17D21780":{"x":-319,"y":16},"uni17D21781":{"x":-318,"y":16},"uni17D21782":{"x":-318,"y":16},"uni17D21784":{"x":-324,"y":16},"uni17D21785":{"x":-318,"y":16},"uni17D21786":{"x":-317,"y":16},"uni17D21787":{"x":-326,"y":16},"uni17D21789":{"x":-321,"y":16},"uni17D2178A":{"x":-317,"y":16},"uni17D2178A.r":{"x":-319,"y":16},"uni17D2178B":{"x":-301,"y":16},"uni17D2178C":{"x":-323,"y":16},"uni17D2178E":{"x":-690,"y":10},"uni17D2178E.alt":{"x":-690,"y":10},"uni17D2178F":{"x":-317,"y":16},"uni17D2178F.r":{"x":-317,"y":16},"uni17D21790":{"x":-312,"y":16},"uni17D21791":{"x":-325,"y":16},"uni17D21792":{"x":-321,"y":16},"uni17D21793":{"x":-307,"y":16},"uni17D21795":{"x":-318,"y":16},"uni17D21796":{"x":-320,"y":16},"uni17D21797":{"x":-339,"y":16},"uni17D21797.r":{"x":-339,"y":16},"uni17D21798":{"x":-297,"y":16},"uni17D21798.r":{"x":-345,"y":16},"uni17D2179B":{"x":-334,"y":16},"uni17D2179C":{"x":-320,"y":16},"uni17D2179D":{"x":-318,"y":16},"uni17D217A0":{"x":-323,"y":16},"uni17D217A2":{"x":-332,"y":16},"uni17D217A7":{"x":-320,"y":16},"uni17D217AB":{"x":-327,"y":16},"uni17D217AC":{"x":-328,"y":16},"uni17D217AF":{"x":-284,"y":16}}},"basemarks":{"uni17D21780":{"anchor_0":{"x":-319,"y":-317}},"uni17D21781":{"anchor_0":{"x":-320,"y":-320}},"uni17D21782":{"anchor_0":{"x":-318,"y":-317}},"uni17D21784":{"anchor_0":{"x":-324,"y":-274}},"uni17D21785":{"anchor_0":{"x":-331,"y":-290}},"uni17D21786":{"anchor_0":{"x":-328,"y":-309}},"uni17D21787":{"anchor_0":{"x":-321,"y":-275}},"uni17D21789":{"anchor_0":{"x":-319,"y":-269}},"uni17D21789.a":{"anchor_0":{"x":-523,"y":-387}},"uni17D2178A":{"anchor_0":{"x":-319,"y":-317}},"uni17D2178A.r":{"anchor_0":{"x":-320,"y":-317}},"uni17D2178B":{"anchor_0":{"x":-301,"y":-320}},"uni17D2178C":{"anchor_0":{"x":-322,"y":-320}},"uni17D2178E":{"anchor_0":{"x":-690,"y":-317}},"uni17D2178E.alt":{"anchor_0":{"x":-690,"y":-317}},"uni17D2178F":{"anchor_0":{"x":-319,"y":-295}},"uni17D2178F.r":{"anchor_0":{"x":-319,"y":-295}},"uni17D21790":{"anchor_0":{"x":-307,"y":-270}},"uni17D21791":{"anchor_0":{"x":-324,"y":-299}},"uni17D21792":{"anchor_0":{"x":-303,"y":-311}},"uni17D21793":{"anchor_0":{"x":-307,"y":-260}},"uni17D21795":{"anchor_0":{"x":-324,"y":-320}},"uni17D21796":{"anchor_0":{"x":-320,"y":-318}},"uni17D21797":{"anchor_0":{"x":-330,"y":-317}},"uni17D21797.r":{"anchor_0":{"x":-330,"y":-317}},"uni17D21798":{"anchor_0":{"x":-291,"y":-291}},"uni17D21798.r":{"anchor_0":{"x":-321,"y":-291}},"uni17D2179B":{"anchor_0":{"x":-334,"y":-274}},"uni17D2179C":{"anchor_0":{"x":-320,"y":-296}},"uni17D2179D":{"anchor_0":{"x":-318,"y":-317}},"uni17D217A0":{"anchor_0":{"x":-323,"y":-300}},"uni17D217A2":{"anchor_0":{"x":-332,"y":-320}},"uni17D217A7":{"anchor_0":{"x":-320,"y":-406}},"uni17D217AB":{"anchor_0":{"x":-324,"y":-518}},"uni17D217AC":{"anchor_0":{"x":-325,"y":-518}}}}]],"46":[null,[{"type":"mark_to_mark","marks":{"anchor_0":{"uni17B7":{"x":-353,"y":854},"uni17B7.r":{"x":-390,"y":858},"uni17B717CD":{"x":-353,"y":854},"uni17B717CD.r":{"x":-390,"y":857},"uni17B8":{"x":-353,"y":854},"uni17B8.r":{"x":-390,"y":859},"uni17B9":{"x":-353,"y":854},"uni17B9.r":{"x":-390,"y":859},"uni17BA":{"x":-353,"y":854},"uni17BA.r":{"x":-390,"y":858},"uni17BE":{"x":543,"y":751},"uni17C6":{"x":-353,"y":854},"uni17C6.r":{"x":-353,"y":854},"uni17C9":{"x":-353,"y":854},"uni17C9.r":{"x":-353,"y":854},"uni17CA":{"x":-353,"y":854},"uni17CA.r":{"x":-353,"y":783},"uni17CA.b":{"x":-353,"y":823},"uni17CB":{"x":-353,"y":826},"uni17CC":{"x":-353,"y":865},"uni17CC.r":{"x":-353,"y":865},"uni17CD":{"x":-353,"y":791},"uni17CD.r":{"x":-353,"y":791},"uni17CE":{"x":-353,"y":854},"uni17CF":{"x":-353,"y":854},"uni17CF.r":{"x":-353,"y":854},"uni17D0":{"x":-353,"y":854},"uni17D1":{"x":-353,"y":854},"uni17D1.r":{"x":-353,"y":854},"uni17D3":{"x":-353,"y":854},"uni17D3.r":{"x":-353,"y":854},"uni17DD":{"x":-297,"y":854},"uni17DD.r":{"x":-297,"y":854}}},"basemarks":{"uni17B7":{"anchor_0":{"x":-353,"y":1085}},"uni17B7.r":{"anchor_0":{"x":-390,"y":1089}},"uni17B717CD":{"anchor_0":{"x":-353,"y":1201}},"uni17B717CD.r":{"anchor_0":{"x":-390,"y":1177}},"uni17B8":{"anchor_0":{"x":-353,"y":1134}},"uni17B8.r":{"anchor_0":{"x":-390,"y":1129}},"uni17B9":{"anchor_0":{"x":-353,"y":1116}},"uni17B9.r":{"anchor_0":{"x":-390,"y":1129}},"uni17BA":{"anchor_0":{"x":-353,"y":1170}},"uni17BA.r":{"anchor_0":{"x":-390,"y":1167}},"uni17BE":{"anchor_0":{"x":580,"y":645}},"uni17C6":{"anchor_0":{"x":-353,"y":1164}},"uni17C6.r":{"anchor_0":{"x":-353,"y":1164}},"uni17C9":{"anchor_0":{"x":-353,"y":1120}},"uni17C9.r":{"anchor_0":{"x":-353,"y":1120}},"uni17CA":{"anchor_0":{"x":-353,"y":1107}},"uni17CA.r":{"anchor_0":{"x":-353,"y":1017}},"uni17CA.b":{"anchor_0":{"x":-353,"y":1030}},"uni17CB":{"anchor_0":{"x":-353,"y":1091}},"uni17CC":{"anchor_0":{"x":-353,"y":1156}},"uni17CC.r":{"anchor_0":{"x":-353,"y":1156}},"uni17CD":{"anchor_0":{"x":-353,"y":1091}},"uni17CD.r":{"anchor_0":{"x":-353,"y":1091}},"uni17CE":{"anchor_0":{"x":-353,"y":1163}},"uni17CF":{"anchor_0":{"x":-353,"y":1174}},"uni17CF.r":{"anchor_0":{"x":-353,"y":1174}},"uni17D0":{"anchor_0":{"x":-353,"y":1134}},"uni17D1":{"anchor_0":{"x":-353,"y":980}},"uni17D1.r":{"anchor_0":{"x":-353,"y":972}},"uni17D3":{"anchor_0":{"x":-353,"y":1118}},"uni17D3.r":{"anchor_0":{"x":-353,"y":1118}},"uni17DD":{"anchor_0":{"x":-297,"y":1108}},"uni17DD.r":{"anchor_0":{"x":-297,"y":1108}}}}]],"47":[null,[{"type":"mark_to_mark","marks":{"anchor_0":{"uni17BB":{"x":-197,"y":16},"uni17BB.b":{"x":-300,"y":16},"uni17BC":{"x":-197,"y":16},"uni17BC.b":{"x":-264,"y":16},"uni17BD":{"x":-197,"y":16},"uni17BD.b":{"x":-295,"y":16},"uni17D21780":{"x":-319,"y":16},"uni17D21781":{"x":-318,"y":16},"uni17D21782":{"x":-318,"y":16},"uni17D21784":{"x":-324,"y":16},"uni17D21785":{"x":-318,"y":16},"uni17D21786":{"x":-317,"y":16},"uni17D21787":{"x":-326,"y":16},"uni17D21789":{"x":-321,"y":16},"uni17D2178A":{"x":-317,"y":16},"uni17D2178A.r":{"x":-319,"y":16},"uni17D2178B":{"x":-301,"y":16},"uni17D2178C":{"x":-323,"y":16},"uni17D2178E":{"x":-690,"y":10},"uni17D2178E.alt":{"x":-690,"y":10},"uni17D2178F":{"x":-317,"y":16},"uni17D2178F.r":{"x":-317,"y":16},"uni17D21790":{"x":-312,"y":16},"uni17D21791":{"x":-325,"y":16},"uni17D21792":{"x":-321,"y":16},"uni17D21793":{"x":-307,"y":16},"uni17D21795":{"x":-318,"y":16},"uni17D21796":{"x":-320,"y":16},"uni17D21797":{"x":-339,"y":16},"uni17D21797.r":{"x":-339,"y":16},"uni17D21798":{"x":-297,"y":16},"uni17D21798.r":{"x":-345,"y":16},"uni17D2179B":{"x":-334,"y":16},"uni17D2179C":{"x":-320,"y":16},"uni17D2179D":{"x":-318,"y":16},"uni17D217A0":{"x":-323,"y":16},"uni17D217A2":{"x":-332,"y":16},"uni17D217A7":{"x":-320,"y":16},"uni17D217AB":{"x":-327,"y":16},"uni17D217AC":{"x":-328,"y":16},"uni17D217AF":{"x":-284,"y":16}}},"basemarks":{"uni17BE":{"anchor_0":{"x":580,"y":45}},"uni17D21780":{"anchor_0":{"x":-319,"y":-317}},"uni17D21781":{"anchor_0":{"x":-320,"y":-320}},"uni17D21782":{"anchor_0":{"x":-318,"y":-317}},"uni17D21784":{"anchor_0":{"x":-324,"y":-274}},"uni17D21785":{"anchor_0":{"x":-331,"y":-290}},"uni17D21786":{"anchor_0":{"x":-328,"y":-309}},"uni17D21787":{"anchor_0":{"x":-321,"y":-275}},"uni17D21789":{"anchor_0":{"x":-319,"y":-269}},"uni17D21789.a":{"anchor_0":{"x":-523,"y":-387}},"uni17D2178A":{"anchor_0":{"x":-319,"y":-317}},"uni17D2178A.r":{"anchor_0":{"x":-320,"y":-317}},"uni17D2178B":{"anchor_0":{"x":-301,"y":-320}},"uni17D2178C":{"anchor_0":{"x":-322,"y":-320}},"uni17D2178E":{"anchor_0":{"x":-690,"y":-317}},"uni17D2178E.alt":{"anchor_0":{"x":-690,"y":-317}},"uni17D2178F":{"anchor_0":{"x":-319,"y":-295}},"uni17D2178F.r":{"anchor_0":{"x":-319,"y":-295}},"uni17D21790":{"anchor_0":{"x":-307,"y":-270}},"uni17D21791":{"anchor_0":{"x":-324,"y":-299}},"uni17D21792":{"anchor_0":{"x":-303,"y":-311}},"uni17D21793":{"anchor_0":{"x":-307,"y":-260}},"uni17D21795":{"anchor_0":{"x":-324,"y":-320}},"uni17D21796":{"anchor_0":{"x":-320,"y":-318}},"uni17D21797":{"anchor_0":{"x":-330,"y":-317}},"uni17D21797.r":{"anchor_0":{"x":-330,"y":-317}},"uni17D21798":{"anchor_0":{"x":-291,"y":-291}},"uni17D21798.r":{"anchor_0":{"x":-321,"y":-291}},"uni17D2179B":{"anchor_0":{"x":-334,"y":-274}},"uni17D2179C":{"anchor_0":{"x":-320,"y":-296}},"uni17D2179D":{"anchor_0":{"x":-318,"y":-317}},"uni17D217A0":{"anchor_0":{"x":-323,"y":-300}},"uni17D217A2":{"anchor_0":{"x":-332,"y":-320}},"uni17D217A7":{"anchor_0":{"x":-320,"y":-406}},"uni17D217AB":{"anchor_0":{"x":-324,"y":-518}},"uni17D217AC":{"anchor_0":{"x":-325,"y":-518}}}}]],"48":[null,[{"type":"mark_to_base","marks":{"anchor_0":{"uni17B7":{"x":-353,"y":854},"uni17B7.r":{"x":-390,"y":858},"uni17B717CD":{"x":-353,"y":854},"uni17B717CD.r":{"x":-390,"y":857},"uni17B8":{"x":-353,"y":854},"uni17B8.r":{"x":-390,"y":859},"uni17B9":{"x":-353,"y":854},"uni17B9.r":{"x":-390,"y":859},"uni17BA":{"x":-353,"y":854},"uni17BA.r":{"x":-390,"y":858},"uni17C6":{"x":-353,"y":854},"uni17C6.r":{"x":-353,"y":854},"uni17C9":{"x":-353,"y":854},"uni17C9.r":{"x":-353,"y":854},"uni17CA":{"x":-353,"y":854},"uni17CA.r":{"x":-353,"y":783},"uni17CA.b":{"x":-353,"y":823},"uni17CB":{"x":-353,"y":826},"uni17CC":{"x":-353,"y":865},"uni17CC.r":{"x":-353,"y":865},"uni17CD":{"x":-353,"y":791},"uni17CD.r":{"x":-353,"y":791},"uni17CE":{"x":-353,"y":854},"uni17CF":{"x":-353,"y":854},"uni17CF.r":{"x":-353,"y":854},"uni17D0":{"x":-353,"y":854},"uni17D1":{"x":-353,"y":854},"uni17D1.r":{"x":-353,"y":854},"uni17D3":{"x":-353,"y":854},"uni17D3.r":{"x":-353,"y":854},"uni17DD":{"x":-297,"y":854},"uni17DD.r":{"x":-297,"y":854}}},"bases":{"uni25CC":{"anchor_0":{"x":320,"y":600}}}}]],"49":[null,[{"type":"mark_to_base","marks":{"anchor_0":{"uni17BB":{"x":-197,"y":16},"uni17BB.b":{"x":-300,"y":16},"uni17BC":{"x":-197,"y":16},"uni17BC.b":{"x":-264,"y":16},"uni17BD":{"x":-197,"y":16},"uni17BD.b":{"x":-295,"y":16},"uni17D21780":{"x":-319,"y":16},"uni17D21781":{"x":-318,"y":16},"uni17D21782":{"x":-318,"y":16},"uni17D21784":{"x":-324,"y":16},"uni17D21785":{"x":-318,"y":16},"uni17D21786":{"x":-317,"y":16},"uni17D21787":{"x":-326,"y":16},"uni17D21789":{"x":-321,"y":16},"uni17D2178A":{"x":-317,"y":16},"uni17D2178A.r":{"x":-319,"y":16},"uni17D2178B":{"x":-301,"y":16},"uni17D2178C":{"x":-323,"y":16},"uni17D2178E":{"x":-690,"y":10},"uni17D2178E.alt":{"x":-690,"y":10},"uni17D2178F":{"x":-317,"y":16},"uni17D2178F.r":{"x":-317,"y":16},"uni17D21790":{"x":-312,"y":16},"uni17D21791":{"x":-325,"y":16},"uni17D21792":{"x":-321,"y":16},"uni17D21793":{"x":-307,"y":16},"uni17D21795":{"x":-318,"y":16},"uni17D21796":{"x":-320,"y":16},"uni17D21797":{"x":-339,"y":16},"uni17D21797.r":{"x":-339,"y":16},"uni17D21798":{"x":-297,"y":16},"uni17D21798.r":{"x":-345,"y":16},"uni17D2179B":{"x":-334,"y":16},"uni17D2179C":{"x":-320,"y":16},"uni17D2179D":{"x":-318,"y":16},"uni17D217A0":{"x":-323,"y":16},"uni17D217A2":{"x":-332,"y":16},"uni17D217A7":{"x":-320,"y":16},"uni17D217AB":{"x":-327,"y":16},"uni17D217AC":{"x":-328,"y":16},"uni17D217AF":{"x":-284,"y":16}}},"bases":{"uni25CC":{"anchor_0":{"x":320,"y":0}}}}]],"50":[null,[{"type":"mark_to_base","marks":{"anchor_0":{"uni17B7":{"x":-353,"y":854},"uni17B7.r":{"x":-390,"y":858},"uni17B717CD":{"x":-353,"y":854},"uni17B717CD.r":{"x":-390,"y":857},"uni17B8":{"x":-353,"y":854},"uni17B8.r":{"x":-390,"y":859},"uni17B9":{"x":-353,"y":854},"uni17B9.r":{"x":-390,"y":859},"uni17BA":{"x":-353,"y":854},"uni17BA.r":{"x":-390,"y":858},"uni17BE":{"x":543,"y":751},"uni17C6":{"x":-353,"y":854},"uni17C6.r":{"x":-353,"y":854},"uni17C9":{"x":-353,"y":854},"uni17C9.r":{"x":-353,"y":854},"uni17CA":{"x":-353,"y":854},"uni17CA.r":{"x":-353,"y":783},"uni17CA.b":{"x":-353,"y":823},"uni17CB":{"x":-353,"y":826},"uni17CC":{"x":-353,"y":865},"uni17CC.r":{"x":-353,"y":865},"uni17CD":{"x":-353,"y":791},"uni17CD.r":{"x":-353,"y":791},"uni17CE":{"x":-353,"y":854},"uni17CF":{"x":-353,"y":854},"uni17CF.r":{"x":-353,"y":854},"uni17D0":{"x":-353,"y":854},"uni17D1":{"x":-353,"y":854},"uni17D1.r":{"x":-353,"y":854},"uni17D3":{"x":-353,"y":854},"uni17D3.r":{"x":-353,"y":854},"uni17DD":{"x":-297,"y":854},"uni17DD.r":{"x":-297,"y":854}}},"bases":{"uni25CC":{"anchor_0":{"x":320,"y":600}}}}]],"51":[null,[{"type":"mark_to_base","marks":{"anchor_0":{"uni17BB":{"x":-197,"y":16},"uni17BB.b":{"x":-300,"y":16},"uni17BC":{"x":-197,"y":16},"uni17BC.b":{"x":-264,"y":16},"uni17BD":{"x":-197,"y":16},"uni17BD.b":{"x":-295,"y":16},"uni17D21780":{"x":-319,"y":16},"uni17D21781":{"x":-318,"y":16},"uni17D21782":{"x":-318,"y":16},"uni17D21784":{"x":-324,"y":16},"uni17D21785":{"x":-318,"y":16},"uni17D21786":{"x":-317,"y":16},"uni17D21787":{"x":-326,"y":16},"uni17D21789":{"x":-321,"y":16},"uni17D2178A":{"x":-317,"y":16},"uni17D2178A.r":{"x":-319,"y":16},"uni17D2178B":{"x":-301,"y":16},"uni17D2178C":{"x":-323,"y":16},"uni17D2178E":{"x":-690,"y":10},"uni17D2178E.alt":{"x":-690,"y":10},"uni17D2178F":{"x":-317,"y":16},"uni17D2178F.r":{"x":-317,"y":16},"uni17D21790":{"x":-312,"y":16},"uni17D21791":{"x":-325,"y":16},"uni17D21792":{"x":-321,"y":16},"uni17D21793":{"x":-307,"y":16},"uni17D21795":{"x":-318,"y":16},"uni17D21796":{"x":-320,"y":16},"uni17D21797":{"x":-339,"y":16},"uni17D21797.r":{"x":-339,"y":16},"uni17D21798":{"x":-297,"y":16},"uni17D21798.r":{"x":-345,"y":16},"uni17D2179B":{"x":-334,"y":16},"uni17D2179C":{"x":-320,"y":16},"uni17D2179D":{"x":-318,"y":16},"uni17D217A0":{"x":-323,"y":16},"uni17D217A2":{"x":-332,"y":16},"uni17D217A7":{"x":-320,"y":16},"uni17D217AB":{"x":-327,"y":16},"uni17D217AC":{"x":-328,"y":16},"uni17D217AF":{"x":-284,"y":16}}},"bases":{"uni25CC":{"anchor_0":{"x":320,"y":0}}}}]]}},"GSUB":{"lookup_list":{"12":{"0":{"rules":{"0":["uni17D2179A [uni1780 uni1781 uni1782 uni1783 uni1784 uni1785 uni1786 uni1787 uni1788 uni1789 uni178A uni178B uni178C uni178D uni178E uni178F uni1790 uni1791 uni1792 uni1793 uni1794 uni1795 uni1796 uni1797 uni1798 uni1799 uni179A uni179B uni179C uni179D uni179E uni179F uni17A0 uni17A1 uni17A2 uni17A3 uni17A4] [uni17BB uni17BC uni17BD]' lookup lookup_2","[uni1780 uni1781 uni1782 uni1783 uni1784 uni1785 uni1786 uni1787 uni1788 uni1789 uni178A uni178B uni178C uni178D uni178E uni178F uni1790 uni1791 uni1792 uni1793 uni1794 uni1795 uni1796 uni1797 uni1798 uni1799 uni179A uni179B uni179C uni179D uni179E uni179F uni17A0 uni17A1 uni17A2 uni17A3 uni17A4] uni17D2179A [uni17BB uni17BC uni17BD]' lookup lookup_2"],"1":["uni17D2179A [uni1780 uni1781 uni1782 uni1783 uni1784 uni1785 uni1786 uni1787 uni1788 uni1789 uni178A uni178B uni178C uni178D uni178E uni178F uni1790 uni1791 uni1792 uni1793 uni1794 uni1795 uni1796 uni1797 uni1798 uni1799 uni179A uni179B uni179C uni179D uni179E uni179F uni17A0 uni17A1 uni17A2 uni17A3 uni17A4] [uni17C9 uni17CA] [uni17BB uni17BC uni17BD]' lookup lookup_2",null],"2":["uni17D2179A.low [uni1780 uni1781 uni1782 uni1783 uni1784 uni1785 uni1786 uni1787 uni1788 uni1789 uni178A uni178B uni178C uni178D uni178E uni178F uni1790 uni1791 uni1792 uni1793 uni1794 uni1795 uni1796 uni1797 uni1798 uni1799 uni179A uni179B uni179C uni179D uni179E uni179F uni17A0 uni17A1 uni17A2 uni17A3 uni17A4] uni17D2178E' lookup lookup_2",null]}},"1":[null,{"type":"chained_sequence_context","rules":["[uni17C9 uni17CA] [uni1780 uni1781 uni1782 uni1783 uni1784 uni1785 uni1786 uni1787 uni1788 uni1789 uni178A uni178B uni178C uni178D uni178E uni178F uni1790 uni1791 uni1792 uni1793 uni1794 uni1795 uni1796 uni1797 uni1798 uni1799 uni179A uni179B uni179C uni179D uni179E uni179F uni17A0 uni17A1 uni17A2 uni17A3 uni17A4] uni17D2179A [uni17BB uni17BC uni17BD]' lookup lookup_2"]}],"2":[null,{"type":"chained_sequence_context","rules":["[uni1780 uni1781 uni1782 uni1783 uni1784 uni1785 uni1786 uni1787 uni1788 uni1789 uni178A uni178B uni178C uni178D uni178E uni178F uni1790 uni1791 uni1792 uni1793 uni1794 uni1795 uni1796 uni1797 uni1798 uni1799 uni179A uni179B uni179C uni179D uni179E uni179F uni17A0 uni17A1 uni17A2 uni17A3 uni17A4] uni17D2179A.low uni17D2178E' lookup lookup_2"]}]},"23":{"0":{"rules":{"0":["[uni1780 uni1781 uni1782 uni1783 uni1784 uni1785 uni1786 uni1787 uni1788 uni1789 uni1789.a uni178A uni178B uni178C uni178D uni178F uni1790 uni1791 uni1792 uni1793 uni1794 uni1795 uni1796 uni1797 uni1798 uni1799 uni179A uni179B uni179C uni179D uni179E uni179F uni17A0 uni17A2 uni17A3 uni17A4 uni17A5 uni17A7 uni17A8 uni17A9 uni17AA uni17AF uni17B0 uni17B1 uni17B2 uni17B3] [uni17D21780 uni17D21781 uni17D21782 uni17D21783 uni17D21783.low uni17D21784 uni17D21785 uni17D21786 uni17D21787 uni17D21788 uni17D21788.low uni17D21789 uni17D21789.a uni17D2178A uni17D2178B uni17D2178C uni17D2178D uni17D2178E uni17D2178F uni17D21790 uni17D21791 uni17D21792 uni17D21793 uni17D21794 uni17D21794.low uni17D21795 uni17D21796 uni17D21797 uni17D21798 uni17D21799 uni17D21799.low uni17D2179B uni17D2179C uni17D2179D uni17D2179E uni17D2179E.low uni17D2179F uni17D2179F.low uni17D217A0 uni17D217A2 uni17D217A7 uni17D217AB uni17D217AC uni17D217AF] [uni17BF.right1 uni17C0.right1]' lookup lookup_19","[uni17D21780 uni17D21781 uni17D21782 uni17D21783 uni17D21783.low uni17D21784 uni17D21785 uni17D21786 uni17D21787 uni17D21788 uni17D21788.low uni17D21789 uni17D21789.a uni17D2178A uni17D2178B uni17D2178C uni17D2178D uni17D2178E uni17D2178F uni17D21790 uni17D21791 uni17D21792 uni17D21793 uni17D21794 uni17D21794.low uni17D21795 uni17D21796 uni17D21797 uni17D21798 uni17D21799 uni17D21799.low uni17D2179B uni17D2179C uni17D2179D uni17D2179E uni17D2179E.low uni17D2179F uni17D2179F.low uni17D217A0 uni17D217A2 uni17D217A7 uni17D217AB uni17D217AC uni17D217AF] [uni1780 uni1781 uni1782 uni1783 uni1784 uni1785 uni1786 uni1787 uni1788 uni1789 uni1789.a uni178A uni178B uni178C uni178D uni178F uni1790 uni1791 uni1792 uni1793 uni1794 uni1795 uni1796 uni1797 uni1798 uni1799 uni179A uni179B uni179C uni179D uni179E uni179F uni17A0 uni17A2 uni17A3 uni17A4 uni17A5 uni17A7 uni17A8 uni17A9 uni17AA uni17AF uni17B0 uni17B1 uni17B2 uni17B3] [uni17BF.right1 uni17C0.right1]' lookup lookup_19"],"1":["[uni1780 uni1781 uni1782 uni1783 uni1784 uni1785 uni1786 uni1787 uni1788 uni1789 uni1789.a uni178A uni178B uni178C uni178D uni178F uni1790 uni1791 uni1792 uni1793 uni1794 uni1795 uni1796 uni1797 uni1798 uni1799 uni179A uni179B uni179C uni179D uni179E uni179F uni17A0 uni17A2 uni17A3 uni17A4 uni17A5 uni17A7 uni17A8 uni17A9 uni17AA uni17AF uni17B0 uni17B1 uni17B2 uni17B3] [uni17D21780 uni17D21781 uni17D21782 uni17D21783 uni17D21783.low uni17D21784 uni17D21785 uni17D21786 uni17D21787 uni17D21788 uni17D21788.low uni17D21789 uni17D21789.a uni17D2178A uni17D2178B uni17D2178C uni17D2178D uni17D2178E uni17D2178F uni17D21790 uni17D21791 uni17D21792 uni17D21793 uni17D21794 uni17D21794.low uni17D21795 uni17D21796 uni17D21797 uni17D21798 uni17D21799 uni17D21799.low uni17D2179B uni17D2179C uni17D2179D uni17D2179E uni17D2179E.low uni17D2179F uni17D2179F.low uni17D217A0 uni17D217A2 uni17D217A7 uni17D217AB uni17D217AC uni17D217AF] [uni17D21780 uni17D21781 uni17D21782 uni17D21783 uni17D21783.low uni17D21784 uni17D21785 uni17D21786 uni17D21787 uni17D21788 uni17D21788.low uni17D21789 uni17D21789.a uni17D2178A uni17D2178B uni17D2178C uni17D2178D uni17D2178E uni17D2178F uni17D21790 uni17D21791 uni17D21792 uni17D21793 uni17D21794 uni17D21794.low uni17D21795 uni17D21796 uni17D21797 uni17D21798 uni17D21799 uni17D21799.low uni17D2179B uni17D2179C uni17D2179D uni17D2179E uni17D2179E.low uni17D2179F uni17D2179F.low uni17D217A0 uni17D217A2 uni17D217A7 uni17D217AB uni17D217AC uni17D217AF] [uni17BF.right1 uni17C0.right1]' lookup lookup_22",null]}},"1":[null,{"type":"chained_sequence_context","rules":["[uni17D21780 uni17D21781 uni17D21782 uni17D21783 uni17D21783.low uni17D21784 uni17D21785 uni17D21786 uni17D21787 uni17D21788 uni17D21788.low uni17D21789 uni17D21789.a uni17D2178A uni17D2178B uni17D2178C uni17D2178D uni17D2178E uni17D2178F uni17D21790 uni17D21791 uni17D21792 uni17D21793 uni17D21794 uni17D21794.low uni17D21795 uni17D21796 uni17D21797 uni17D21798 uni17D21799 uni17D21799.low uni17D2179B uni17D2179C uni17D2179D uni17D2179E uni17D2179E.low uni17D2179F uni17D2179F.low uni17D217A0 uni17D217A2 uni17D217A7 uni17D217AB uni17D217AC uni17D217AF] [uni17D21780 uni17D21781 uni17D21782 uni17D21783 uni17D21783.low uni17D21784 uni17D21785 uni17D21786 uni17D21787 uni17D21788 uni17D21788.low uni17D21789 uni17D21789.a uni17D2178A uni17D2178B uni17D2178C uni17D2178D uni17D2178E uni17D2178F uni17D21790 uni17D21791 uni17D21792 uni17D21793 uni17D21794 uni17D21794.low uni17D21795 uni17D21796 uni17D21797 uni17D21798 uni17D21799 uni17D21799.low uni17D2179B uni17D2179C uni17D2179D uni17D2179E uni17D2179E.low uni17D2179F uni17D2179F.low uni17D217A0 uni17D217A2 uni17D217A7 uni17D217AB uni17D217AC uni17D217AF] [uni1780 uni1781 uni1782 uni1783 uni1784 uni1785 uni1786 uni1787 uni1788 uni1789 uni1789.a uni178A uni178B uni178C uni178D uni178F uni1790 uni1791 uni1792 uni1793 uni1794 uni1795 uni1796 uni1797 uni1798 uni1799 uni179A uni179B uni179C uni179D uni179E uni179F uni17A0 uni17A2 uni17A3 uni17A4 uni17A5 uni17A7 uni17A8 uni17A9 uni17AA uni17AF uni17B0 uni17B1 uni17B2 uni17B3] [uni17BF.right1 uni17C0.right1]' lookup lookup_22"]}]}}},"head":{"checksum_adjustment":[1586115543,2984137813],"modified":[3778756572,3813909803]},"hhea":{"caret_slope_rise":[1,1000]}},"cmap_diff":{},"locations":[{"location":"Default","words":{}}]};
+		function buildLocation_statichtml(loc) {
+  // Set font styles to appropriate axis locations
+  let rule = document.styleSheets[0].cssRules[2].style;
+  let cssSetting = "";
+  let textLocation = "Default";
+  if (loc.coords) {
+    cssSetting = Object.entries(loc.coords)
+      .map(function ([axis, value]) {
+        return `"${axis}" ${value}`;
+      })
+      .join(", ");
+    textLocation = Object.entries(loc.coords)
+      .map(function ([axis, value]) {
+        return `${axis}=${value}`;
+      })
+      .join(" ");
+    rule.setProperty("font-variation-settings", cssSetting);
+  }
+
+  $("#main").empty();
+
+  $("#title").html(`<h4 class="mt-2">${textLocation}</h2>`);
+
+  if (loc.glyphs) {
+    $("#main").append("<h4>Modified Glyphs</h4>");
+    let glyphs = $("<div>");
+    for (let glyph of loc.glyphs) {
+      addAGlyph(glyph, glyphs);
+    }
+    $("#main").append(glyphs);
+  }
+
+  if (loc.words) {
+    $("#main").append("<h4>Modified Words</h4>");
+    for (let [script, words] of Object.entries(loc.words)) {
+      let scriptTitle = $(`<h6>${script}</h6>`);
+      $("#main").append(scriptTitle);
+      let worddiv = $("<div>");
+      for (let word of words) {
+        addAWord(word, worddiv);
+      }
+      $("#main").append(worddiv);
+    }
+  }
+  $('[data-toggle="tooltip"]').tooltip();
+}
+
+$(function () {
+  if (report["tables"]) {
+    diffTables(report);
+  }
+  if (report["kerns"]) {
+    diffKerns(report);
+  }
+  cmapDiff(report);
+  $('[data-toggle="tooltip"]').tooltip();
+  if (!report["locations"]) {
+    $("#title").html("<h4 class='mt-2'>No differences found</h4>");
+    $("#ui-nav").hide();
+    return;
+  }
+
+  for (var [index, loc] of report["locations"].entries()) {
+    var loc_nav = $(`<li class="nav-item">
+		<a class="nav-link text-secondary" href="#" data-index="${index}">${loc.location.replaceAll(
+      ",",
+      ",\u200b"
+    )}</a>
+	</li>`);
+    $("#locationnav").append(loc_nav);
+  }
+  $("#locationnav li a").on("click", function (e) {
+    $("#locationnav li a").removeClass("active");
+    $(this).addClass("active");
+    buildLocation_statichtml(report.locations[$(this).data("index")]);
+  });
+  $("#locationnav li a").eq(0).click();
+
+  document.styleSheets[0].cssRules[0].style.setProperty(
+    "src",
+    "url(old-NotoSerifKhmer-CondensedExtraLight.ttf)"
+  );
+  document.styleSheets[0].cssRules[1].style.setProperty(
+    "src",
+    "url(new-NotoSerifKhmer-CondensedExtraLight.ttf)"
+  );
+  setupAnimation();
+});
+
+	</script>
+</body>
+
+</html>
